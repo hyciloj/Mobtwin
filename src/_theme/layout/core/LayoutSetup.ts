@@ -19,7 +19,6 @@ export function getLayout(): ILayout {
 function setLayout(config: ILayout): void {
     try {
         localStorage.setItem(LAYOUT_CONFIG_KEY, JSON.stringify(config))
-        console.log(JSON.stringify(config))
     } catch (er) {
         console.error(er)
     }
@@ -32,8 +31,6 @@ export class LayoutSetup {
     public static config: ILayout = getLayout()
 
     public static setConfig(config: ILayout): void {
-
-        console.log('setConfig => ', config)
 
         const _body = document.body;
         _body.removeAttribute('class');
