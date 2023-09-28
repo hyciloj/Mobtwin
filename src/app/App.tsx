@@ -6,6 +6,9 @@ import useLocales from "../_theme/i18n/useLocales";
 import {allLanguages} from "../_theme/i18n/config-lang";
 import {MasterLayout} from "../_theme/layout/MasterLayout";
 import Header from "./Header";
+import {BrowserRouter} from "react-router-dom";
+import AuthInit from "./modules/auth/redux/AuthInit";
+import Router from "./routing/Router";
 
 type Props = {
     basename: string
@@ -20,22 +23,31 @@ const App: React.FC<Props> = ({basename}) => {
     };
 
     return (
-        <MasterLayout>
-            <div className="App">
-                <header className="App-header">
-                    <h1>{translate('docs.description')}</h1>
-                    {
-                        allLanguages.map((option, index) => (
-                            <button key={index} onClick={() => {
-                                handleChangeLang(option.value)
-                            }}>{option.label}</button>
-                        ))
-                    }
-                </header>
-                <Header />
-            </div>
-        </MasterLayout>
+        <BrowserRouter basename={basename}>
+            <AuthInit>
+                <Router/>
+            </AuthInit>
+        </BrowserRouter>
     );
 }
 
 export {App}
+
+
+/*
+<MasterLayout>
+    <div className="App">
+        <header className="App-header">
+            <h1>{translate('docs.description')}</h1>
+            {
+                allLanguages.map((option, index) => (
+                    <button key={index} onClick={() => {
+                        handleChangeLang(option.value)
+                    }}>{option.label}</button>
+                ))
+            }
+        </header>
+        <Header />
+    </div>
+</MasterLayout>
+* */

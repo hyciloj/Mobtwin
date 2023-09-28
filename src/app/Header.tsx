@@ -15,6 +15,8 @@ const Header: FC = () => {
         LayoutSetup.setConfig(updatedData)
     }
 
+
+
     return (
         <header className="header">
             <div className="header-content">
@@ -40,6 +42,11 @@ const Header: FC = () => {
                         >
                             Mode
                         </button>
+
+                        <div className={'div-100'}>100</div>
+                        <div className={'div-300'}>300</div>
+                        <div className={'div-400'}>400</div>
+                        <div className={'div-500'}>500</div>
                     </div>
                 </div>
 

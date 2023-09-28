@@ -1,0 +1,23 @@
+$dark-gray-100: #1b1b29 !default;
+$dark-gray-200: #2b2b40 !default;
+$dark-gray-300: #323248 !default;
+$dark-gray-400: #474761 !default;
+$dark-gray-500: #565674 !default;
+$dark-gray-600: #6d6d80 !default;
+$dark-gray-700: #92929f !default;
+$dark-gray-800: #cdcdde !default;
+$dark-gray-900: #ffffff !default;
+$text-muted: $dark-gray-500 !default;
+
+// Bootstrap gray colors map
+$dark-grays: (
+        '100': $dark-gray-100,
+        '200': $dark-gray-200,
+        '300': $dark-gray-300,
+        '400': $dark-gray-400,
+        '500': $dark-gray-500,
+        '600': $dark-gray-600,
+        '700': $dark-gray-700,
+        '800': $dark-gray-800,
+        '900': $dark-gray-900,
+) !default; // Custom variable

@@ -1,0 +1,25 @@
+@import '~bootstrap/scss/bootstrap.scss';
+@import "variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: $transition-bg;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+body.dark {
+  background-color: $black;
+  @import "theme/dark/dark";
+}
+
+body.light {
+  background-color: $white;
+  @import "theme/light/light";
+}
