@@ -1,4 +1,44 @@
+// color and bg
 $black: #000000;
 $white: #ffffff;
+$deepFuchsia: #B33FC1;
+$wildOrchid: #D8729D;
+$linearGradient: linear-gradient($wildOrchid, $deepFuchsia);
 
 $transition-bg: background-color .2s ease-in-out !default;
+
+// PADDING AND MARGIN
+
+$space-1: calc(1rem * 0.25);
+$space-2: calc(1rem * 0.5);
+$space-3: calc(1rem * 0.75);
+$space-4: 1rem;
+$space-5: calc(1rem * 1.25);
+$space-6: calc(1rem * 1.5);
+$space-7: calc(1rem * 1.75);
+$space-8: calc(1rem * 2);
+$space-9: calc(1rem * 2.25);
+$space-10: calc(1rem * 2.5);
+$space-12: calc(1rem * 3);
+$space-14: calc(1rem * 3.5);
+$space-16: calc(1rem * 4);
+$space-20: calc(1rem * 5);
+$space-24: calc(1rem * 6);
+$space-28: calc(1rem * 7);
+$space-32: calc(1rem * 8);
+$space-36: calc(1rem * 9);
+$space-40: calc(1rem * 10);
+$space-44: calc(1rem * 11);
+$space-48: calc(1rem * 12);
+$space-52: calc(1rem * 13);
+$space-56: calc(1rem * 14);
+$space-60: calc(1rem * 15);
+$space-64: calc(1rem * 16);
+$space-72: calc(1rem * 18);
+$space-80: calc(1rem * 20);
+$space-96: calc(1rem * 24);
+$space-px: calc(1rem * 0.063);
+$space-0-5: calc(1rem * 0.125);
+$space-1-5: calc(1rem * 0.375);
+$space-2-5: calc(1rem * 0.625);
+$space-3-5: calc(1rem * 0.875);
