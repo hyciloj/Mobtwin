@@ -4,9 +4,9 @@ export interface FormDataLogin {
 }
 
 export interface FormDataRegister extends FormDataLogin{
-    firstName: string;
-    lastName: string;
+    // firstName: string;
+    // lastName: string;
     email: string;
     password: string;
-    passwordConfirmation: string;
+    // passwordConfirmation: string;
 }

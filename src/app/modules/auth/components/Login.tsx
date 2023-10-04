@@ -1,76 +1,176 @@
-import React, {useCallback, useState} from "react";
+import React, {Dispatch, FC, SetStateAction, useCallback, useState} from "react";
 import {Link} from "react-router-dom";
 import {PATH_AUTH} from "../../../routing/paths";
-import {login} from "../redux/AuthCRUD";
+import {login, register} from "../redux/AuthCRUD";
 import {useDispatch} from "react-redux";
 import * as auth from "../redux/AuthRedux"
+import {toAbsoluteUrl} from "../../../../_theme/helpers";
+import {AuthButton, InputComponent, SubmitComponent} from "../../components";
+import {useFormik} from "formik";
+import * as Yup from 'yup'
+import {Container} from "./Container";
+import {useToggle} from "../../../hooks";
+import clsx from 'clsx'
+import {FieldInputProps, FormikErrors, FormikTouched, FormikValues} from "formik/dist/types";
+import {FieldConfig} from "formik/dist/Field";
+import {FormikProps} from "../../../../config-global";
+import {Simulate} from "react-dom/test-utils";
+import load = Simulate.load;
+import {log} from "node:util";
 
 interface formData {
     email: string;
     password: string;
 }
 
+
+const images = {
+    image1: "https://app.leonardo.ai/img/login-hero-images/Celestial.webp",
+    image2: "https://app.leonardo.ai/img/login-hero-images/FemaleAdventurer5.webp"
+}
+
+type childProps = 'login' | 'register' | 'forgotPassword'
+
+const loginSchema = Yup.object().shape({
+    email: Yup.string()
+        .email('Wrong email format')
+        .min(10, 'Minimum 10 symbols')
+        .max(50, 'Maximum 50 symbols')
+        .required('Email is required'),
+    password: Yup.string()
+        .min(8, 'Minimum 8 symbols')
+        .max(50, 'Maximum 50 symbols')
+        .required('Password is required'),
+})
+
+const initialValues = {
+    email: '',
+    password: '',
+}
+
+
 export default function Login() {
 
     const [formData, setFormData] = useState<formData>({email: 'admin@email.com', password: 'admin'})
     const [loading, setLoading] = useState(false)
+    const [isToggled, toggle] = useToggle(false);
+    const [child, setChild] = useState<childProps>('login')
     const dispatch = useDispatch()
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 
-        event.preventDefault();
-        setLoading(true);
 
-        setTimeout(() => {
-            login(formData)
-                .then(({ data }) => {
-                    const { data: {user: { token }} } = data;
+
+    const formik = useFormik({
+        initialValues,
+        validationSchema: loginSchema,
+        onSubmit: async (values, { setStatus, setSubmitting }) => {
+            setLoading(true);
+
+            try {
+                let response;
+
+                if (child === 'login') {
+                    response = await login({ email: values.email, password: values.password });
+
+                    const { message_code, status, user, token } = response.data;
+                    const { id, name, email, role, workspace } = user;
+
                     dispatch(auth.actions.login({accessToken: token}))
-                })
-                .catch(error => {
-                    console.log({error})
-                })
-                .finally(() => {setLoading(true);})
-        }, 300)
-    }
 
-    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //
-    //     const {name, value} = e.target
-    //     setFormData({
-    //         ...formData, [name]: value
-    //     });
-    // }
+                } else if (child === 'register') {
+                    response = await register({ email: values.email, password: values.password });
 
-    const handleChange = useCallback(
-        (e: React.ChangeEvent<HTMLInputElement>): void => {
-            const {name, value} = e.target
-            setFormData({
-                ...formData, [name]: value
-            });
+                    const { message, message_code, status } = response.data;
+                    console.log(message, message_code, status);
+                } else if (child === 'forgotPassword') {
+                    // Handle forgot password logic here
+                    // response = await forgotPassword({ email: values.email });
+                }
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setLoading(false);
+            }
         },
-        [formData]
-    );
+    });
+
+
 
     return (
-        <div>
-            <h1>Login Page</h1>
+        <Container>
+            <form
+                className='form w-100'
+                onSubmit={formik.handleSubmit}
+                noValidate
+                id='kt_login_signin_form'
+            >
+                {
+                    child === 'login' && (
+                        <>
+                            <div className="d-flex flex-column align-items-center mb-3">
+                                <InputComponent formik={formik} label={'email'} placeholder={'name@host.com'}/>
+                            </div>
+                            <div className="d-flex flex-column align-items-center">
+                                <InputComponent formik={formik} label={'password'} placeholder={'******'}/>
+                            </div>
 
-            <h3>{loading.toString()}</h3>
+                            <div className="d-flex flex-column align-items-center">
+                                <p className="link-sm pt-1 cursor-pointer" onClick={() => setChild('forgotPassword')}>
+                                    Forgot your password?
+                                </p>
 
-            <form onSubmit={handleSubmit}>
-                <div>
-                    Email:
-                    <input type="text" name="email" value={formData.email} onChange={handleChange}/>
-                </div>
-                <div>
-                    Password:
-                    <input type="password" name="password" value={formData.password} onChange={handleChange}/>
-                </div>
-                <button type="submit">Submit</button>
+                            </div>
+
+                            <SubmitComponent formik={formik} labelBtn={"Sign In"} loading={loading}/>
+
+                            <button type={"button"} className="link-sm _pt-2 text-end"
+                                    onClick={() => setChild('register')}
+                            >
+                                Sign Up
+                            </button>
+                        </>
+                    )
+                }
+
+                {
+                    child === 'register' && (
+                        <>
+                            <div className="d-flex flex-column align-items-center mb-3">
+                                <InputComponent formik={formik} label={'email'} placeholder={'name@host.com'}/>
+                            </div>
+                            <div className="d-flex flex-column align-items-center mb-3">
+                                <InputComponent formik={formik} label={'password'} placeholder={'******'}/>
+                            </div>
+
+                            <SubmitComponent formik={formik} labelBtn={"Sign Up"} loading={loading}/>
+
+                            <button type={"button"} className="link-sm _pt-2 text-end"
+                                    onClick={() => setChild('login')}
+                            >
+                                Sign In
+                            </button>
+                        </>
+                    )
+                }
+
+                {
+                    child === 'forgotPassword' && (
+                        <>
+                            <div className="d-flex flex-column align-items-center mb-3">
+                                <InputComponent formik={formik} label={'email'} placeholder={'name@host.com'}/>
+                            </div>
+
+                            <SubmitComponent formik={formik} labelBtn={"Reset my password"} loading={loading}/>
+
+                            <div className="d-flex flex-column align-items-center mt-2 _p-2 ">
+                                <button type={'button'} onClick={() => setChild('login')} className={'link-md'}>Cancel</button>
+                            </div>
+                        </>
+                    )
+                }
+
+
             </form>
-
-            <Link to={PATH_AUTH.register}>register</Link>
-        </div>
+        </Container>
     )
 }

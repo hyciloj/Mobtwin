@@ -1,0 +1,8 @@
+@mixin typography($color, $size) {
+  color: $color;
+  font-size: $size;
+  font-weight: 100;
+  line-height: 1.7;
+  transition-property: $transition-property-common;
+  transition-duration: $transition-duration-normal;
+}

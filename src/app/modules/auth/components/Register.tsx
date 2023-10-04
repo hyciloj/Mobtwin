@@ -9,11 +9,11 @@ import {register} from "../redux/AuthCRUD";
 export default function Register() {
 
     const [formData, setFormData] = useState<FormDataRegister>({
-        firstName: '',
-        lastName: '',
+        // firstName: '',
+        // lastName: '',
         email: '',
         password: '',
-        passwordConfirmation: '',
+        // passwordConfirmation: '',
     })
     const [loading, setLoading] = useState(false)
     const dispatch = useDispatch()
@@ -23,7 +23,7 @@ export default function Register() {
         event.preventDefault();
         setLoading(true);
 
-        const {firstName, lastName, email, password, passwordConfirmation} = formData
+        // const {firstName, lastName, email, password, passwordConfirmation} = formData
 
         console.log(formData)
 
@@ -61,11 +61,11 @@ export default function Register() {
             <form onSubmit={handleSubmit}>
                 <div>
                     firstName:
-                    <input type="text" name="firstName" value={formData.firstName} onChange={handleChange}/>
+                    {/*<input type="text" name="firstName" value={formData.firstName} onChange={handleChange}/>*/}
                 </div>
                 <div>
                     lastName:
-                    <input type="text" name="lastName" value={formData.lastName} onChange={handleChange}/>
+                    {/*<input type="text" name="lastName" value={formData.lastName} onChange={handleChange}/>*/}
                 </div>
                 <div>
                     Email:
@@ -77,7 +77,7 @@ export default function Register() {
                 </div>
                 <div>
                     passwordConfirmation:
-                    <input type="password" name="passwordConfirmation" value={formData.passwordConfirmation} onChange={handleChange}/>
+                    {/*<input type="password" name="passwordConfirmation" value={formData.passwordConfirmation} onChange={handleChange}/>*/}
                 </div>
                 <button type="submit">Submit</button>
             </form>

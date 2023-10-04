@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {AuthModel} from '../models/AuthModel'
+import {LoginModel, RegisterModel} from '../models/AuthModel'
 import {UserModel} from '../models/UserModel'
 import {FormDataLogin, FormDataRegister} from "../models/Props";
 
@@ -18,20 +18,20 @@ export function login<T>({email, password}: FormDataLogin) {
   data.append('email', email);
   data.append('password', password);
 
-  return axios.post(LOGIN_URL, data)
+  return axios.post<LoginModel>(LOGIN_URL, data)
 }
 
 // Server should return AuthModel
-export function register<T>({email, firstName, lastName, password, passwordConfirmation}: FormDataRegister) {
+export function register<T>({email, password}: FormDataRegister) {
 
   let data = new FormData();
   data.append('email', email);
   data.append('password', password);
-  data.append('password_confirmation', passwordConfirmation);
-  data.append('first_name', firstName);
-  data.append('last_name', lastName);
+  // data.append('password_confirmation', passwordConfirmation);
+  // data.append('first_name', firstName);
+  // data.append('last_name', lastName);
 
-  return axios.post<AuthModel>(REGISTER_URL, data)
+  return axios.post<RegisterModel>(REGISTER_URL, data)
 }
 
 // Server should return object => { result: boolean } (Is Email in DB)
@@ -42,5 +42,5 @@ export function requestPassword(email: string) {
 export function getUserByToken() {
   // Authorization head should be fulfilled in interceptor.
   // Check common redux folder => setupAxios
-  return axios.get<UserModel>(GET_USER_BY_ACCESS_TOKEN_URL)
+  return axios.post<UserModel>(GET_USER_BY_ACCESS_TOKEN_URL)
 }

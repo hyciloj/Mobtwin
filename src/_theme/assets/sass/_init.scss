@@ -1,17 +1,26 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import "variables";
+@import "theme";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   transition: $transition-bg;
+  outline: none;
+  text-decoration: none !important;
+}
+button {
+  background: transparent;
+  padding: 0;
+  outline: 0;
+  border: none;
 }
 
 body {
   position: relative;
   min-height: 100vh;
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 body.dark {

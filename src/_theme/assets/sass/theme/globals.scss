@@ -1,0 +1,43 @@
+@each $name, $space in $spacing {
+  ._p-#{$name} {
+    padding: $space !important;
+  }
+  ._pt-#{$name} {
+    padding-top: $space !important;
+  }
+  ._pb-#{$name} {
+    padding-bottom: $space !important;
+  }
+  ._pl-#{$name} {
+    padding-left: $space !important;
+  }
+  ._pr-#{$name} {
+    padding-right: $space !important;
+  }
+  ._px-#{$name} {
+    padding-left: $space !important;
+    padding-right: $space !important;
+  }
+  ._py-#{$name} {
+    padding-top: $space !important;
+    padding-bottom: $space !important;
+  }
+}
+
+@each $name, $fontSize in $fontSizes {
+  ._fs-#{$name} {
+    font-size: $fontSize !important;
+  }
+}
+
+@each $name, $size in $sizing {
+  ._size-#{$name} {
+    font-size: $size !important;
+  }
+}
+
+@each $name, $dark-gray in $dark-grays {
+  ._bg-dark-gray-#{$name} {
+    background-color: $dark-gray !important;
+  }
+}
