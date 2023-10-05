@@ -6,7 +6,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: $transition-bg;
+  transition-property: $_transition-property-common;
+  transition-duration: $_transition-duration-normal;
   outline: none;
   text-decoration: none !important;
 }

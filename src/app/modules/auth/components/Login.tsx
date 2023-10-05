@@ -1,22 +1,12 @@
-import React, {Dispatch, FC, SetStateAction, useCallback, useState} from "react";
-import {Link} from "react-router-dom";
-import {PATH_AUTH} from "../../../routing/paths";
+import React, {useState} from "react";
 import {login, register} from "../redux/AuthCRUD";
 import {useDispatch} from "react-redux";
 import * as auth from "../redux/AuthRedux"
-import {toAbsoluteUrl} from "../../../../_theme/helpers";
-import {AuthButton, InputComponent, SubmitComponent} from "../../components";
+import {InputComponent, SubmitComponent} from "../../components";
 import {useFormik} from "formik";
 import * as Yup from 'yup'
 import {Container} from "./Container";
 import {useToggle} from "../../../hooks";
-import clsx from 'clsx'
-import {FieldInputProps, FormikErrors, FormikTouched, FormikValues} from "formik/dist/types";
-import {FieldConfig} from "formik/dist/Field";
-import {FormikProps} from "../../../../config-global";
-import {Simulate} from "react-dom/test-utils";
-import load = Simulate.load;
-import {log} from "node:util";
 
 interface formData {
     email: string;
@@ -104,14 +94,19 @@ export default function Login() {
                 noValidate
                 id='kt_login_signin_form'
             >
+
+                <div className="d-flex flex-column align-items-center mb-3">
+
+                </div>
+
                 {
                     child === 'login' && (
                         <>
                             <div className="d-flex flex-column align-items-center mb-3">
-                                <InputComponent formik={formik} label={'email'} placeholder={'name@host.com'}/>
+                                <InputComponent formik={formik} id={"email"} type={"email"} label={'email'} placeholder={'name@host.com'}/>
                             </div>
                             <div className="d-flex flex-column align-items-center">
-                                <InputComponent formik={formik} label={'password'} placeholder={'******'}/>
+                                <InputComponent formik={formik} id={"password"} type={"password"} label={'password'} placeholder={'******'}/>
                             </div>
 
                             <div className="d-flex flex-column align-items-center">
@@ -136,10 +131,10 @@ export default function Login() {
                     child === 'register' && (
                         <>
                             <div className="d-flex flex-column align-items-center mb-3">
-                                <InputComponent formik={formik} label={'email'} placeholder={'name@host.com'}/>
+                                <InputComponent formik={formik} id={"email"} type={"email"} label={'email'} placeholder={'name@host.com'}/>
                             </div>
                             <div className="d-flex flex-column align-items-center mb-3">
-                                <InputComponent formik={formik} label={'password'} placeholder={'******'}/>
+                                <InputComponent formik={formik} id={"password"} type={"password"} label={'password'} placeholder={'******'}/>
                             </div>
 
                             <SubmitComponent formik={formik} labelBtn={"Sign Up"} loading={loading}/>
@@ -157,7 +152,7 @@ export default function Login() {
                     child === 'forgotPassword' && (
                         <>
                             <div className="d-flex flex-column align-items-center mb-3">
-                                <InputComponent formik={formik} label={'email'} placeholder={'name@host.com'}/>
+                                <InputComponent formik={formik} id={"email"} type={"email"} label={'email'} placeholder={'name@host.com'}/>
                             </div>
 
                             <SubmitComponent formik={formik} labelBtn={"Reset my password"} loading={loading}/>

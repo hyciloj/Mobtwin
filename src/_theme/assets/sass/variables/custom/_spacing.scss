@@ -1,69 +1,35 @@
-$space-1: calc(1rem * 0.25);
-$space-2: calc(1rem * 0.5);
-$space-3: calc(1rem * 0.75);
-$space-4: 1rem;
-$space-5: calc(1rem * 1.25);
-$space-6: calc(1rem * 1.5);
-$space-7: calc(1rem * 1.75);
-$space-8: calc(1rem * 2);
-$space-9: calc(1rem * 2.25);
-$space-10: calc(1rem * 2.5);
-$space-12: calc(1rem * 3);
-$space-14: calc(1rem * 3.5);
-$space-16: calc(1rem * 4);
-$space-20: calc(1rem * 5);
-$space-24: calc(1rem * 6);
-$space-28: calc(1rem * 7);
-$space-32: calc(1rem * 8);
-$space-36: calc(1rem * 9);
-$space-40: calc(1rem * 10);
-$space-44: calc(1rem * 11);
-$space-48: calc(1rem * 12);
-$space-52: calc(1rem * 13);
-$space-56: calc(1rem * 14);
-$space-60: calc(1rem * 15);
-$space-64: calc(1rem * 16);
-$space-72: calc(1rem * 18);
-$space-80: calc(1rem * 20);
-$space-96: calc(1rem * 24);
-$space-px: calc(1rem * 0.063);
-$space-0-5: calc(1rem * 0.125);
-$space-1-5: calc(1rem * 0.375);
-$space-2-5: calc(1rem * 0.625);
-$space-3-5: calc(1rem * 0.875);
-
 $spacing: (
-        "1": $space-1,
-        "2": $space-2,
-        "3": $space-3,
-        "4": $space-4,
-        "5": $space-5,
-        "6": $space-6,
-        "7": $space-7,
-        "8": $space-8,
-        "9": $space-9,
-        "10": $space-10,
-        "12": $space-12,
-        "14": $space-14,
-        "16": $space-16,
-        "20": $space-20,
-        "24": $space-24,
-        "28": $space-28,
-        "32": $space-32,
-        "36": $space-36,
-        "40": $space-40,
-        "44": $space-44,
-        "48": $space-48,
-        "52": $space-52,
-        "56": $space-56,
-        "60": $space-60,
-        "64": $space-64,
-        "72": $space-72,
-        "80": $space-80,
-        "96": $space-96,
-        "px": $space-px,
-        "0-5": $space-0-5,
-        "1-5": $space-1-5,
-        "2-5": $space-2-5,
-        "3-5": $space-3-5,
+        "1": $_space-1,
+        "2": $_space-2,
+        "3": $_space-3,
+        "4": $_space-4,
+        "5": $_space-5,
+        "6": $_space-6,
+        "7": $_space-7,
+        "8": $_space-8,
+        "9": $_space-9,
+        "10": $_space-10,
+        "12": $_space-12,
+        "14": $_space-14,
+        "16": $_space-16,
+        "20": $_space-20,
+        "24": $_space-24,
+        "28": $_space-28,
+        "32": $_space-32,
+        "36": $_space-36,
+        "40": $_space-40,
+        "44": $_space-44,
+        "48": $_space-48,
+        "52": $_space-52,
+        "56": $_space-56,
+        "60": $_space-60,
+        "64": $_space-64,
+        "72": $_space-72,
+        "80": $_space-80,
+        "96": $_space-96,
+        "px": $_space-px,
+        "0-5": $_space-0-5,
+        "1-5": $_space-1-5,
+        "2-5": $_space-2-5,
+        "3-5": $_space-3-5,
 ) !default;

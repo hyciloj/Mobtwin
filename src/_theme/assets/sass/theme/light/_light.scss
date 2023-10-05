@@ -1,0 +1,4 @@
+@import '../../mixin/typography';
+@import '../../mixin/theme';
+
+@include theme($_colors-blackAlpha-300, $_colors-blackAlpha-400,$black);

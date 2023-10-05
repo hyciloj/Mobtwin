@@ -4,27 +4,29 @@ import clsx from "clsx";
 
 interface InputComponentInterface extends FormikProps {
     label: string,
+    type: string,
+    id: string,
     placeholder: string,
 }
 
-const InputComponent: FC<InputComponentInterface> = ({formik, label, placeholder}) => {
+const InputComponent: FC<InputComponentInterface> = ({formik, label, id, type, placeholder}) => {
     return (
 
         <div role="group" className="d-flex flex-column form-label-input">
-            <label htmlFor={label} className="form-label">{label}</label>
-            <input type={label}
+            <label htmlFor={id} className="form-label">{label}</label>
+            <input type={type}
                 // name={'email'}
                    placeholder={placeholder}
                    className={clsx(
                        'form-input',
-                       {'is-invalid': formik.touched[label] && formik.errors[label]},
-                       {'is-valid': formik.touched[label] && !formik.errors[label],}
+                       {'is-invalid': formik.touched[id] && formik.errors[id]},
+                       {'is-valid': formik.touched[id] && !formik.errors[id],}
                    )}
-                   {...formik.getFieldProps(label)}
+                   {...formik.getFieldProps(id)}
             />
-            {formik.touched[label] && formik.errors[label] && (
+            {formik.touched[id] && formik.errors[id] && (
                 <div className='fv-plugins-message-container'>
-                    <span role='alert' className="msg-error">{formik.errors[label]}</span>
+                    <span role='alert' className="msg-error">{formik.errors[id]}</span>
                 </div>
             )}
         </div>

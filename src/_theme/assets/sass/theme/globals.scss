@@ -24,7 +24,7 @@
   }
 }
 
-@each $name, $fontSize in $fontSizes {
+@each $name, $fontSize in $_sizes {
   ._fs-#{$name} {
     font-size: $fontSize !important;
   }

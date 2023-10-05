@@ -31,12 +31,13 @@ const Container: FC<ChildrenProps> = ({children}) => {
 
 
                         <div className="d-flex flex-column align-items-center mb-2">
-                            <p className="_fs-md text-white">Sign up or Login with</p>
+                            <p className="text-white">Sign up or Login with</p>
                         </div>
 
                         <div className="d-flex flex-column align-items-center mb-3">
                             <AuthButton title={'google'}
-                                        url={'/media/svg/brand-logos/google.svg'}
+                                        url={'auth/google'}
+                                        img={'/media/svg/brand-logos/google.svg'}
                                         width={20}
                                         height={20}
                                         alt={'google'}
@@ -46,7 +47,8 @@ const Container: FC<ChildrenProps> = ({children}) => {
 
                         <div className="d-flex flex-column align-items-center mb-3">
                             <AuthButton title={'facebook'}
-                                        url={'/media/svg/brand-logos/facebook.svg'}
+                                        url={'auth/google'}
+                                        img={'/media/svg/brand-logos/facebook.svg'}
                                         width={20}
                                         height={20}
                                         alt={'facebook'}

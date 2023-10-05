@@ -1,7 +1,7 @@
 import React from 'react'
 import {Navigate, useRoutes, Outlet} from "react-router-dom";
 import {AuthGuard, GuestGuard} from "../modules/auth";
-import {Before, Login, Register, Search} from "./elements";
+import {Before, Login, Register, ResetPassword, Search} from "./elements";
 import {PATH_AFTER_LOGIN, PATH_BEFORE_LOGIN} from "../../config-global";
 import {DashboardWrapper, AuthPage, Demo} from "../pages";
 import {ROOTS_AUTHENTICATION, ROOTS_DASHBOARD, ROOT_DEMO, PATH_AUTH} from "./paths";
@@ -51,7 +51,7 @@ export default function Router() {
                 {element: <Navigate to={PATH_AUTH.login} replace/>, index: true},
                 {path: 'login', element: <Login/>},
                 {path: 'register', element: <Register />},
-                {path: 'forgot-password', element: <h1>forgot-password</h1>},
+                {path: 'reset-password', element: <ResetPassword />},
             ]
         },
 
