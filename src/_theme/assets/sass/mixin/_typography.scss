@@ -1,8 +1,8 @@
-@mixin typography($color, $size) {
+@mixin typography($color, $size, $weight, $line-height) {
   color: $color;
   font-size: $size;
-  font-weight: 100;
-  line-height: 1.7;
+  font-weight: $weight;
+  line-height: $line-height;
   transition-property: $_transition-property-common;
   transition-duration: $_transition-duration-normal;
 }

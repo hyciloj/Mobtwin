@@ -19,7 +19,7 @@ const Container: FC<ChildrenProps> = ({children}) => {
         >
             <div className="_p-20 blur">
                 <div className="row overflow-hidden" style={{borderRadius: 30}}>
-                    <div className="col-md-6 col-lg-3 d-flex flex-column _px-6 _py-14 _bg-dark-gray-200">
+                    <div className="col-md-6 col-lg-4 col-xl-3 d-flex flex-column _p-9 _bg-dark-gray-200">
                         <div className="d-flex flex-column align-items-center mb-3">
 
                             <img src={toAbsoluteUrl('/media/logos/favicon.png')}
@@ -56,7 +56,7 @@ const Container: FC<ChildrenProps> = ({children}) => {
                             />
                         </div>
 
-                        <div className="d-flex flex-column align-items-center mb-3 ">
+                        <div className="d-flex flex-column align-items-center">
                             <div className="_separator">
                                 <hr aria-orientation="horizontal" className="_separator-hr"/>
                                 <div className="_separator-div">
@@ -68,7 +68,7 @@ const Container: FC<ChildrenProps> = ({children}) => {
                         {children}
 
                     </div>
-                    <div className="col-md-6 col-lg-9 backgroundImage"
+                    <div className="col-md-6 col-lg-8 col-xl-9 backgroundImage"
                          style={{
                              backgroundImage: `url("${images.image1}")`
                          }}

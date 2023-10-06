@@ -45,7 +45,7 @@
   color: $dark-gray-700;
 }
 .form-label-input {
-  width: 85%;
+  width: 100%;
   position: relative;
   color: $dark-gray-800;
   height: fit-content;
@@ -94,12 +94,12 @@
   box-shadow: rgb(114, 88, 242) 0 0 0 calc(0.0625rem);
 }
 .link-sm {
-  @include typography($slate-blue-700, _sizes-sm);
+  @include typography($slate-blue-700, _sizes-sm, 400, 0);
   cursor: pointer;
   width: 85%;
 }
 .link-md {
-  @include typography($slate-blue-700, _sizes-md);
+  @include typography($slate-blue-700, _sizes-md, 400, 0);
   cursor: pointer;
 }
 .link-sm:hover, .link-md:hover {
@@ -134,12 +134,12 @@
   margin-top: $_space-2;
   padding-top: $_space-6;
   padding-bottom: $_space-6;
-  width: 85%;
+  width: 100%;
   align-self: center;
   color: $slate-blue-100;
 }
 .form-submit:hover, .form-submit[data-hover] {
-  box-shadow: rgba(161, 128, 255, 0.6) 0px 0px calc(1rem) 0px;
+  box-shadow: rgba(161, 128, 255, 0.6) 0 0 calc(1rem) 0;
   animation-timing-function: ease-out;
   animation-duration: 200ms;
 }
@@ -154,7 +154,7 @@
   backdrop-filter: blur(7px);
 }
 .msg-error{
-  @include typography($dark-red-700, _sizes-sm);
+  @include typography($dark-red-700, _sizes-sm, 400, 0);
 }
 
 .brxe-ukrozz {
@@ -207,4 +207,14 @@
   padding: $_space-2;
   margin-bottom: $_space-4;
   border-radius: $-radii-base;
+}
+.auth-info {
+  border: 1px solid rgb(104, 211, 145);
+  padding: $_space-2;
+  margin-bottom: $_space-4;
+  border-radius: $_radii-base;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgb(104, 211, 145);
 }

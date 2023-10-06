@@ -13,16 +13,14 @@
     line-height: calc(1.5rem);
     border-radius: $_radii-lg;
     height: calc(2.5rem);
-    font-size: $_sizes-4;
-    width: 85%;
-    font-weight: 300;
+    width: 100%;
     padding-inline: calc(1.125rem);
     padding-top: $_space-6;
     padding-bottom: $_space-6;
     background-color: $bg;
     -webkit-box-pack: start;
     justify-content: flex-start;
-    color: $color;
+    @include typography($color, $_sizes-4, 300, 0);
   }
   ._btn-auth-options:hover {
     background-color: $hover-bg;

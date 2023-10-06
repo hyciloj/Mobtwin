@@ -6,6 +6,7 @@ import {useFormik} from "formik";
 import * as Yup from "yup";
 import {InputComponent, SubmitComponent} from "../../components";
 import {useParams, useLocation} from 'react-router-dom';
+import {encryptEmail} from "../../../../_theme/helpers";
 
 const initialValues = {
     password: '',
@@ -35,15 +36,11 @@ export default function ResetPassword() {
     const [loading, setLoading] = useState(false)
     const [isToggled, toggle] = useToggle(false);
     const dispatch = useDispatch()
-
-    // Get the current location object
     const location = useLocation();
 
-    // Extract the search string (query parameters) from the location
     const searchParams = new URLSearchParams(location.search);
-
-    // Get the values of the 'email' and 'token' query parameters
     const email = searchParams.get('email');
+    // const encryptedEmail = encryptEmail({email})
     const token = searchParams.get('token');
 
     const formik = useFormik({
@@ -65,6 +62,15 @@ export default function ResetPassword() {
 
     return (
         <Container>
+
+            <div className="mb-10 bg-light-info p-8 rounded">
+                <div className="d-flex flex-column align-items-center auth-info">
+                    <span className="text-center _px-4">
+                        We have sent a password reset code by email to {email}. Enter it below to reset your password
+                    </span>
+                </div>
+            </div>
+
             <div className="d-flex flex-column align-items-center mb-3">
                 <InputComponent formik={formik} id={'password'} type={'password'} label={'password'}
                                 placeholder={'******'}/>

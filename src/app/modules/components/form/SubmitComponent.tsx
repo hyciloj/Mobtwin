@@ -17,7 +17,7 @@ const SubmitComponent: FC<SubmitComponentProps> = ({
             <div className="d-flex flex-column align-items-center">
                 <button type='submit'
                         id='kt_sign_in_submit'
-                        className='form-submit'
+                        className='main_button-xl'
                         disabled={formik.isSubmitting || !formik.isValid}
                 >
                     {!loading && <span className=''>{labelBtn}</span>}

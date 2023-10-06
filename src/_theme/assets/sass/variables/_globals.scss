@@ -3,8 +3,7 @@ $white: #ffffff;
 $deepFuchsia: #B33FC1;
 $wildOrchid: #D8729D;
 $blueberry: #4D91FF;
-$linearGradient: linear-gradient($wildOrchid, $deepFuchsia);
-
+$linearGradient: linear-gradient(122deg, $deepFuchsia 0.01%, $wildOrchid 49.9%, $blueberry 100%);;
 
 $_ring-offset-width: 0px;
 $_ring-offset-color: #fff;

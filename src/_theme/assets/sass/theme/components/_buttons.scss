@@ -1,0 +1,42 @@
+// Define a mixin for button styles with a condition for mode
+@mixin button-styles($border-radius, $padding, $background-light, $background-dark, $color-light, $color-dark, $mode) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius;
+  padding: $padding 0;
+
+  @if $mode == 'dark' {
+    background: $background-dark;
+    color: $color-dark;
+  } @else {
+    background: $background-light;
+    color: $color-light;
+  }
+}
+
+// Define variables for common styles
+$_radii-xl: 10px; // Change the value to your desired radius
+$_radii-lg: 5px;  // Change the value to your desired radius
+$_space-3: 15px;  // Change the value to your desired padding
+$linearGradient-light: #000; // Change to your desired light background
+$linearGradient-dark: #fff;   // Change to your desired dark background
+
+// Usage of the mixin for different button sizes and modes
+.main_button-xl {
+  @include button-styles($_radii-xl, $_space-3, $linearGradient-light, $linearGradient-dark, #130b3e, #FFFFFF, 'light');
+}
+
+.main_button-xl-dark {
+  @include button-styles($_radii-xl, $_space-3, $linearGradient-light, $linearGradient-dark, #130b3e, #FFFFFF, 'dark');
+}
+
+.main_button-lg {
+  @include button-styles($_radii-lg, $_space-2, $linearGradient-light, $linearGradient-dark, #130b3e, #FFFFFF, 'light');
+}
+
+.main_button-lg-dark {
+  @include button-styles($_radii-lg, $_space-2, $linearGradient-light, $linearGradient-dark, #130b3e, #FFFFFF, 'dark');
+}
+
+// Add similar classes for other button sizes and modes
