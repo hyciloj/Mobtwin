@@ -1,0 +1,7 @@
+@function isDarkMode($themeMode) {
+  @if ($themeMode == 'dark') {
+    @return true;
+  } @else if($themeMode == 'light') {
+    @return false;
+  }
+}

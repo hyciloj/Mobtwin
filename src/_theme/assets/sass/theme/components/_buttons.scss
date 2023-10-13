@@ -1,42 +1,56 @@
-// Define a mixin for button styles with a condition for mode
-@mixin button-styles($border-radius, $padding, $background-light, $background-dark, $color-light, $color-dark, $mode) {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: $border-radius;
-  padding: $padding 0;
+@mixin button-styles($mode, $button-class, $bg-color, $text-color) {
+  #{$button-class} {
+    display: inline-flex;
+    appearance: none;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+    width: 100%;
 
-  @if $mode == 'dark' {
-    background: $background-dark;
-    color: $color-dark;
-  } @else {
-    background: $background-light;
-    color: $color-light;
+    &.main_button-xl {
+      border-radius: 10px;
+      height: $_space-10;
+      min-width: $_space-10;
+      padding-inline-start: $_space-12;
+      padding-inline-end: $_space-12;
+      margin-top: $_space-2;
+      padding-top: $_space-6;
+      padding-bottom: $_space-6;
+      background: linear-gradient(122deg, $deepFuchsia 0.01%, $wildOrchid 49.9%, $blueberry 100%);
+      align-self: center;
+      @include typography(
+                      $_colors-whiteAlpha-800,
+                      $_fontSizes-sm,
+                      600,
+                      $_lineHeights-6
+      );
+
+      &:hover, &[data-hover] {
+        box-shadow: rgba(161, 128, 255, 0.6) 0 0 calc(1rem) 0;
+      }
+    }
+
+    &.second_button-xl {
+      border-radius: $_radii-lg;
+      height: calc(2.5rem);
+      padding: $_space-6 $_space-7;
+      justify-content: flex-start;
+      background-color: if(isDarkMode($mode), $_colors-whiteAlpha-100, $_colors-blackAlpha-100);
+      @include typography(if(isDarkMode($mode), $_colors-whiteAlpha-800, $_colors-blackAlpha-800), $_sizes-4, 300, 0);
+
+      &:hover {
+        background-color: if(isDarkMode($mode), $_colors-whiteAlpha-300, $_colors-blackAlpha-300);
+      }
+    }
   }
 }
 
-// Define variables for common styles
-$_radii-xl: 10px; // Change the value to your desired radius
-$_radii-lg: 5px;  // Change the value to your desired radius
-$_space-3: 15px;  // Change the value to your desired padding
-$linearGradient-light: #000; // Change to your desired light background
-$linearGradient-dark: #fff;   // Change to your desired dark background
-
-// Usage of the mixin for different button sizes and modes
-.main_button-xl {
-  @include button-styles($_radii-xl, $_space-3, $linearGradient-light, $linearGradient-dark, #130b3e, #FFFFFF, 'light');
+@mixin buttons($mode) {
+  @include button-styles($mode, '.main_button-xl', $deepFuchsia, if(isDarkMode($mode), $slate-blue-300, $slate-blue-700));
+  @include button-styles($mode, '.second_button-xl', if(isDarkMode($mode), $_colors-whiteAlpha-100, $_colors-blackAlpha-100), if(isDarkMode($mode), $_colors-whiteAlpha-800, $_colors-blackAlpha-800));
 }
-
-.main_button-xl-dark {
-  @include button-styles($_radii-xl, $_space-3, $linearGradient-light, $linearGradient-dark, #130b3e, #FFFFFF, 'dark');
-}
-
-.main_button-lg {
-  @include button-styles($_radii-lg, $_space-2, $linearGradient-light, $linearGradient-dark, #130b3e, #FFFFFF, 'light');
-}
-
-.main_button-lg-dark {
-  @include button-styles($_radii-lg, $_space-2, $linearGradient-light, $linearGradient-dark, #130b3e, #FFFFFF, 'dark');
-}
-
-// Add similar classes for other button sizes and modes

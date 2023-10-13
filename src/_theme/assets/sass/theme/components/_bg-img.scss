@@ -1,0 +1,45 @@
+@mixin common-styles {
+  background-size: cover;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(7px);
+  height: 100vh !important;
+}
+
+@mixin slideshow-styles {
+  background-size: contain;
+  min-height: 100vh !important;
+  background-repeat-x: no-repeat;
+  background-repeat-y: repeat;
+  animation: moveSlideshow 200s linear infinite;
+  height: 5000px;
+}
+
+@mixin bgImage($mode) {
+
+  .bgImage-100 {
+    @include common-styles;
+  }
+
+  .bgImage-85 {
+    @include common-styles;
+    height: 85vh !important;
+  }
+
+  .bgImage-100 .images div {
+    @include slideshow-styles;
+  }
+
+  .bgImage-100 .images div:nth-child(2) {
+    animation: moveSlideshow 150s linear infinite;
+  }
+
+  @keyframes moveSlideshow {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-4097px); /* The image height */
+    }
+  }
+
+}

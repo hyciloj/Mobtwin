@@ -40,7 +40,7 @@ export default function ResetPassword() {
 
     const searchParams = new URLSearchParams(location.search);
     const email = searchParams.get('email');
-    // const encryptedEmail = encryptEmail({email})
+    const encryptedEmail = encryptEmail({email})
     const token = searchParams.get('token');
 
     const formik = useFormik({

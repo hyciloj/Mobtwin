@@ -1,4 +1,12 @@
-@import '../../mixin/typography';
-@import '../../mixin/theme';
+$themeMode: "light";
 
-@include theme($_colors-blackAlpha-300, $_colors-blackAlpha-400,$black);
+@include buttons($themeMode);
+@include bgGrey($themeMode);
+@include separator($themeMode);
+@include infos($themeMode);
+@include formLabel($themeMode);
+@include formLabelInput($themeMode);
+@include formInputText($themeMode);
+@include links($themeMode);
+//@include formSubmit($themeMode);
+

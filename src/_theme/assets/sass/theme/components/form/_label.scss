@@ -1,0 +1,17 @@
+@mixin formLabel($mode) {
+  .form-label {
+    display: block;
+    text-align: start;
+    margin-inline-end: $_space-3;
+    margin-bottom: $_space-2;
+    opacity: 1;
+    text-transform: capitalize;
+
+    @include typography(
+                    if(isDarkMode($mode), $colors-gray-200, $colors-gray-800),
+                    $_space-3-5,
+                    300,
+                    1.2
+    );
+  }
+}

@@ -1,0 +1,10 @@
+@mixin formLabelInput($mode) {
+  .form-label-input {
+    width: 100%;
+    position: relative;
+    height: fit-content;
+    border-radius: $_radii-lg;
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+  }
+}

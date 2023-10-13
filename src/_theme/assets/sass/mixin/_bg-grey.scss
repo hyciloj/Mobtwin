@@ -1,0 +1,15 @@
+@mixin bgGrey($themMode) {
+  @if(isDarkMode($themMode)) {
+    @each $name, $color-gray in $dark-grays {
+      ._gray-#{$name} {
+        background-color: $color-gray !important;
+      }
+    }
+  } @else {
+    @each $name, $color-gray in $light-grays {
+      ._gray-#{$name} {
+        background-color: $color-gray !important;
+      }
+    }
+  }
+}

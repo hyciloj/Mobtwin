@@ -36,8 +36,8 @@
   }
 }
 
-@each $name, $dark-gray in $dark-grays {
-  ._bg-dark-gray-#{$name} {
-    background-color: $dark-gray !important;
-  }
-}
+//@each $name, $color-gray in $colors-grays {
+//  ._bg-gray-#{$name} {
+//    background-color: $color-gray !important;
+//  }
+//}

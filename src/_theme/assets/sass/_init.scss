@@ -1,5 +1,7 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import "variables";
+@import "functions";
+@import "mixin";
 @import "theme";
 
 * {
@@ -21,7 +23,7 @@ button {
 body {
   position: relative;
   min-height: 100vh;
-  //overflow: hidden;
+  overflow-x: hidden;
 }
 
 body.dark {

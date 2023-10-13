@@ -1,0 +1,33 @@
+@mixin formInputText($mode) {
+  .form-input {
+    width: 100%;
+    min-width: 0;
+    position: relative;
+    appearance: none;
+    transition-property: $_transition-property-common;
+    transition-duration: $_transition-duration-normal;
+    height: $_space-10;
+    border-radius: $_radii-lg;
+    border: none;
+    padding-top: $_space-1-5;
+    padding-bottom: $_space-1-5;
+    padding-inline: $_space-3;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 calc(0.09375rem) calc(0.25rem) calc(-0.0625rem);
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+    background: if(isDarkMode($mode), $_colors-blackAlpha-600, $_colors-blackAlpha-50);
+    @include typography(
+                    if(isDarkMode($mode), $colors-gray-200, $colors-gray-800),
+                    $_space-3-5,
+                    300,
+                    0
+    );
+  }
+
+  .form-input:focus-visible,
+  .form-input[data-focus-visible] {
+    z-index: 1;
+    border-color: rgb(114, 88, 242);
+    box-shadow: rgb(114, 88, 242) 0 0 0 calc(0.0625rem);
+  }
+}

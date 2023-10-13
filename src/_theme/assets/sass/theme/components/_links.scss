@@ -1,0 +1,30 @@
+@mixin links($mode) {
+  $link-sizes: (
+          sm: (
+                  font-size: $_fontSizes-sm,
+                  width: 85%,
+          ),
+          md: (
+                  font-size: $_fontSizes-md,
+                  width: auto,
+          ),
+  );
+
+  @each $size, $properties in $link-sizes {
+    .link-#{$size} {
+      @include typography(
+                      if(isDarkMode($mode), $_colors-purple-600, $_colors-purple-700),
+                      map-get($properties, font-size),
+                      400,
+                      0
+      );
+      cursor: pointer;
+      width: map-get($properties, width);
+
+      &:hover {
+        color: if(isDarkMode($mode), $_colors-purple-400, $_colors-purple-900);
+        transition: $_transition-property-common $_transition-duration-normal;
+      }
+    }
+  }
+}

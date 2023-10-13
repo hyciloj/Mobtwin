@@ -76,6 +76,8 @@ export default function Login() {
                     const {message_code, status, user, token} = response.data;
                     const {id, name, email, role, workspace} = user;
 
+                    console.log(response.data)
+
                     dispatch(auth.actions.login({accessToken: token}))
 
                 } else if (child === 'register') {
@@ -212,7 +214,7 @@ const EmailPasswordComponent: FC<EmailPasswordComponentInterface> = ({
                                                                      }) => {
     return (
         <>
-            <div className="mb-10 bg-light-info p-8 rounded">
+            <div className="mb-10 p-8 rounded">
                 <div className="d-flex flex-column align-items-center auth-info">
                     <span>{textInfo}</span>
                 </div>
