@@ -1,0 +1,34 @@
+@mixin asideBase($mode) {
+  .aside {
+    position: fixed;
+    left: $_space-2;
+    top: $_space-2;
+    background-color: $_colors-blackAlpha-500;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    border: 1px solid $_colors-whiteAlpha-300;
+    border-radius: $_space-2;
+
+
+    // Logo
+    .aside-logo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: get($header-config, default, height, desktop);
+      padding: 0 get($aside-config, padding-x);
+    }
+
+    // Separator
+    .separator {
+      border-bottom-color: #282a3d;
+    }
+
+    // Aside menu
+    .aside-menu {
+      width: get($aside-config, width);
+    }
+  }
+}

@@ -1,0 +1,17 @@
+$icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
+
+
+@mixin asideHeader($mode) {
+  .aside-header {
+    .aside-options {
+      padding: $_space-3 ;
+
+      @for $i from 1 through length($icon-colors) {
+        .svg-icon:nth-child(#{$i}) {
+          @include svg-icon-size(get($font-sizes, 5));
+          @include svg-icon-color(nth($icon-colors, $i));
+        }
+      }
+    }
+  }
+}

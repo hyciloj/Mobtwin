@@ -3,9 +3,8 @@ import React, {FC} from "react";
 export default function Search() {
 
     return (
-        <div>
+        <div className={"bg-danger"}>
             Search page |
-
         </div>
     )
 }

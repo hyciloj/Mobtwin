@@ -5,6 +5,7 @@ import {Before, Login, Register, ResetPassword, Search} from "./elements";
 import {PATH_AFTER_LOGIN, PATH_BEFORE_LOGIN} from "../../config-global";
 import {DashboardWrapper, AuthPage, Demo} from "../pages";
 import {ROOTS_AUTHENTICATION, ROOTS_DASHBOARD, ROOT_DEMO, PATH_AUTH} from "./paths";
+import {MasterLayout} from "../../_theme/layout/MasterLayout";
 
 export default function Router() {
 
@@ -34,9 +35,9 @@ export default function Router() {
         {
             path: '/',
             children: [
-                {path: '', element: <Before />},
+                {path: '', element: <Before/>},
                 {path: '404', element: <h1>Page404</h1>},
-                {path: 'demo', element: <Demo />},
+                {path: 'demo', element: <Demo/>},
             ],
         },
 
@@ -50,21 +51,23 @@ export default function Router() {
             children: [
                 {element: <Navigate to={PATH_AUTH.login} replace/>, index: true},
                 {path: 'login', element: <Login/>},
-                {path: 'register', element: <Register />},
-                {path: 'reset-password', element: <ResetPassword />},
+                {path: 'register', element: <Register/>},
+                {path: 'reset-password', element: <ResetPassword/>},
             ]
         },
 
         {
             path: ROOTS_DASHBOARD,
             element: (
-                <AuthGuard>
-                    <DashboardWrapper/>
-                </AuthGuard>
+                <MasterLayout>
+                    <AuthGuard>
+                        <DashboardWrapper/>
+                    </AuthGuard>
+                </MasterLayout>
             ),
             children: [
                 {element: <Navigate to={PATH_AFTER_LOGIN} replace/>, index: true},
-                {path: 'search', element: <Search />},
+                {path: 'search', element: <Search/>},
                 {path: 'two', element: <h1>PageTwo</h1>},
                 {path: 'three', element: <h1>PageThree</h1>},
             ],

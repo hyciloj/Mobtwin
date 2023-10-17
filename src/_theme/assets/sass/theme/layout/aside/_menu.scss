@@ -1,0 +1,60 @@
+@mixin asideMenu($mode) {
+  .aside-menu {
+    .menu {
+      // Link padding x
+      @include menu-link-padding-x(get($aside-config, padding-x));
+
+    }
+
+    // Item
+    .menu-item {
+      display: block;
+
+      // Menu Link
+      .menu-link {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        flex: 0 0 100%;
+        padding: get($menu, link, self, padding-y) get($menu, link, self, padding-x);
+        transition: none;
+        outline: none !important;
+
+        &.active {
+          background-color: $_colors-whiteAlpha-200;
+
+          .svg-icon svg [fill]:not(.permanent):not(g) {
+            fill: #009ef7;
+          }
+        }
+        &:hover {
+          .svg-icon svg [fill]:not(.permanent):not(g) {
+            fill: #009ef7;
+          }
+        }
+      }
+
+      // Icon
+      .menu-icon {
+        justify-content: flex-start;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        width: get($menu, link, icon, width);
+        margin-right: get($menu, link, icon, space);
+
+        .svg-icon {
+          line-height: 1;
+          @include svg-icon-size(get($font-sizes, 5));
+          @include svg-icon-color($slate-blue-900);
+        }
+      }
+
+      // Title
+      .menu-title {
+        font-size: $_fontSizes-sm;
+      }
+    }
+  }
+}
+

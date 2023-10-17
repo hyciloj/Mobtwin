@@ -1,0 +1,11 @@
+// Set menu link padding x
+@mixin menu-link-padding-x($value) {
+  // Menu item
+  .menu-item {
+    .menu-link,
+    .menu-content {
+      padding-left: $value;
+      padding-right: $value;
+    }
+  }
+}

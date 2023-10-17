@@ -1,0 +1,86 @@
+// Header
+$header-config: (
+  // Default Mode
+        default:
+        (
+                height: (
+                        desktop: 65px,
+                        tablet-and-mobile: 55px,
+                ),
+        ),
+  // Fixed Mode
+        fixed:
+        (
+                height: (
+                        desktop: 65px,
+                        tablet-and-mobile: 55px,
+                ),
+                z-index: 100,
+        )
+) !default;
+
+// Aside
+$aside-config: (
+        z-index: 101,
+  // Aside's z-index property
+        transition-speed: 0.3s,
+  // transition speed
+        padding-x: 25px,
+        menu-indention: 0.75rem,
+        bg-color: #1e1e2d,
+        logo-bg-color: darken(#1e1e2d, 2%),
+        width: 265px,
+  // Aside width for desktop mode
+        minimized-width: 75px,
+  // Monimized hover box shadow,,
+) !default;
+
+// Menu
+$menu: (
+        dropdown: (
+                box-shadow: $dropdown-box-shadow,
+                z-index: 105,
+                background-color: $body-bg,
+                border-radius: $border-radius,
+                animation: true,
+                animation-speed: 0.3s,
+                animation-move-offset: 0.75rem,
+        ),
+        accordion: (
+                indention: 1rem,
+                arrow-transition: transform 0.3s ease,
+        ),
+        item: (
+                self: (
+                        padding-y: 0.15rem,
+                        padding-x: 0,
+                ),
+        ),
+        link: (
+                self: (
+                        padding-y: 0.65rem,
+                        padding-x: 1rem,
+                        bg-color: (
+                                hover: 0px 0px 30px rgba(0, 0, 0, 0.3),
+                                show: 0px 0px 30px rgba(0, 0, 0, 0.3),
+                                active: rgba($gray-100, 0.8),
+                        ),
+                ),
+                icon: (
+                        width: 2rem,
+                        space: 0.5rem,
+                ),
+                bullet: (
+                        width: 1.25rem,
+                        space: 0.5rem,
+                ),
+                badge: (
+                        space: 0.5rem,
+                ),
+                arrow: (
+                        height: 0.8rem,
+                        width: 0.8rem,
+                        space: 0.5rem,
+                ),
+        ),
+) !default;

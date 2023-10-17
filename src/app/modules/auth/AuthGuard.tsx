@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import Login from "./components/Login";
 import {shallowEqual, useSelector} from "react-redux";
 import {RootState} from "../../../setup";
+import Search from "../../pages/search/Search";
 
 function AuthGuard({children}: ChildrenProps) {
 
@@ -17,7 +18,8 @@ function AuthGuard({children}: ChildrenProps) {
         if (pathname !== requestedLocation) {
             setRequestedLocation(pathname);
         }
-        return <Login />;
+        // return <Login />;
+        return <Search />;
     }
 
     if (requestedLocation && pathname !== requestedLocation) {

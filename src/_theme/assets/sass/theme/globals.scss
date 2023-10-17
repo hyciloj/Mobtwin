@@ -34,6 +34,9 @@
   ._size-#{$name} {
     font-size: $size !important;
   }
+  ._h-#{$name} {
+    height: $size !important;
+  }
 }
 
 //@each $name, $color-gray in $colors-grays {
