@@ -8,5 +8,9 @@ $themeMode: "light";
 @include formLabelInput($themeMode);
 @include formInputText($themeMode);
 @include links($themeMode);
-//@include formSubmit($themeMode);
+@include bgImage($themeMode);
+// aside
+@include asideBase($themeMode);
+@include asideHeader($themeMode);
+@include asideMenu($themeMode);
 

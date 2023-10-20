@@ -30,8 +30,10 @@ $aside-config: (
         bg-color: #1e1e2d,
         logo-bg-color: darken(#1e1e2d, 2%),
         width: 265px,
+        height: 100vh,
   // Aside width for desktop mode
         minimized-width: 75px,
+        minimized-height: 75px,
   // Monimized hover box shadow,,
 ) !default;
 

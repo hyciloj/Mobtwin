@@ -6,9 +6,6 @@ import {AsideDefault} from './components/aside/AsideDefault'
 
 const MasterLayout: FC<ChildrenProps> = ({children}) => {
 
-
-    console.log("MasterLayout")
-
     return (
         <PageDataProvider>
             <AsideDefault />

@@ -1,16 +1,33 @@
 @mixin asideBase($mode) {
   .aside {
     position: fixed;
-    left: $_space-2;
-    top: $_space-2;
-    background-color: $_colors-blackAlpha-500;
-    backdrop-filter: blur(10px);
+    left: 0;
+    top: 0;
+    //height: get($aside-config, height);
+    user-select: none;
+    //background-color: $_colors-blackAlpha-500;
+    backdrop-filter: blur($_sizes-6);
     display: flex;
     flex-direction: column;
     padding: 0;
     border: 1px solid $_colors-whiteAlpha-300;
     border-radius: $_space-2;
 
+    overflow: hidden;
+    cursor: pointer;
+
+    &[data-kt-aside-minimize-y="on"] {
+      transition: height 0.3s ease;
+      max-height: get($aside-config, minimized-height);;
+
+      #kt_aside_toggle svg {
+        transform: rotate(180deg);
+      }
+
+      .aside-menu, .aside-footer {
+        display: none;
+      }
+    }
 
     // Logo
     .aside-logo {
@@ -31,4 +48,21 @@
       width: get($aside-config, width);
     }
   }
+
+
+  // Desktop mode
+  @include media-breakpoint-up(lg) {
+    .aside {
+      height: get($aside-config, height);
+      width: get($aside-config, width);
+      transition: width get($aside-config, transition-speed) ease;
+
+      // Minimize aside mode
+      [data-kt-aside-minimize='on'] & {
+        height: get($aside-config, height);
+        transition: height get($aside-config, transition-speed) ease;
+      }
+    }
+  }
 }
+

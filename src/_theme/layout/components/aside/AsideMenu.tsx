@@ -1,14 +1,48 @@
-import React, {FC, useRef} from "react";
+import React, {FC, useEffect, useRef} from "react";
 import {useLocation} from 'react-router'
 import {Link} from "react-router-dom";
 import {clsx} from "clsx";
 import {KTSVG} from "../../../helpers";
+// import {
+//     DrawerComponent,
+//     MenuComponent,
+//     ScrollComponent,
+//     ToggleComponent,
+// } from '../../../assets/ts/components'
+type Props = {
+    asideMenuCSSClasses: string[]
+}
 
-const AsideMenu: FC = () => {
+const AsideMenu: FC<Props> = ({asideMenuCSSClasses}) => {
 
     const scrollRef = useRef<HTMLDivElement | null>(null)
     const {pathname} = useLocation()
 
+    useEffect(() => {
+        setTimeout(() => {
+            // MenuComponent.reinitialization()
+        }, 50)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pathname])
+
+    /*
+
+
+
+    &[data-kt-aside-minimize-y="on"] {
+      transition: height 0.3s ease;
+      max-height: get($aside-config, minimized-height);;
+
+      #kt_aside_toggle svg {
+        transform: rotate(180deg);
+      }
+
+      .aside-menu, .aside-footer {
+        display: none;
+      }
+    }
+
+    * */
     return (
         <div
             id='kt_aside_menu_wrapper'
@@ -24,7 +58,10 @@ const AsideMenu: FC = () => {
             <div
                 id='#kt_aside_menu'
                 data-kt-menu='true'
-                className={'menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500'}
+                className={clsx(
+                    'menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500',
+                    asideMenuCSSClasses.join(' ')
+                )}
             >
                 <div className="menu-item">
                     <Link className={clsx('menu-link without-sub', {active: true})} to={"/"}>

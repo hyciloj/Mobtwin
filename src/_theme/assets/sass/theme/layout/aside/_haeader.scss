@@ -3,15 +3,38 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
 
 @mixin asideHeader($mode) {
   .aside-header {
-    .aside-options {
-      padding: $_space-3 ;
+    padding: 0 $_space-3;
 
-      @for $i from 1 through length($icon-colors) {
-        .svg-icon:nth-child(#{$i}) {
-          @include svg-icon-size(get($font-sizes, 5));
-          @include svg-icon-color(nth($icon-colors, $i));
-        }
+    .aside-toggle {
+
+      background: $_colors-whiteAlpha-600;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition-property: $_transition-property-common;
+      transition-duration: $_transition-duration-normal;
+
+      &:hover {
+        background: $_colors-whiteAlpha-700;
+      }
+      .svg-icon {
+        //line-height: 1;
+        display: flex;
+        transform: rotate(90deg);
+        @include svg-icon-size($_sizes-4);
+        @include svg-icon-color($white);
       }
     }
+
+    //@for $i from 1 through length($icon-colors) {
+    //  .svg-icon:nth-child(#{$i}) {
+    //    @include svg-icon-size(get($font-sizes, 5));
+    //    @include svg-icon-color(nth($icon-colors, $i));
+    //  }
+    //}
   }
 }
