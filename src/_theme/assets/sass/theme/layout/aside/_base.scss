@@ -3,29 +3,29 @@
     position: fixed;
     left: 0;
     top: 0;
-    //height: get($aside-config, height);
+    height: get($aside-config, height);
     user-select: none;
     //background-color: $_colors-blackAlpha-500;
-    backdrop-filter: blur($_sizes-6);
+    backdrop-filter: blur($_sizes-3);
     display: flex;
     flex-direction: column;
     padding: 0;
     border: 1px solid $_colors-whiteAlpha-300;
     border-radius: $_space-2;
-
+    transition: height 0.3s ease;
     overflow: hidden;
     cursor: pointer;
 
     &[data-kt-aside-minimize-y="on"] {
       transition: height 0.3s ease;
-      max-height: get($aside-config, minimized-height);;
+      height: get($aside-config, minimized-height);;
 
       #kt_aside_toggle svg {
         transform: rotate(180deg);
       }
 
       .aside-menu, .aside-footer {
-        display: none;
+        //display: none;
       }
     }
 

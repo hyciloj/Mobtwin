@@ -1,16 +1,16 @@
-import { KTSVG, toAbsoluteUrl } from "../../../helpers";
-import { Link } from "react-router-dom";
-import React, { useEffect, useRef, useState } from "react";
-import { getLayout, ILayout, LayoutSetup, useLayout } from "../../core";
+import {KTSVG, toAbsoluteUrl} from "../../../helpers";
+import {Link} from "react-router-dom";
+import React, {useEffect, useRef, useState} from "react";
+import {getLayout, ILayout, LayoutSetup, useLayout} from "../../core";
 
 const AsideHeader = () => {
     const [config, setConfig] = useState<ILayout>(getLayout());
     const [classes, setClasses] = useState<ILayout>(getLayout());
 
-    const { minimizedY } = config.aside;
+    const {minimizedY} = config.aside;
 
     const updateData = (fieldsToUpdate: Partial<ILayout>) => {
-        const updatedData = { ...classes, ...fieldsToUpdate };
+        const updatedData = {...classes, ...fieldsToUpdate};
         setConfig(updatedData);
         LayoutSetup.setConfig(updatedData);
     };
@@ -39,7 +39,10 @@ const AsideHeader = () => {
                     data-kt-toggle-y-name='aside-minimize'
                     onClick={() =>
                         updateData({
-                            aside: {minimizedY: !minimizedY}
+                            aside: {
+                                ...config.aside,
+                                minimizedY: !minimizedY
+                            }
                         })
                     }
                 >

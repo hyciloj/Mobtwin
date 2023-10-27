@@ -7,7 +7,7 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
 
     .aside-toggle {
 
-      background: $_colors-whiteAlpha-600;
+      background: $linearGradient_1;
       width: 30px;
       height: 30px;
       border-radius: 50%;
@@ -18,16 +18,18 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
       transition-property: $_transition-property-common;
       transition-duration: $_transition-duration-normal;
 
-      &:hover {
-        background: $_colors-whiteAlpha-700;
-      }
       .svg-icon {
         //line-height: 1;
         display: flex;
         transform: rotate(90deg);
         @include svg-icon-size($_sizes-4);
-        @include svg-icon-color($white);
+        @include svg-icon-color($_colors-whiteAlpha-800);
       }
+
+      &:hover {
+        //background: $_colors-whiteAlpha-700;
+      }
+
     }
 
     //@for $i from 1 through length($icon-colors) {

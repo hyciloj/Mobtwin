@@ -12,5 +12,6 @@ export const DefaultLayoutConfig: ILayout = {
     mode: getDefaultTheme(),
     aside: {
         minimizedY: false,
+        menuIcon: 'svg',
     },
 }

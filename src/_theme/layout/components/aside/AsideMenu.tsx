@@ -3,6 +3,7 @@ import {useLocation} from 'react-router'
 import {Link} from "react-router-dom";
 import {clsx} from "clsx";
 import {KTSVG} from "../../../helpers";
+import {AsideMenuMain} from "./AsideMenuMain";
 // import {
 //     DrawerComponent,
 //     MenuComponent,
@@ -20,29 +21,9 @@ const AsideMenu: FC<Props> = ({asideMenuCSSClasses}) => {
 
     useEffect(() => {
         setTimeout(() => {
-            // MenuComponent.reinitialization()
         }, 50)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pathname])
 
-    /*
-
-
-
-    &[data-kt-aside-minimize-y="on"] {
-      transition: height 0.3s ease;
-      max-height: get($aside-config, minimized-height);;
-
-      #kt_aside_toggle svg {
-        transform: rotate(180deg);
-      }
-
-      .aside-menu, .aside-footer {
-        display: none;
-      }
-    }
-
-    * */
     return (
         <div
             id='kt_aside_menu_wrapper'
@@ -63,28 +44,7 @@ const AsideMenu: FC<Props> = ({asideMenuCSSClasses}) => {
                     asideMenuCSSClasses.join(' ')
                 )}
             >
-                <div className="menu-item">
-                    <Link className={clsx('menu-link without-sub', {active: true})} to={"/"}>
-                                <span className='menu-icon'>
-                                    <KTSVG path={'/media/icons/duotune/art/art002.svg'} className='svg-icon-2'/>
-                                </span>
-                        <span className='menu-title'>Tableau de Bord</span>
-                    </Link>
-                </div>
-                <div className="menu-item">
-                    <Link className={clsx('menu-link without-sub', {active: false})} to={"/"}>
-                                <span className='menu-icon'>
-                                    <KTSVG path={'/media/icons/duotune/art/art002.svg'} className='svg-icon-2'/>
-                                </span>
-                        <span className='menu-title'>Layout</span>
-                    </Link>
-                </div>
-
-                <div className='menu-item'>
-                    <div className='menu-content _pt-8 _pb-2'>
-                        <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Crafted</span>
-                    </div>
-                </div>
+                <AsideMenuMain />
             </div>
         </div>
     )
