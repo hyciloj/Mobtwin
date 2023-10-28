@@ -1,6 +1,6 @@
 import {ILayout} from "./LayoutModels";
 
-const isBrowserDefaultDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+const isBrowserDefaultDark = () => window.matchMedia('(prefers-color-scheme: light)').matches;
 const getDefaultTheme = (): 'light' | 'dark' => {
 
     const localStorageTheme = localStorage.getItem('default-theme');

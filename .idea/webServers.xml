@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="addc3512-7039-40c8-bc9a-a0d1d2f4267e" name="mobtwin" url="http://mobtwin.com">
+        <fileTransfer rootFolder="/home/AXC0cF" accessType="SFTP" host="194.163.141.139" port="22" sshConfigId="86567f63-896d-4bda-8ec5-be6c610f1f61" sshConfig="AXC0cF@194.163.141.139:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
