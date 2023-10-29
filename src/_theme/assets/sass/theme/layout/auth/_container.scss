@@ -1,0 +1,52 @@
+@mixin authContainer($mode) {
+  .auth-container {
+    padding: $_space-8;
+
+    .auth-wrapper {
+      border-radius: 20px;
+      min-height: 90vh;
+      overflow: hidden;
+
+      .auth-form {
+        background-color: $colors-gray-900;
+        padding: $_space-2 $_space-12;
+
+        .header {
+          .header-logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: $_space-2;
+          }
+        }
+      }
+      .auth-images {
+        background-size: cover;
+        background-repeat: no-repeat;
+        backdrop-filter: blur(7px);
+        height: 100vh !important;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .auth-container {
+    padding: $_space-2 !important;
+
+    .auth-wrapper {
+      border-radius: 10px !important;
+
+      .auth-form {
+        padding: $_space-2 !important;
+
+        .header {
+          .header-logo {
+            width: 50px !important;
+            height: 50px !important;
+            margin-bottom: $_space-2;
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/mobtwin",
+  "homepage": "https://www.mobtwin.com",
   "dependencies": {
     "@manaflair/redux-batch": "^1.0.0",
     "@reduxjs/toolkit": "^1.9.5",
