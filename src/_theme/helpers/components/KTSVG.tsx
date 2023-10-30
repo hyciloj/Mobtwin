@@ -1,6 +1,6 @@
-import React from 'react'
-import SVG from 'react-inlinesvg'
+import React from 'react';
 import {toAbsoluteUrl} from '../AssetHelpers'
+import SVG from "react-inlinesvg";
 type Props = {
   className?: string
   path: string

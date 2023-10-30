@@ -13,6 +13,8 @@ $themeMode: 'dark';
 @include asideBase($themeMode);
 @include asideHeader($themeMode);
 @include asideMenu($themeMode);
+@include authContainer($themeMode);
+@include tab($themeMode);
 
 
 
@@ -30,11 +32,38 @@ $themeMode: 'dark';
   backdrop-filter: blur(7px);
   background-color: rgba(0, 0, 0, 0.36);
 }
+.gradient-color-full {
+  background-color: var(--bricks-color-otvvmd);
+  background-image: $linearGradient_1;
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
 
 .msg-error{
   @include typography($dark-red-700, _sizes-sm, 400, 0);
 }
 
+
+
+
+// Desktop mode
+@include media-breakpoint-down(lg) {
+  .height_90vh {
+    height: 90vh !important;
+  }
+}
+
+// Desktop mode
+@include media-breakpoint-down(sm) {
+  .height_90vh {
+    height: 100vh !important;
+  }
+}
 
 /**
   landing page

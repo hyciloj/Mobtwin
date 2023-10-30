@@ -1,0 +1,80 @@
+@mixin tab($mode) {
+  .tab-container {
+    .tab-menu {
+
+      margin-bottom: $_space-6;
+
+      .tab-title {
+        padding: $_space-4;
+        text-align: center;
+        cursor: pointer;
+
+        span {
+          @include typography(
+                          $_colors-whiteAlpha-400,
+                          $_fontSizes-xl,
+                          600,
+                          $_lineHeights-1
+          );
+        }
+
+        &:hover {
+          background: radial-gradient(80.23% 80.23% at 50% 88.37%, rgba(174, 78, 245, 0.22) 0%, rgba(174, 78, 245, 0.22) 0.01%, rgba(174, 78, 245, 0) 100%);
+          span {
+            color: #AE4EF5;
+
+          }
+        }
+
+        &.tab-open {
+          background: radial-gradient(80.23% 80.23% at 50% 88.37%, rgba(174, 78, 245, 0.22) 0%, rgba(174, 78, 245, 0.22) 0.01%, rgba(174, 78, 245, 0) 100%);
+          border-bottom: 2px solid;
+          border-image-source: $linearGradient;
+          border-image-slice: 1;
+        }
+
+        &.tab-open span {
+          color: #FFFFFF;
+        }
+      }
+    }
+
+    .tab-block {
+      .tab-block-left {
+
+        padding: $_space-5 0;
+        .tab-block-title {
+          @include typography(
+                          $_colors-whiteAlpha-400,
+                          $_fontSizes-md,
+                          400,
+                          $_lineHeights-2
+          );
+        }
+
+        .tab-block-sub-title {
+          @include typography(
+                          $_colors-whiteAlpha-900,
+                          $_fontSizes-2xl,
+                          500,
+                          $_lineHeights-10
+          );
+        }
+
+        .tab-sub-description {
+          @include typography(
+                          $colors-gray-500,
+                          $_fontSizes-xl,
+                          400,
+                          $_lineHeights-7
+          );
+        }
+      }
+
+      .tab-block-right {
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+}

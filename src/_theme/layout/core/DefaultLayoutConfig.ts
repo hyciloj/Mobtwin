@@ -1,6 +1,6 @@
 import {ILayout} from "./LayoutModels";
 
-const isBrowserDefaultDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+const isBrowserDefaultDark = () => window.matchMedia('(prefers-color-scheme: light)').matches;
 const getDefaultTheme = (): 'light' | 'dark' => {
 
     const localStorageTheme = localStorage.getItem('default-theme');
@@ -9,7 +9,8 @@ const getDefaultTheme = (): 'light' | 'dark' => {
     return localStorageTheme ? JSON.parse(localStorageTheme).mode : browserDefault;
 };
 export const DefaultLayoutConfig: ILayout = {
-    mode: getDefaultTheme(),
+    // mode: getDefaultTheme(),
+    mode: "light",
     aside: {
         minimizedY: false,
         menuIcon: 'svg',
