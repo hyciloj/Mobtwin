@@ -12,16 +12,16 @@ const Container: FC<ChildrenProps> = ({children}) => {
 
     return (
         <>
-            <div className="container-fluid">
-                <div className="auth-container blur">
-                    <div className="row auth-wrapper">
-                        <div className="col-12 col-md-4 auth-form">
+            <div className="auth-container">
+                <div className="row auth-wrapper">
+                    <div className="col-12 col-md-4 auth-form">
+                        <div className="row">
                             <div className="header">
                                 <div className="row">
-                                    <div className="col-12 d-flex justify-content-center align-items-center">
+                                    <div className="col-12 header-logo">
                                         <img src={toAbsoluteUrl('/media/logos/favicon.png')}
                                              alt='mobtwin'
-                                             className='header-logo'
+                                             className=''
                                         />
                                     </div>
                                 </div>
@@ -62,23 +62,31 @@ const Container: FC<ChildrenProps> = ({children}) => {
                                 {children}
                             </div>
                         </div>
-                        <div className="col-12 col-md-8 auth-images">
-                            <div className="row h-100">
-                                <div className="col-3 translateY" style={{
-                                    backgroundImage: `url(${toAbsoluteUrl('/media/images/home/anime.png')})`,
-                                }}>
-                                </div>
-                                <div className="col-6 translateY" style={{
-                                    backgroundImage: `url(${toAbsoluteUrl('/media/images/home/hero_dark_2.png')})`,
-                                }}>
-                                </div>
-                                <div className="col-3 translateY" style={{
-                                    backgroundImage: `url(${toAbsoluteUrl('/media/images/home/hero_dark_1.png')})`,
-                                }}>
-                                </div>
+                        <div className="row">
+                            <div className="col-6">
+                                <a href="#" className="link">Terms of Services</a>
+                            </div>
+                            <div className="col-6 d-flex justify-content-end align-items-center">
+                                <a href="#" className="link">Terms of Services</a>
                             </div>
                         </div>
                     </div>
+                    {/*<div className="col-12 col-md-8 auth-images">*/}
+                    {/*    <div className="row h-100">*/}
+                    {/*        <div className="col-3 translateY" style={{*/}
+                    {/*            backgroundImage: `url(${toAbsoluteUrl('/media/images/home/anime.png')})`,*/}
+                    {/*        }}>*/}
+                    {/*        </div>*/}
+                    {/*        <div className="col-6 translateY" style={{*/}
+                    {/*            backgroundImage: `url(${toAbsoluteUrl('/media/images/home/hero_dark_2.png')})`,*/}
+                    {/*        }}>*/}
+                    {/*        </div>*/}
+                    {/*        <div className="col-3 translateY" style={{*/}
+                    {/*            backgroundImage: `url(${toAbsoluteUrl('/media/images/home/hero_dark_1.png')})`,*/}
+                    {/*        }}>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
             {/*<div className="container-fluid p-0 bgImage-100"*/}

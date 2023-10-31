@@ -1,24 +1,36 @@
 @mixin authContainer($mode) {
   .auth-container {
-    padding: $_space-8;
+    padding: $_space-12;
 
     .auth-wrapper {
       border-radius: 20px;
       min-height: 90vh;
       overflow: hidden;
+      box-shadow: if(isDarkMode($mode), 0 0 10px 6px  rgba(255,255,255,0.1), 0 0 10px 6px  rgba(0,0,0,0.1));
+
 
       .auth-form {
-        background-color: $colors-gray-900;
-        padding: $_space-2 $_space-12;
+        padding: $_space-12;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: if(isDarkMode($mode), $gray-900, $gray-100);
 
         .header {
           .header-logo {
-            width: 60px;
-            height: 60px;
-            margin-bottom: $_space-2;
+            margin-bottom: $_space-8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+              width: 60px;
+              height: 60px;
+            }
           }
         }
       }
+
       .auth-images {
         background-size: cover;
         background-repeat: no-repeat;
@@ -30,30 +42,95 @@
         }
       }
     }
+
+    .link {
+      color: $slate-blue-500;
+      font-size: $_fontSizes-md;
+      cursor: pointer;
+    }
   }
-}
 
-@include media-breakpoint-down(sm) {
-  .auth-container {
-    padding: $_space-2 !important;
+  @include media-breakpoint-down(lg) {
+    .auth-container {
+      padding: $_space-8;
 
-    .auth-wrapper {
-      border-radius: 10px !important;
+      .auth-wrapper {
 
-      .auth-form {
-        padding: $_space-2 !important;
+        .auth-form {
+          padding: $_space-8;
 
-        .header {
-          .header-logo {
-            width: 50px !important;
-            height: 50px !important;
-            margin-bottom: $_space-2;
+          .header {
+            .header-logo {
+              margin-bottom: $_space-4;
+            }
           }
         }
       }
     }
   }
+
+  @include media-breakpoint-down(md) {
+    .auth-container {
+      padding: $_space-8;
+
+      .auth-wrapper {
+
+        .auth-form {
+          padding: $_space-8;
+
+          .header {
+            .header-logo {
+              margin-bottom: $_space-4;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .auth-container {
+      padding: 0 !important;
+
+      .auth-wrapper {
+        border-radius: 0 !important;
+
+        .auth-form {
+          padding: $_space-4 $_space-8 !important;
+
+          .header {
+            .header-logo {
+              margin-bottom: $_space-2;
+
+              img {
+                width: 45px;
+                height: 45px;
+              }
+            }
+          }
+        }
+      }
+
+      .link {
+        color: $slate-blue-500;
+        font-size: $_fontSizes-xs;
+        cursor: pointer;
+      }
+    }
+  }
+
 }
+
+
+//$grid-breakpoints: (
+//        xs: 0,
+//        sm: 576px,
+//        md: 768px,
+//        lg: 992px,
+//        xl: 1200px,
+//        xxl: 1400px
+//);
+
 
 @keyframes moveSlideshow {
   0% {

@@ -14,13 +14,9 @@
 
     &.main_button-xl {
       border-radius: 10px;
-      height: $_space-10;
       min-width: $_space-10;
-      padding-inline-start: $_space-12;
-      padding-inline-end: $_space-12;
       margin-top: $_space-2;
-      padding-top: $_space-6;
-      padding-bottom: $_space-6;
+      padding: $_space-4 0;
       background: linear-gradient(122deg, $deepFuchsia 0.01%, $wildOrchid 49.9%, $blueberry 100%);
       align-self: center;
       @include typography(
@@ -41,10 +37,44 @@
       padding: $_space-6 $_space-7;
       justify-content: flex-start;
       background-color: if(isDarkMode($mode), $_colors-whiteAlpha-100, $_colors-blackAlpha-100);
-      @include typography(if(isDarkMode($mode), $_colors-whiteAlpha-800, $_colors-blackAlpha-800), $_sizes-4, 300, 0);
+      @include typography(
+                      if(isDarkMode($mode), $_colors-whiteAlpha-800, $_colors-blackAlpha-800),
+                      $_sizes-4,
+                      300,
+                      0);
 
       &:hover {
         background-color: if(isDarkMode($mode), $_colors-whiteAlpha-300, $_colors-blackAlpha-300);
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      &.second_button-xl {
+        padding: $_space-4 $_space-7;
+        @include typography(
+                        if(isDarkMode($mode), $_colors-whiteAlpha-800, $_colors-blackAlpha-800),
+                        $_sizes-3,
+                        300,
+                        0
+        );
+
+        img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+
+      &.main_button-xl {
+        padding-top: $_space-2;
+        padding-bottom: $_space-2;
       }
     }
   }
