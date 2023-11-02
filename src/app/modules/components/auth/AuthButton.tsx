@@ -34,7 +34,6 @@ const AuthButton: FC<AuthButtonProps> = ({
             <img src={toAbsoluteUrl(img)}
                  alt={alt}
                  className='rounded me-3'
-                 style={{width, height}}
             />
             <span className="text-capitalize">{title}</span>
         </Link>

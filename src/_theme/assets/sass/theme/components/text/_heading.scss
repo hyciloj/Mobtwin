@@ -1,0 +1,17 @@
+@mixin text($mode) {
+  .text-heading {
+    font-size: $_fontSizes-4xl;
+    color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
+    margin: $_space-8 0;
+  }
+  .text-h1 {
+    font-weight: 600;
+    font-size: 3rem;
+    color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
+  }
+  .text-p {
+    font-weight: 400;
+    font-size: 1rem;
+    color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
+  }
+}

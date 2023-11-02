@@ -27,9 +27,6 @@ export function register<T>({email, password}: FormDataRegister) {
   let data = new FormData();
   data.append('email', email);
   data.append('password', password);
-  // data.append('password_confirmation', passwordConfirmation);
-  // data.append('first_name', firstName);
-  // data.append('last_name', lastName);
 
   return axios.post<RegisterModel>(REGISTER_URL, data)
 }

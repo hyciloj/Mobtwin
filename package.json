@@ -1,4 +1,4 @@
- {
+{
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -20,6 +20,7 @@
     "del": "^7.1.0",
     "formik": "^2.4.5",
     "framer-motion": "^10.16.4",
+    "framer-motion-ticker": "^1.0.19",
     "i18next": "^23.5.1",
     "i18next-browser-languagedetector": "^7.1.0",
     "i18next-http-backend": "^2.2.2",

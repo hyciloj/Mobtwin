@@ -9,7 +9,8 @@ const getDefaultTheme = (): 'light' | 'dark' => {
     return localStorageTheme ? JSON.parse(localStorageTheme).mode : browserDefault;
 };
 export const DefaultLayoutConfig: ILayout = {
-    mode: getDefaultTheme(),
+    // mode: getDefaultTheme(),
+    mode: "light",
     aside: {
         minimizedY: false,
         menuIcon: 'svg',

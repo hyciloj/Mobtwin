@@ -136,9 +136,8 @@ export default function Login() {
                     child === 'login' && (
                         <>
                             <EmailPasswordComponent formik={formik} textInfo={"Sign in to your account"}>
-                                <div className="d-flex flex-column mb-4">
-                                    <span className="link-sm pt-2 cursor-pointer"
-                                          onClick={() => setChild('forgotPassword')}>
+                                <div className="d-flex flex-column mb-1 mb-md-2">
+                                    <span className="link" onClick={() => setChild('forgotPassword')}>
                                         Forgot your password?
                                     </span>
                                 </div>
@@ -147,11 +146,15 @@ export default function Login() {
                             <SubmitComponent formik={formik} labelBtn={"Sign In"} loading={loading}/>
 
 
-                            <button type={"button"} className="link-sm _py-4 text-end"
-                                    onClick={() => setChild('register')}
-                            >
-                                Sign Up
-                            </button>
+                            <div className="row mt-1">
+                                <div className="col-12 d-flex justify-content-center align-items-center">
+                                    <a href="#" className="link"
+                                            onClick={() => setChild('register')}
+                                    >
+                                        Need an account? Sign Up
+                                    </a>
+                                </div>
+                            </div>
                         </>
                     )
                 }
@@ -162,11 +165,16 @@ export default function Login() {
                             <EmailPasswordComponent formik={formik} textInfo={"Sign up with a new account"} />
                             <SubmitComponent formik={formik} labelBtn={"Sign Up"} loading={loading}/>
 
-                            <button type={"button"} className="link-sm _py-4 text-end"
-                                    onClick={() => setChild('login')}
-                            >
-                                Sign In
-                            </button>
+                            <div className="row mt-1">
+                                <div className="col-12 d-flex justify-content-center align-items-center">
+                                    <a href="#" className="link"
+                                       onClick={() => setChild('login')}
+                                    >
+                                        Sign In
+                                    </a>
+                                </div>
+                            </div>
+
                         </>
                     )
                 }
