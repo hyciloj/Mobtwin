@@ -20,6 +20,7 @@ export const PATH_AUTH = {
 export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   search: path(ROOTS_DASHBOARD, '/search'),
+  logout: path(ROOTS_DASHBOARD, '/logout'),
   two: path(ROOTS_DASHBOARD, '/two'),
   three: path(ROOTS_DASHBOARD, '/three'),
   user: {

@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {Container} from "./Container";
 import {useToggle} from "../../../hooks";
 import {useDispatch} from "react-redux";
@@ -42,6 +42,11 @@ export default function ResetPassword() {
     const email = searchParams.get('email');
     const encryptedEmail = encryptEmail({email})
     const token = searchParams.get('token');
+
+    useEffect(() => {
+
+        console.log(token)
+    }, [token])
 
     const formik = useFormik({
         initialValues,

@@ -12,6 +12,7 @@ import * as _redux from './setup'
 import store, {persistor} from './setup/redux/Store'
 // Axios
 import axios from 'axios'
+import {LoadingPrimary} from "./app/modules/components/loading/LoadingPrimary";
 
 const {PUBLIC_URL} = process.env
 _redux.setupAxios(axios, store)
@@ -21,7 +22,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <Provider store={store}>
-        <PersistGate persistor={persistor} loading={<div>Loading...</div>}>
+        <PersistGate persistor={persistor} loading={<LoadingPrimary />}>
             <LayoutProvider>
                 <I18nProvider>
                     <App basename={PUBLIC_URL}/>

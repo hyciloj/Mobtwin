@@ -1,7 +1,8 @@
-import React, {FC} from "react";
-import {toAbsoluteUrl} from "../../../../_theme/helpers";
+import React, {FC, useEffect} from "react";
+import {encryptEmail, toAbsoluteUrl} from "../../../../_theme/helpers";
 import {AuthButton} from "../../components";
 import {ChildrenProps} from "../../../../config-global";
+import {useLocation} from "react-router-dom";
 
 const images = {
     image1: "https://app.leonardo.ai/img/login-hero-images/Celestial.webp",
@@ -40,7 +41,7 @@ const Container: FC<ChildrenProps> = ({children}) => {
                                 <div className="row mb-2">
                                     <div className="col-12">
                                         <AuthButton title={'facebook'}
-                                                    url={'auth/google'}
+                                                    url={'auth/facebook'}
                                                     img={'/media/svg/brand-logos/facebook.svg'}
                                                     width={20}
                                                     height={20}
@@ -74,9 +75,10 @@ const Container: FC<ChildrenProps> = ({children}) => {
                     <div className="col-12 col-md-8 auth-images" style={{
                         backgroundImage: `url(http://goootek.com/duck/duck/assets/meta-tags-banner.webp)`,
                     }}>
-                        </div>
                     </div>
+                </div>
             </div>
+
         </>
 
     )

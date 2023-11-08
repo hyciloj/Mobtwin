@@ -1,6 +1,6 @@
 @mixin infos($mode) {
   .auth-info {
-    border: 1px solid if(isDarkMode($mode), $_colors-whatsapp-400, $_colors-whatsapp-600),;
+    border: 1px solid;
     padding: $_space-2;
     margin-bottom: $_space-4;
     border-radius: $_radii-base;

@@ -1,4 +1,4 @@
-import React, {Dispatch, FC, ReactNode, SetStateAction, useState} from "react";
+import React, {Dispatch, FC, ReactNode, SetStateAction, useCallback, useEffect, useState} from "react";
 import {login, register} from "../redux/AuthCRUD";
 import {useDispatch} from "react-redux";
 import * as auth from "../redux/AuthRedux"
@@ -14,13 +14,20 @@ interface formData {
     password: string;
 }
 
-
 const images = {
     image1: "https://app.leonardo.ai/img/login-hero-images/Celestial.webp",
     image2: "https://app.leonardo.ai/img/login-hero-images/FemaleAdventurer5.webp"
 }
 
-type childProps = 'login' | 'register' | 'forgotPassword'
+type ChildProps = 'login' | 'register' | 'forgotPassword'
+const childInfo: Record<ChildProps, string> = {
+    'login': 'Sign in to your account',
+    'register': 'Sign up with a new account',
+    'forgotPassword': 'xsxsxsxsxsx',
+};
+
+const defaultChild: ChildProps = 'login';
+
 
 const loginSchema = Yup.object().shape({
     email: Yup.string()
@@ -29,7 +36,7 @@ const loginSchema = Yup.object().shape({
         .max(50, 'Maximum 50 symbols')
         .required('Email is required'),
     password: Yup.string()
-        .min(8, 'Minimum 8 symbols')
+        .min(3, 'Minimum 8 symbols')
         .max(50, 'Maximum 50 symbols')
         .required('Password is required'),
 })
@@ -52,14 +59,38 @@ const initialValuesRegisterPassword = {
 }
 
 
+type PropsInfo = {
+    msg: string
+    bg: string
+}
+
 export default function Login() {
 
     const [formData, setFormData] = useState<formData>({email: 'admin@email.com', password: 'admin'})
     const [loading, setLoading] = useState(false)
     const [isToggled, toggle] = useToggle(false);
-    const [child, setChild] = useState<childProps>('login')
-    const dispatch = useDispatch()
+    const [child, setChild] = useState<ChildProps>('login')
 
+    // const [info, setInfo] = useState<PropsInfo>({
+    //     msg: childInfo[defaultChild],
+    //     bg: "#3cdd78",
+    // });
+    //
+    // const updateInfo = useCallback(() => {
+    //     setInfo({
+    //         msg: childInfo[child],
+    //         bg: "#3cdd78",
+    //     });
+    // }, [child]);
+    //
+    // useEffect(() => {
+    //     updateInfo();
+    // }, [updateInfo]);
+
+
+
+
+    const dispatch = useDispatch()
 
     const formik = useFormik({
         initialValues,
@@ -76,15 +107,14 @@ export default function Login() {
                     const {message_code, status, user, token} = response.data;
                     const {id, name, email, role, workspace} = user;
 
-                    console.log(response.data)
-
                     dispatch(auth.actions.login({accessToken: token}))
 
                 } else if (child === 'register') {
                     response = await register({email: values.email, password: values.password});
 
-                    const {message, message_code, status} = response.data;
-                    console.log(message, message_code, status);
+                    const {message: msg, message_code, status} = response.data;
+                    console.log(msg, message_code, status);
+
                 } else if (child === 'forgotPassword') {
                     // Handle forgot password logic here
                     // response = await forgotPassword({ email: values.email });
@@ -96,7 +126,6 @@ export default function Login() {
             }
         },
     });
-
 
     const formikRegisterPassword = useFormik({
         initialValues,
@@ -135,7 +164,8 @@ export default function Login() {
                 {
                     child === 'login' && (
                         <>
-                            <EmailPasswordComponent formik={formik} textInfo={"Sign in to your account"}>
+                            <EmailPasswordComponent formik={formik}
+                            >
                                 <div className="d-flex flex-column mb-1 mb-md-2">
                                     <span className="link" onClick={() => setChild('forgotPassword')}>
                                         Forgot your password?
@@ -149,7 +179,7 @@ export default function Login() {
                             <div className="row mt-1">
                                 <div className="col-12 d-flex justify-content-center align-items-center">
                                     <a href="#" className="link"
-                                            onClick={() => setChild('register')}
+                                       onClick={() => setChild('register')}
                                     >
                                         Need an account? Sign Up
                                     </a>
@@ -162,7 +192,8 @@ export default function Login() {
                 {
                     child === 'register' && (
                         <>
-                            <EmailPasswordComponent formik={formik} textInfo={"Sign up with a new account"} />
+                            <EmailPasswordComponent formik={formik}
+                            />
                             <SubmitComponent formik={formik} labelBtn={"Sign Up"} loading={loading}/>
 
                             <div className="row mt-1">
@@ -194,7 +225,8 @@ export default function Login() {
                                                 placeholder={'name@host.com'}/>
                             </div>
 
-                            <SubmitComponent formik={formikRegisterPassword} labelBtn={"Reset my password"} loading={loading}/>
+                            <SubmitComponent formik={formikRegisterPassword} labelBtn={"Reset my password"}
+                                             loading={loading}/>
 
                             <div className="d-flex flex-column align-items-center mt-2 _p-2 ">
                                 <button type={'button'} onClick={() => setChild('login')} className="">Cancel
@@ -211,22 +243,21 @@ export default function Login() {
 }
 
 interface EmailPasswordComponentInterface extends FormikProps {
-    textInfo: string
     children?: ReactNode;
 }
 
 const EmailPasswordComponent: FC<EmailPasswordComponentInterface> = ({
                                                                          formik,
-                                                                         textInfo,
                                                                          children
                                                                      }) => {
+
     return (
         <>
-            <div className="mb-10 p-8 rounded">
-                <div className="d-flex flex-column align-items-center auth-info">
-                    <span>{textInfo}</span>
-                </div>
-            </div>
+            {/*<div className="mb-10 p-8 rounded">*/}
+            {/*    <div className="d-flex flex-column align-items-center auth-info" style={{borderColor: bg}}>*/}
+            {/*        <span>{msg}</span>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <div className="d-flex flex-column align-items-center mb-3">
                 <InputComponent formik={formik} id={"email"} type={"email"} label={'email'}

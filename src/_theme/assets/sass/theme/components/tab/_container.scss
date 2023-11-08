@@ -46,7 +46,6 @@
     }
 
     .tab-block {
-
       margin-bottom: $_space-12;
       .tab-block-left {
 
@@ -63,6 +62,7 @@
         .tab-block-sub-title {
           @include typography(
                           if(isDarkMode($mode), $_colors-whiteAlpha-800, $_colors-blackAlpha-900),
+
                           $_fontSizes-2xl,
                           500,
                           $_lineHeights-10

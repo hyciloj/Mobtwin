@@ -7,6 +7,7 @@ import {toAbsoluteUrl} from "../../../_theme/helpers";
 import {motion, AnimatePresence} from 'framer-motion';
 import {url} from "node:inspector";
 import Ticker from 'framer-motion-ticker';
+import {LoadingPrimary} from "../../modules/components/loading/LoadingPrimary";
 
 
 const images = {
@@ -53,10 +54,9 @@ interface TabBlockProps {
 }
 
 const animationVariants = {
-    initial: { x: '100%' },
-    animate: { x: '-100%', transition: { duration: 10, repeat: Infinity } },
-};
-
+    initial: {x: '100%'},
+    animate: {x: '-100%', transition: {duration: 10, repeat: Infinity}},
+}
 const TabBlock: FC<TabBlockProps> = ({tab}) => (
     <>
         {tab && (
@@ -80,6 +80,7 @@ const TabBlock: FC<TabBlockProps> = ({tab}) => (
 );
 
 const tabTitles = ["Title 1", "Title 2", "Title 3"];
+
 const colors = ['#632bf3', '#f122c8', '#f16022', '#9ef344', '#44d3f3', '#632bf3', '#f122c8', '#f16022', '#9ef344', '#44d3f3'];
 
 export default function Before() {
@@ -106,88 +107,143 @@ export default function Before() {
 
             </div>
 
-            <main>
-                <div className="container-fluid ticker-container">
-                    <div className="row">
-                        <div className="col-5 offset-1">
-                            <div className="_pt-60 ">
-                                <h1 className="text-h1">Unleash your <span
-                                    className="h1-700 rad-color-2">Creativity</span> with the power of <span
-                                    className="h1-700 rad-color-1">Leonardo Ai </span>
-                                </h1>
-                                <h2 className={"brxe-ukrozz"}>Create production-quality visual assets for
-                                    your projects with unprecedented quality, speed, and style-consistency.</h2>
-                                <div className="row">
-                                    <div className="col-6">
-                                        <Link to={PATH_AUTH.login}
-                                              className="form-submit text-white"
-                                        >Create account</Link>
-                                    </div>
+            <main className="container-fluid ticker-container">
+                <div className="row">
+                    <div className="col-5 offset-1">
+                        <div className="_py-12">
+                            <h1 className="text-h1">Unleash your <span
+                                className="h1-700 rad-color-2">Creativity</span> with the power of <span
+                                className="h1-700 rad-color-1">Leonardo Ai </span>
+                            </h1>
+                            <h2 className={"brxe-ukrozz"}>Create production-quality visual assets for
+                                your projects with unprecedented quality, speed, and style-consistency.</h2>
+                            <div className="row">
+                                <div className="col-6">
+                                    <Link to={PATH_AUTH.login}
+                                          className="form-submit text-white"
+                                    >Create account</Link>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-6 h-100"
-                             // style={{
-                             //     backgroundImage: `url("${images.image3}")`
-                             // }}
-                        >
+                    </div>
+                    <div className="col-6 ticker-wrapper"
+                        // style={{
+                        //     backgroundImage: `url("${images.image3}")`
+                        // }}
+                    >
+                        <div className="tickers">
+
+                            <motion.div
+                                initial={{ opacity: 0, x: 50 }} // Start from the right (x: 50)
+                                animate={{ opacity: 1, x: 0 }}  // Move to the left (x: 0)
+                                exit={{ opacity: 0, x: -50 }}   // Exit to the left (x: -50)
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                }}
+                            >
+                                {colors.map((color, index) => (
+                                    <motion.div
+                                        key={index}
+                                        style={{
+                                            backgroundColor: color,
+                                            margin: '10px',
+                                            height: '120px',
+                                            width: '120px',
+                                            borderRadius: 12,
+                                        }}
+                                        initial={{ scale: 0, x: 50 }} // Start from the right (x: 50)
+                                        animate={{ scale: 1, x: 0 }}  // Move to the left (x: 0)
+                                    />
+                                ))}
+                            </motion.div>
+                            <motion.div
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    overflow: 'hidden', // Hide overflowing content
+                                }}
+                            >
+                                {colors.map((color, index) => (
+                                    <motion.div
+                                        key={index}
+                                        style={{
+                                            backgroundColor: color,
+                                            margin: '10px',
+                                            height: '120px',
+                                            width: '120px',
+                                            borderRadius: 12,
+                                        }}
+                                        initial={{ x: '100%' }} // Start from the right (100%)
+                                        animate={{ x: '-100%' }} // Move to the left (-100%)
+                                        transition={{
+                                            repeat: Infinity, // Repeat animation infinitely
+                                            duration: 5, // Animation duration in seconds
+                                            ease: 'linear', // Linear easing for a continuous effect
+                                        }}
+                                    />
+                                ))}
+                            </motion.div>
+
                             {/*<Ticker duration={20}>*/}
                             {/*    {colors.map((item, index) => (*/}
                             {/*        <div*/}
                             {/*            key={index}*/}
                             {/*            style={{*/}
                             {/*                backgroundColor: item,*/}
-                            {/*                margin: '5px',*/}
-                            {/*                height: '150px',*/}
-                            {/*                width: '100px',*/}
+                            {/*                margin: '10px',*/}
+                            {/*                height: '120px',*/}
+                            {/*                width: '120px',*/}
+                            {/*                borderRadius: 12*/}
                             {/*            }}*/}
                             {/*        />*/}
                             {/*    ))}*/}
                             {/*</Ticker>*/}
-                            {/*<Ticker duration={17}>*/}
+                            {/*<Ticker duration={20}>*/}
                             {/*    {colors.map((item, index) => (*/}
                             {/*        <div*/}
                             {/*            key={index}*/}
                             {/*            style={{*/}
                             {/*                backgroundColor: item,*/}
-                            {/*                margin: '5px',*/}
-                            {/*                width: '100px',*/}
+                            {/*                margin: '10px',*/}
+                            {/*                height: '120px',*/}
+                            {/*                width: '120px',*/}
+                            {/*                borderRadius: 12*/}
                             {/*            }}*/}
                             {/*        />*/}
                             {/*    ))}*/}
                             {/*</Ticker>*/}
                         </div>
                     </div>
+                </div>
 
-                    <div className="row d-flex justify-content-around align-items-center _p-12">
-                        <div className="col-3">
-                            <h3 className="gradient-color-full">Cultivate Originality</h3>
-                            <div className="text-p">Your imagination, our technology. Generate distinctive art with pre-trained AI models or train your own.
-                            </div>
+                <div className="row d-flex justify-content-around align-items-center _p-12">
+                    <div className="col-3">
+                        <h3 className="gradient-color-full">Cultivate Originality</h3>
+                        <div className="text-p">Your imagination, our
+                            technology. Generate distinctive art with pre-trained AI models or train your own.
                         </div>
-                        <div className="col-3">
-                            <h3 className="gradient-color-full">Cultivate Originality</h3>
-                            <div className="text-p">Your imagination, our
-                                technology. Generate distinctive art with pre-trained AI models or train your own.
-                            </div>
-                        </div>
-                        <div className="col-3">
-                            <h3 className="gradient-color-full">Cultivate Originality</h3>
-                            <div className="text-p">Your imagination, our
-                                technology. Generate distinctive art with pre-trained AI models or train your own.
-                            </div>
-                        </div>
-
                     </div>
+                    <div className="col-3">
+                        <h3 className="gradient-color-full">Cultivate Originality</h3>
+                        <div className="text-p">Your imagination, our
+                            technology. Generate distinctive art with pre-trained AI models or train your own.
+                        </div>
+                    </div>
+                    <div className="col-3">
+                        <h3 className="gradient-color-full">Cultivate Originality</h3>
+                        <div className="text-p">Your imagination, our
+                            technology. Generate distinctive art with pre-trained AI models or train your own.
+                        </div>
+                    </div>
+                </div>
 
+                <div className="container tab-container">
                     <div className="row ">
                         <h2 className="col-12 d-flex justify-content-center align-items-center text-heading">
                             <span className="gradient-color-full _pr-2">Leonardo’s</span> Toolkit&nbsp;
                         </h2>
                     </div>
-                </div>
-
-                <div className="container tab-container">
                     <div className="row tab-menu">
                         {tabTitles.map((title, index) => (
                             <div
@@ -204,22 +260,6 @@ export default function Before() {
                     <div className="row tab-block">{tabBlockOpen()}</div>
                 </div>
 
-                {/*<div className="container avatar-container">*/}
-                {/*    <div className="avatar-wrapper">*/}
-                {/*        <div className="row">*/}
-                {/*            <div className="col-6">*/}
-                {/*                <p>*/}
-                {/*                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa dignissimos eaque exercitationem explicabo maxime quaerat sint, unde! Autem blanditiis culpa cumque earum exercitationem fugiat illum laudantium quod tempora vero.*/}
-                {/*                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa dignissimos eaque exercitationem explicabo maxime quaerat sint, unde! Autem blanditiis culpa cumque earum exercitationem fugiat illum laudantium quod tempora vero.*/}
-                {/*                </p>*/}
-                {/*            </div>*/}
-                {/*            <div className="col-6">*/}
-                {/*                <img src="" alt=""/>*/}
-                {/*            </div>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-
             </main>
 
             <footer className="container-fluid container-footer">
@@ -230,8 +270,6 @@ export default function Before() {
                     <div className="col-3"></div>
                 </div>
             </footer>
-
-            {/*<Header/>*/}
 
         </>
     )

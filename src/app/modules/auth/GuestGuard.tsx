@@ -8,6 +8,8 @@ function GuestGuard({ children }: ChildrenProps) {
 
     const isAuthorized = useSelector<RootState>(({auth}) => auth.user, shallowEqual)
 
+
+
     if (isAuthorized) {
         return <Navigate to="/dashboard" />;
     }

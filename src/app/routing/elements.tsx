@@ -1,11 +1,12 @@
 import React, { Suspense, lazy, ElementType } from 'react';
+import {LoadingPrimary} from "../modules/components/loading/LoadingPrimary";
 // components
 
 // ----------------------------------------------------------------------
 
 const Loadable = (Component: ElementType) => (props: any) =>
   (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense fallback={<LoadingPrimary />}>
       <Component {...props} />
     </Suspense>
   );
@@ -24,6 +25,7 @@ export const Before = Loadable(lazy(() => import('../pages/before/Before')));
 export const Login = Loadable(lazy(() => import('../modules/auth/components/Login')));
 export const Register = Loadable(lazy(() => import('../modules/auth/components/Register')));
 export const ResetPassword = Loadable(lazy(() => import('../modules/auth/components/ResetPassword')));
+export const Logout = Loadable(lazy(() => import('../modules/auth/components/Logout')));
 
 
 /**

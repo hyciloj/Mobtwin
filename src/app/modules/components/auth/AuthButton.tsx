@@ -13,7 +13,7 @@ type AuthButtonProps = {
     className: string,
 }
 
-const REACT_APP_API = process.env.REACT_APP_API
+const REACT_APP_CORE_URL = process.env.REACT_APP_CORE_URL
 
 const AuthButton: FC<AuthButtonProps> = ({
                                              title,
@@ -28,7 +28,7 @@ const AuthButton: FC<AuthButtonProps> = ({
     return (
 
 
-        <Link to={`${REACT_APP_API}`}
+        <Link to={`${REACT_APP_CORE_URL}${url}`}
               className={className}
         >
             <img src={toAbsoluteUrl(img)}

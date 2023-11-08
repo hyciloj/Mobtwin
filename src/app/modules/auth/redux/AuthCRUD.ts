@@ -3,12 +3,13 @@ import {LoginModel, RegisterModel} from '../models/AuthModel'
 import {UserModel} from '../models/UserModel'
 import {FormDataLogin, FormDataRegister} from "../models/Props";
 
-const API_URL = process.env.REACT_APP_API_URL || 'api'
+const API_URL = process.env.REACT_APP_CORE_API_URL || 'api'
 
 export const GET_USER_BY_ACCESS_TOKEN_URL = `${API_URL}profile`
 export const LOGIN_URL = `${API_URL}login`
 export const REGISTER_URL = `${API_URL}register`
 export const REQUEST_PASSWORD_URL = `${API_URL}/auth/forgot-password`
+export const LOGOUT_URL = `${API_URL}logout`;
 
 // Server should return AuthModel
 export function login<T>({email, password}: FormDataLogin) {
@@ -40,4 +41,8 @@ export function getUserByToken() {
   // Authorization head should be fulfilled in interceptor.
   // Check common redux folder => setupAxios
   return axios.post<UserModel>(GET_USER_BY_ACCESS_TOKEN_URL)
+}
+
+export function logout() {
+  return axios.post(LOGOUT_URL)
 }

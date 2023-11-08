@@ -24,7 +24,6 @@ const AsideMenuItem: React.FC<Props> = ({
     const isActive = checkIsActive(pathname, to)
     const {config} = useLayout()
     const {aside} = config
-    console.log({aside})
 
     return (
         <div className='menu-item'>

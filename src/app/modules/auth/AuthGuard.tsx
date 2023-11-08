@@ -18,8 +18,8 @@ function AuthGuard({children}: ChildrenProps) {
         if (pathname !== requestedLocation) {
             setRequestedLocation(pathname);
         }
-        // return <Login />;
-        return <Search />;
+        return <Login />;
+        // return <Search />;
     }
 
     if (requestedLocation && pathname !== requestedLocation) {
