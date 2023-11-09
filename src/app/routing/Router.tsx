@@ -1,15 +1,13 @@
 import React from 'react'
 import {Navigate, useRoutes, Outlet} from "react-router-dom";
 import {AuthGuard, GuestGuard} from "../modules/auth";
-import {Before, Login, Register, ResetPassword, Search, Logout} from "./elements";
+import {Before, Login, Register, ResetPassword, Search} from "./elements";
 import {PATH_AFTER_LOGIN, PATH_BEFORE_LOGIN} from "../../config-global";
 import {DashboardWrapper, AuthPage, Demo} from "../pages";
 import {ROOTS_AUTHENTICATION, ROOTS_DASHBOARD, ROOT_DEMO, PATH_AUTH} from "./paths";
 import {MasterLayout} from "../../_theme/layout/MasterLayout";
 
 export default function Router() {
-
-    const isAuthorized = false
 
     return useRoutes([
         {
@@ -32,7 +30,7 @@ export default function Router() {
                 {element: <Navigate to={PATH_AUTH.login} replace/>, index: true},
                 {path: 'login', element: <Login/>},
                 {path: 'register', element: <Register/>},
-                {path: 'reset-password', element: <ResetPassword/>},
+                {path: 'password-reset', element: <ResetPassword/>},
             ]
         },
 
@@ -48,8 +46,9 @@ export default function Router() {
             ),
             children: [
                 {element: <Navigate to={PATH_AFTER_LOGIN} replace/>, index: true},
-                {path: 'search', element: <Search/>},
-                {path: 'logout', element: <Logout/>},
+                {path: 'beta', element: <></>},
+                // {path: 'search', element: <Search/>},
+                // {path: 'logout', element: <Logout/>},
                 {path: 'two', element: <h1>PageTwo</h1>},
                 {path: 'three', element: <h1>PageThree</h1>},
             ],

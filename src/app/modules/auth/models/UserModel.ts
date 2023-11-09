@@ -8,6 +8,12 @@ export interface UserModel {
     workspace: string
 }
 
+export interface PropertiesReturnModel {
+    status: number
+    message_code: string
+    message: string
+}
+
 // export interface UserModel {
 //     id: number
 //     username: string

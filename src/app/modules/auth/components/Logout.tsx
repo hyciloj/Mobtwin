@@ -1,26 +1,26 @@
+import React from "react";
 import {useDispatch} from "react-redux";
-import React, {useEffect} from "react";
+import {logout} from "../redux/AuthCRUD";
 import * as auth from "../redux/AuthRedux";
-import {Navigate} from "react-router-dom";
-import {PATH_AUTH} from "../../../routing/paths";
-import {login, logout} from "../redux/AuthCRUD";
 
 export default function Logout() {
-    const dispatch = useDispatch()
 
-    useEffect(() => {
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
         logout().then(r => {
             const {status} = r.data
+            console.log(status)
             if (status === 200) {
-                console.log("logout")
                 dispatch(auth.actions.logout())
-                // document.location.reload()
             }
         })
-    }, [dispatch])
+    };
+
 
     return (
-        <></>
-        // <Navigate to={PATH_AUTH.login} />
+        <div className="col-1 offset-8 d-flex justify-content-center align-items-center">
+            <button onClick={handleLogout} className="main_button-xl">logout</button>
+        </div>
     )
 }

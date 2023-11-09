@@ -3,6 +3,7 @@ import {encryptEmail, toAbsoluteUrl} from "../../../../_theme/helpers";
 import {AuthButton} from "../../components";
 import {ChildrenProps} from "../../../../config-global";
 import {useLocation} from "react-router-dom";
+import Logout from "./Logout";
 
 const images = {
     image1: "https://app.leonardo.ai/img/login-hero-images/Celestial.webp",
@@ -15,7 +16,7 @@ const Container: FC<ChildrenProps> = ({children}) => {
         <>
             <div className="auth-container">
                 <div className="row auth-wrapper">
-                    <div className="col-12 col-md-4 auth-form">
+                    <div className="auth-form">
                         <div className="row">
                             <div className="header">
                                 <div className="row">
@@ -24,7 +25,10 @@ const Container: FC<ChildrenProps> = ({children}) => {
                                              alt='mobtwin'
                                              className=''
                                         />
+                                        <Logout />
+
                                     </div>
+
                                 </div>
                                 <div className="row mb-2">
                                     <div className="col-12">
@@ -72,10 +76,11 @@ const Container: FC<ChildrenProps> = ({children}) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 col-md-8 auth-images" style={{
-                        backgroundImage: `url(http://goootek.com/duck/duck/assets/meta-tags-banner.webp)`,
-                    }}>
-                    </div>
+                    <div className="auth-images"
+                    //      style={{
+                    //     backgroundImage: `url(http://goootek.com/duck/duck/assets/meta-tags-banner.webp)`,
+                    // }}
+                    />
                 </div>
             </div>
 

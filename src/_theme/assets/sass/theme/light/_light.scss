@@ -84,7 +84,7 @@ $themeMode: "light";
 
 
 .msg-error{
-  @include typography($dark-red-700, _sizes-sm, 400, 0);
+  @include typography($dark-red-700, $_sizes-3-5, 400, 0);
 }
 
 // Desktop mode

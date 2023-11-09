@@ -1,14 +1,16 @@
 import React, {FC} from "react";
 import {Link} from "react-router-dom";
 import {PATH_DASHBOARD} from "../../routing/paths";
+import {useDispatch} from "react-redux";
+import * as auth from "../../../app/modules/auth/redux/AuthRedux";
+import {logout} from "../../modules/auth/redux/AuthCRUD";
+import Logout from "../../modules/auth/components/Logout";
 
 export default function Search() {
 
     return (
         <>
-            <div className="col-1 offset-8 d-flex justify-content-center align-items-center">
-                <Link to={PATH_DASHBOARD.logout} className="main_button-xl">logout</Link>
-            </div>
+            <Logout />
             <div className={"_pt-10"}>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio

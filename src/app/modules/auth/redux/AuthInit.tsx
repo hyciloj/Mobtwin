@@ -18,7 +18,6 @@ const AuthInit: FC<PropsFromRedux> = (props) => {
   const [showSplashScreen, setShowSplashScreen] = useState(true)
   const accessToken = useSelector<RootState>(({auth}) => auth.accessToken, shallowEqual)
 
-
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const error = searchParams.get('error');
@@ -30,13 +29,14 @@ const AuthInit: FC<PropsFromRedux> = (props) => {
 
     const requestUser = async () => {
 
+      console.log("requestUser")
       try {
+
         if (!didRequest.current) {
           const {data: user} = await getUserByToken()
           dispatch(props.fulfillUser(user))
         }
       } catch (error) {
-        console.error("requestUser", error)
         if (!didRequest.current) {
           dispatch(props.logout())
         }

@@ -25,7 +25,7 @@ export const Before = Loadable(lazy(() => import('../pages/before/Before')));
 export const Login = Loadable(lazy(() => import('../modules/auth/components/Login')));
 export const Register = Loadable(lazy(() => import('../modules/auth/components/Register')));
 export const ResetPassword = Loadable(lazy(() => import('../modules/auth/components/ResetPassword')));
-export const Logout = Loadable(lazy(() => import('../modules/auth/components/Logout')));
+// export const Logout = Loadable(lazy(() => import('../modules/auth/components/Logout')));
 
 
 /**

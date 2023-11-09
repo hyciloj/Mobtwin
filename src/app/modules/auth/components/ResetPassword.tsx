@@ -5,8 +5,11 @@ import {useDispatch} from "react-redux";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import {InputComponent, SubmitComponent} from "../../components";
-import {useParams, useLocation} from 'react-router-dom';
+import {useParams, useLocation, Navigate} from 'react-router-dom';
 import {encryptEmail} from "../../../../_theme/helpers";
+import {EmailPasswordComponent} from "./EmailPasswordComponent";
+import {login, resetPassword} from "../redux/AuthCRUD";
+import {PATH_AUTH, ROOTS_AUTHENTICATION} from "../../../routing/paths";
 
 const initialValues = {
     password: '',
@@ -14,28 +17,29 @@ const initialValues = {
 }
 const registrationSchema = Yup.object().shape({
     password: Yup.string()
-        .min(3, 'Minimum 3 symbols')
+        .min(8, 'Minimum 8 symbols')
         .max(50, 'Maximum 50 symbols')
         .required('Password is required'),
     passwordConfirmation: Yup.string()
         .required('Password confirmation is required')
         .test('passwords-match', "Password and Confirm Password didn't match", function (value) {
             return this.parent.password === value;
-        }),
+        })
 })
 
 interface formData {
-    email: string;
     password: string;
+    passwordConfirmation: string;
 }
 
 
 export default function ResetPassword() {
 
-    const [formData, setFormData] = useState<formData>({email: '', password: ''})
+    const [formData, setFormData] = useState<formData>({
+        password: '',
+        passwordConfirmation: '',
+    })
     const [loading, setLoading] = useState(false)
-    const [isToggled, toggle] = useToggle(false);
-    const dispatch = useDispatch()
     const location = useLocation();
 
     const searchParams = new URLSearchParams(location.search);
@@ -43,10 +47,6 @@ export default function ResetPassword() {
     const encryptedEmail = encryptEmail({email})
     const token = searchParams.get('token');
 
-    useEffect(() => {
-
-        console.log(token)
-    }, [token])
 
     const formik = useFormik({
         initialValues,
@@ -56,6 +56,22 @@ export default function ResetPassword() {
 
             try {
                 let response;
+                if (email && token) {
+                    response = await resetPassword({
+                        email,
+                        password: values.password,
+                        password_confirmation: values.passwordConfirmation,
+                        token
+                    })
+
+                    const {status} = response
+                    if (status === 200) {
+
+                        console.log({status})
+                        return <Navigate replace to={ROOTS_AUTHENTICATION}/>
+                    }
+
+                }
 
             } catch (error) {
                 console.error(error);
@@ -67,25 +83,28 @@ export default function ResetPassword() {
 
     return (
         <Container>
-
-            <div className="mb-10 bg-light-info p-8 rounded">
-                <div className="d-flex flex-column align-items-center auth-info">
-                    <span className="text-center _px-4">
-                        We have sent a password reset code by email to {email}. Enter it below to reset your password
-                    </span>
+            <form
+                className='form w-100'
+                onSubmit={formik.handleSubmit}
+                noValidate
+                id='kt_reset_password_form'
+            >
+                <div className="d-flex flex-column align-items-center mb-3">
+                    <InputComponent formik={formik} id={"password"}
+                                    type={"password"}
+                                    label={'password'}
+                                    placeholder={'******'}
+                    />
                 </div>
-            </div>
-
-            <div className="d-flex flex-column align-items-center mb-3">
-                <InputComponent formik={formik} id={'password'} type={'password'} label={'password'}
-                                placeholder={'******'}/>
-            </div>
-            <div className="d-flex flex-column align-items-center mb-3">
-                <InputComponent formik={formik} id={'passwordConfirmation'} type={'password'}
-                                label={'password confirmation'} placeholder={'******'}/>
-            </div>
-
-            <SubmitComponent formik={formik} labelBtn={"Reset password"} loading={loading}/>
+                <div className="d-flex flex-column align-items-center mb-2">
+                    <InputComponent formik={formik} id={"passwordConfirmation"}
+                                    type={"password"}
+                                    label={'password confirmation'}
+                                    placeholder={'******'}
+                    />
+                </div>
+                <SubmitComponent formik={formik} labelBtn={"Reset password"} loading={loading}/>
+            </form>
         </Container>
     )
 }

@@ -1,22 +1,39 @@
 @mixin authContainer($mode) {
   .auth-container {
     //padding: $_space-12;
-    height: 100vh !important;
+    height: 100vh;
     overflow: hidden;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
 
     .auth-wrapper {
-      border-radius: 20px;
+      //border-radius: 20px;
       overflow: hidden;
       box-shadow: if(isDarkMode($mode), 0 0 10px 6px  rgba(255,255,255,0.1), 0 0 10px 6px  rgba(0,0,0,0.1));
-      height: 89%;
-      margin: 3%;
+      //height: 89%;
+      //margin: 3%;
+      //overflow: hidden;
+      //box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: row;
+      border-radius: 12px;
 
       .auth-form {
-        padding: $_space-8 $_space-12;
+        //padding: $_space-8 $_space-12;
+        //display: flex;
+        //flex-direction: column;
+        //justify-content: space-between;
+        //background: if(isDarkMode($mode), $gray-900, $gray-100);
+        max-width: 24rem;
+        padding: $_space-6 $_space-8;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        background: if(isDarkMode($mode), $gray-900, $gray-100);
+        align-items: stretch;
 
         .header {
           .header-logo {
@@ -34,62 +51,64 @@
       }
 
       .auth-images {
+        background-image: url(https://app.leonardo.ai/img/login-hero-images/ExplosionFighting.webp);
+        background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;
-        backdrop-filter: blur(7px);
-        height: 90vh !important;
+        width: var(--leonardo-ai-sizes-full);
+        align-items: flex-end;
+        display: inline-flex;
+        justify-content: center;
+        flex-grow: 1;
 
-        .translateY {
-          @include slideshow-styles;
-        }
       }
     }
 
     .link {
       color: $slate-blue-500;
-      font-size: $_fontSizes-md;
+      font-size: $_fontSizes-sm;
       cursor: pointer;
     }
   }
 
-  @include media-breakpoint-down(lg) {
-    .auth-container {
-      padding: $_space-8;
-
-      .auth-wrapper {
-
-        .auth-form {
-          padding: $_space-8;
-
-          .header {
-            .header-logo {
-              margin-bottom: $_space-4;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  @include media-breakpoint-down(md) {
-    .auth-container {
-      padding: $_space-8;
-
-      .auth-wrapper {
-
-        .auth-form {
-          padding: $_space-8;
-
-          .header {
-            .header-logo {
-              margin-bottom: $_space-4;
-            }
-          }
-        }
-      }
-    }
-  }
-
+  //@include media-breakpoint-down(lg) {
+  //  .auth-container {
+  //    padding: $_space-8;
+  //
+  //    .auth-wrapper {
+  //
+  //      .auth-form {
+  //        padding: $_space-8;
+  //
+  //        .header {
+  //          .header-logo {
+  //            margin-bottom: $_space-4;
+  //          }
+  //        }
+  //      }
+  //    }
+  //  }
+  //}
+  //
+  //@include media-breakpoint-down(md) {
+  //  .auth-container {
+  //    padding: $_space-8;
+  //
+  //    .auth-wrapper {
+  //
+  //      .auth-form {
+  //        padding: $_space-8;
+  //
+  //        .header {
+  //          .header-logo {
+  //            margin-bottom: $_space-4;
+  //          }
+  //        }
+  //      }
+  //    }
+  //  }
+  //}
+  //
   @include media-breakpoint-down(sm) {
     .auth-container {
       padding: 0 !important;
@@ -99,6 +118,7 @@
         height: 96%;
         .auth-form {
           padding: $_space-4 $_space-8 !important;
+          height: 100%;
 
           .header {
             .header-logo {
@@ -111,6 +131,10 @@
             }
           }
         }
+
+        .auth-images {
+          height: 0;
+        }
       }
 
       .link {
@@ -120,6 +144,17 @@
       }
     }
   }
+
+  //@include media-breakpoint-up(sm) {
+  //  .auth-container {
+  //
+  //    .auth-wrapper {
+  //      .auth-form {
+  //        min-width: calc(32rem);
+  //      }
+  //    }
+  //  }
+  //}
 
 }
 
