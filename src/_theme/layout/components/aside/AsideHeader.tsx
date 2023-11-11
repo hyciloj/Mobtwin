@@ -7,14 +7,13 @@ const AsideHeader = () => {
     const [config, setConfig] = useState<ILayout>(getLayout());
     const [classes, setClasses] = useState<ILayout>(getLayout());
 
-    const {minimizedY} = config.aside;
+    const {minimized} = config.aside;
 
     const updateData = (fieldsToUpdate: Partial<ILayout>) => {
         const updatedData = {...classes, ...fieldsToUpdate};
         setConfig(updatedData);
         LayoutSetup.setConfig(updatedData);
     };
-
     return (
         <>
             <div className="aside-header d-flex justify-content-between align-items-center"
@@ -33,20 +32,20 @@ const AsideHeader = () => {
                 <div
                     id='kt_aside_toggle'
                     className='aside-toggle'
-                    data-kt-toggle-y='true'
-                    data-kt-toggle-y-state='active'
-                    data-kt-toggle-y-target='body'
-                    data-kt-toggle-y-name='aside-minimize'
+                    data-kt-toggle={minimized}
+                    data-kt-toggle-state='active'
+                    data-kt-toggle-target='body'
+                    data-kt-toggle-name='aside-minimize'
                     onClick={() =>
                         updateData({
                             aside: {
                                 ...config.aside,
-                                minimizedY: !minimizedY
+                                minimized: !minimized
                             }
                         })
                     }
                 >
-                    <KTSVG path={'/media/icons/duotune/arrows/arr027.svg'} className=''/>
+                    <KTSVG path={'/media/icons/duotune/arrows/arr026.svg'} className=''/>
                 </div>
 
             </div>

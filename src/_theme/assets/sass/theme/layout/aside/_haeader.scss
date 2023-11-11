@@ -4,10 +4,13 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
 @mixin asideHeader($mode) {
   .aside-header {
     padding: 0 $_space-3;
+    position: relative;
 
     .aside-toggle {
 
       background: $linearGradient;
+      position: absolute;
+      right: -15px;
       width: 30px;
       height: 30px;
       border-radius: 50%;
@@ -18,12 +21,19 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
       transition-property: $_transition-property-common;
       transition-duration: $_transition-duration-normal;
 
+      &[data-kt-toggle='true'] {
+        .svg-icon {
+          //line-height: 1;
+          transform: rotate(180deg);
+          transition-property: $_transition-property-common;
+          transition-duration: $_transition-duration-normal;
+        }
+      }
       .svg-icon {
         //line-height: 1;
         display: flex;
-        transform: rotate(90deg);
         @include svg-icon-size($_sizes-4);
-        @include svg-icon-color($_colors-whiteAlpha-800);
+        @include svg-icon-color($white);
       }
 
       &:hover {

@@ -44,9 +44,9 @@ export class LayoutSetup {
 
     private static initAside(config: IAside): void {
 
-        // console.log("initAside => ", config.minimizedY)
-        // if (config.minimizedY) {
-        //     document.body.setAttribute('data-kt-aside-minimize-y', 'on')
+        // console.log("initAside => ", config.minimized)
+        // if (config.minimized) {
+        //     document.body.setAttribute('data-kt-aside-minimize', 'on')
         // } else {
         //     console.log("hello")
         // }
@@ -58,10 +58,10 @@ export class LayoutSetup {
 
         if (kt_aside_toggle) {
 
-            if (config.minimizedY) {
-                kt_aside_toggle.setAttribute('data-kt-aside-minimize-y', 'on')
+            if (config.minimized) {
+                kt_aside_toggle.setAttribute('data-kt-aside-minimize', 'on')
             } else {
-                kt_aside_toggle.removeAttribute('data-kt-aside-minimize-y')
+                kt_aside_toggle.removeAttribute('data-kt-aside-minimize')
             }
         }
     }

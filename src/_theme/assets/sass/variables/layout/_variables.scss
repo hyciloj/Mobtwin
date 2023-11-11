@@ -22,19 +22,23 @@ $header-config: (
 // Aside
 $aside-config: (
         z-index: 101,
-  // Aside's z-index property
+        // Aside's z-index property
         transition-speed: 0.3s,
-  // transition speed
+        // transition speed
         padding-x: 25px,
         menu-indention: 0.75rem,
         bg-color: #1e1e2d,
         logo-bg-color: darken(#1e1e2d, 2%),
+        scrollbar-color: $gray-200,
+        scrollbar-hover-color: $gray-300,
         width: 265px,
-        height: 100vh,
-  // Aside width for desktop mode
+        // Aside width for desktop mode
         minimized-width: 75px,
-        minimized-height: 75px,
-  // Monimized hover box shadow,,
+        // Aside minimized width for desktop mode
+        box-shadow: 0 0 28px 0 rgba(82, 63, 105, 0.1),
+        // Aside box shadow
+        minimized-hover-box-shadow: 5px 0px 10px rgba(70, 78, 95, 0.125),
+        // Monimized hover box shadow,,
 ) !default;
 
 // Menu

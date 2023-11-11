@@ -25,6 +25,8 @@ export default function Router() {
         }
     })
 
+    console.log({currentUrl})
+
     return useRoutes([
         {
             path: '/',

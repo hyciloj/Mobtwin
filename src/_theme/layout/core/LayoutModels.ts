@@ -10,7 +10,7 @@ export interface ILayoutCSSClasses {
 }
 
 export interface IAside {
-    minimizedY: boolean // Set aside minimized by default
+    minimized: boolean // Set aside minimized by default
     menuIcon: 'svg' | 'font' // Menu icon type(svg|font)
 
 }
