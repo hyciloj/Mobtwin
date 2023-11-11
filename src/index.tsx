@@ -31,14 +31,3 @@ root.render(
         </PersistGate>
     </Provider>
 );
-
-/*
-
-<Provider store={store}>
-    <PersistGate persistor={persistor} loading={<div>Loading...</div>}>
-        <App basename={PUBLIC_URL}/>
-    </PersistGate>
-</Provider>
-
-
- */

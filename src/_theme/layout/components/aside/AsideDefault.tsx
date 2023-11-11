@@ -1,14 +1,9 @@
-import React, {FC, MouseEventHandler, useEffect, useRef, useState} from "react";
-import {ChildrenProps} from "../../../../config-global";
-import {Link} from "react-router-dom";
-import {KTSVG, toAbsoluteUrl} from "../../../helpers";
+import React, {FC, useEffect, useRef, useState} from "react";
 import {clsx} from "clsx";
 import {AsideMenu} from "./AsideMenu";
 import {useLayout} from "../../core/provider";
 import {AsideHeader} from "./AsideHeader";
-import {ILayout, LayoutSetup} from "../../core";
-import {motion, useMotionValue, useTransform} from 'framer-motion';
-import {string} from "yup";
+import {motion} from 'framer-motion';
 
 // https://dribbble.com/shots/17143561-Sidebar-Navigation-Menu-Animation
 

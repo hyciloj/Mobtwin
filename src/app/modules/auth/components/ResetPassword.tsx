@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import {InputComponent, SubmitComponent} from "../../components";
-import {useParams, useLocation, Navigate} from 'react-router-dom';
+import {useNavigate, useLocation, Navigate} from 'react-router-dom';
 import {encryptEmail} from "../../../../_theme/helpers";
 import {EmailPasswordComponent} from "./EmailPasswordComponent";
 import {login, resetPassword} from "../redux/AuthCRUD";
@@ -41,11 +41,46 @@ export default function ResetPassword() {
     })
     const [loading, setLoading] = useState(false)
     const location = useLocation();
-
+    let navigate = useNavigate();
+    const [info, setInfo] = useState({
+        show: false,
+        msg: "",
+        bg: "",
+    });
     const searchParams = new URLSearchParams(location.search);
-    const email = searchParams.get('email');
-    const encryptedEmail = encryptEmail({email})
-    const token = searchParams.get('token');
+
+    const [paramsUrl, setParamsUrl] = useState({
+        email: '',
+        token: '',
+    })
+
+    useEffect(() => {
+        const email = searchParams.get('email');
+        const encryptedEmail = encryptEmail({email})
+        const token = searchParams.get('token');
+
+        setParamsUrl({email: email || '', token: token || ''})
+
+        const oldSearchParams = searchParams.toString();
+
+        searchParams.delete('token');
+        searchParams.delete('email');
+
+
+        // Build the new search string without the removed params
+        const newSearchParams = searchParams.toString();
+
+        // Check if the search string has changed before updating the URL
+        if (location.search !== `?${newSearchParams}`) {
+            // Use navigate to update the URL without adding a new entry to the navigation history
+            navigate({
+                pathname: location.pathname,
+                search: newSearchParams,
+            },
+                { replace: true }
+                );
+        }
+        }, [])
 
 
     const formik = useFormik({
@@ -56,30 +91,44 @@ export default function ResetPassword() {
 
             try {
                 let response;
-                if (email && token) {
+                if (paramsUrl.email && paramsUrl.token) {
                     response = await resetPassword({
-                        email,
+                        email: paramsUrl.email,
                         password: values.password,
                         password_confirmation: values.passwordConfirmation,
-                        token
+                        token: paramsUrl.token
                     })
 
                     const {status} = response
                     if (status === 200) {
 
-                        console.log({status})
-                        return <Navigate replace to={ROOTS_AUTHENTICATION}/>
+                        formik.resetForm();
+                        showInfoMessage("your password has been successfully modified", "#3cdd78")
+                        setTimeout(() => {
+                            navigate(PATH_AUTH.login);
+                            window.location.reload()
+                        }, 2500);
+
                     }
 
                 }
 
-            } catch (error) {
-                console.error(error);
+            } catch (error: any) {
+                const { data } = error.response;
+                showInfoMessage(data.errors.email, "#F56565")
+
             } finally {
                 setLoading(false);
             }
         },
     });
+
+    const showInfoMessage = (msg: string, bg: string, duration = 2000) => {
+        setInfo({ show: true, msg, bg });
+        setTimeout(() => {
+            setInfo({ show: false, msg, bg });
+        }, duration);
+    };
 
     return (
         <Container>
@@ -103,7 +152,17 @@ export default function ResetPassword() {
                                     placeholder={'******'}
                     />
                 </div>
-                <SubmitComponent formik={formik} labelBtn={"Reset password"} loading={loading}/>
+                {
+                    info.show
+                        ? (
+                            <div className="mb-10 p-8 rounded">
+                                <div className="d-flex flex-column align-items-center auth-info">
+                                    <span>{info.msg}</span>
+                                </div>
+                            </div>
+                        )
+                        : <SubmitComponent formik={formik} labelBtn={"Reset password"} loading={loading}/>
+                }
             </form>
         </Container>
     )

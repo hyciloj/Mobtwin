@@ -1,13 +1,29 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Navigate, useRoutes, Outlet} from "react-router-dom";
 import {AuthGuard, GuestGuard} from "../modules/auth";
 import {Before, Login, Register, ResetPassword, Search} from "./elements";
 import {PATH_AFTER_LOGIN, PATH_BEFORE_LOGIN} from "../../config-global";
 import {DashboardWrapper, AuthPage, Demo} from "../pages";
-import {ROOTS_AUTHENTICATION, ROOTS_DASHBOARD, ROOT_DEMO, PATH_AUTH} from "./paths";
+import {ROOTS_AUTHENTICATION, ROOTS_DASHBOARD, ROOT_DEMO, PATH_AUTH, ROOTS_BETA} from "./paths";
 import {MasterLayout} from "../../_theme/layout/MasterLayout";
 
 export default function Router() {
+
+    const isAuthorized = false
+    const windowUrl = window.location.href
+    const searched = "https://www.mobtwin.com/"
+
+    const [currentUrl, setCurrentUrl] = useState(false)
+
+    useEffect(() => {
+        let position = windowUrl.search(searched);
+        if (position !== -1) {
+            setCurrentUrl(true)
+        } else {
+            setCurrentUrl(false)
+
+        }
+    })
 
     return useRoutes([
         {
@@ -35,7 +51,7 @@ export default function Router() {
         },
 
         {
-            path: ROOTS_DASHBOARD,
+            path: currentUrl ? ROOTS_BETA : ROOTS_DASHBOARD,
             element: (
                 <AuthGuard>
                     <MasterLayout>
@@ -46,16 +62,14 @@ export default function Router() {
             ),
             children: [
                 {element: <Navigate to={PATH_AFTER_LOGIN} replace/>, index: true},
-                {path: 'beta', element: <></>},
-                // {path: 'search', element: <Search/>},
-                // {path: 'logout', element: <Logout/>},
+                {path: 'search', element: <Search/>},
                 {path: 'two', element: <h1>PageTwo</h1>},
                 {path: 'three', element: <h1>PageThree</h1>},
             ],
         },
 
 
-        {path: '*', element: <Navigate to="/404" replace/>},
+        {path: '*', element: <Navigate to={ROOTS_AUTHENTICATION} replace/>},
 
     ]);
 }

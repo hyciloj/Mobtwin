@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import {shallowEqual, useSelector} from "react-redux";
 import {RootState} from "../../../setup";
 import Search from "../../pages/search/Search";
+import {PATH_AUTH} from "../../routing/paths";
 
 function AuthGuard({children}: ChildrenProps) {
 
@@ -18,8 +19,7 @@ function AuthGuard({children}: ChildrenProps) {
         if (pathname !== requestedLocation) {
             setRequestedLocation(pathname);
         }
-        return <Login />;
-        // return <Search />;
+        return <Navigate to={PATH_AUTH.login} />;
     }
 
     if (requestedLocation && pathname !== requestedLocation) {

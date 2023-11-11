@@ -1,6 +1,5 @@
 @mixin authContainer($mode) {
   .auth-container {
-    //padding: $_space-12;
     height: 100vh;
     overflow: hidden;
     padding: 3rem;
@@ -8,13 +7,10 @@
     justify-content: center;
 
     .auth-wrapper {
-      //border-radius: 20px;
       overflow: hidden;
-      box-shadow: if(isDarkMode($mode), 0 0 10px 6px  rgba(255,255,255,0.1), 0 0 10px 6px  rgba(0,0,0,0.1));
-      //height: 89%;
-      //margin: 3%;
-      //overflow: hidden;
-      //box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 1px 1px 30px 10px rgba(0,0,0,0.13);
+      -webkit-box-shadow: 1px 1px 30px 10px rgba(0,0,0,0.13);
+      -moz-box-shadow: 1px 1px 30px 10px rgba(0,0,0,0.13);
       display: flex;
       width: 100%;
       height: 100%;
@@ -22,11 +18,6 @@
       border-radius: 12px;
 
       .auth-form {
-        //padding: $_space-8 $_space-12;
-        //display: flex;
-        //flex-direction: column;
-        //justify-content: space-between;
-        //background: if(isDarkMode($mode), $gray-900, $gray-100);
         max-width: 24rem;
         padding: $_space-6 $_space-8;
         height: auto;
@@ -51,7 +42,7 @@
       }
 
       .auth-images {
-        background-image: url(https://app.leonardo.ai/img/login-hero-images/ExplosionFighting.webp);
+        //background-image: url(https://app.leonardo.ai/img/login-hero-images/ExplosionFighting.webp);
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -71,51 +62,14 @@
     }
   }
 
-  //@include media-breakpoint-down(lg) {
-  //  .auth-container {
-  //    padding: $_space-8;
-  //
-  //    .auth-wrapper {
-  //
-  //      .auth-form {
-  //        padding: $_space-8;
-  //
-  //        .header {
-  //          .header-logo {
-  //            margin-bottom: $_space-4;
-  //          }
-  //        }
-  //      }
-  //    }
-  //  }
-  //}
-  //
-  //@include media-breakpoint-down(md) {
-  //  .auth-container {
-  //    padding: $_space-8;
-  //
-  //    .auth-wrapper {
-  //
-  //      .auth-form {
-  //        padding: $_space-8;
-  //
-  //        .header {
-  //          .header-logo {
-  //            margin-bottom: $_space-4;
-  //          }
-  //        }
-  //      }
-  //    }
-  //  }
-  //}
-  //
   @include media-breakpoint-down(sm) {
     .auth-container {
-      padding: 0 !important;
+      padding: 1rem 0 !important;
 
       .auth-wrapper {
-        border-radius: 0 !important;
-        height: 96%;
+        border-radius: 1rem !important;
+        height: 100%;
+        width: 320px;
         .auth-form {
           padding: $_space-4 $_space-8 !important;
           height: 100%;
@@ -168,15 +122,6 @@
 //        xxl: 1400px
 //);
 
-
-@keyframes moveSlideshow {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-4097px); /* The image height */
-  }
-}
 
 @mixin slideshow-styles {
   background-size: contain;

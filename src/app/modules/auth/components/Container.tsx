@@ -25,8 +25,6 @@ const Container: FC<ChildrenProps> = ({children}) => {
                                              alt='mobtwin'
                                              className=''
                                         />
-                                        <Logout />
-
                                     </div>
 
                                 </div>
@@ -54,15 +52,18 @@ const Container: FC<ChildrenProps> = ({children}) => {
                                         />
                                     </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="_separator-or">
-                                    <hr aria-orientation="horizontal" className="_separator-hr"/>
-                                    <div className="_separator-div">
-                                        <p className="_separator-p">OR</p>
+                                <div className="row my-3">
+                                    <div className="col-12">
+                                        <div className="_separator-or">
+                                            <hr aria-orientation="horizontal" className="_separator-hr"/>
+                                            <div className="_separator-div">
+                                                <p className="_separator-p">OR</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div className="main">
                                 {children}
                             </div>
@@ -77,9 +78,9 @@ const Container: FC<ChildrenProps> = ({children}) => {
                         </div>
                     </div>
                     <div className="auth-images"
-                    //      style={{
-                    //     backgroundImage: `url(http://goootek.com/duck/duck/assets/meta-tags-banner.webp)`,
-                    // }}
+                         style={{
+                             backgroundImage: `url(${toAbsoluteUrl('/media/images/home/meta-tags-banner.webp')})`,
+                         }}
                     />
                 </div>
             </div>

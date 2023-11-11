@@ -1,15 +1,7 @@
 import React, {FC, useEffect, useRef} from "react";
 import {useLocation} from 'react-router'
-import {Link} from "react-router-dom";
 import {clsx} from "clsx";
-import {KTSVG} from "../../../helpers";
 import {AsideMenuMain} from "./AsideMenuMain";
-// import {
-//     DrawerComponent,
-//     MenuComponent,
-//     ScrollComponent,
-//     ToggleComponent,
-// } from '../../../assets/ts/components'
 type Props = {
     asideMenuCSSClasses: string[]
 }
@@ -20,8 +12,6 @@ const AsideMenu: FC<Props> = ({asideMenuCSSClasses}) => {
     const {pathname} = useLocation()
 
     useEffect(() => {
-        setTimeout(() => {
-        }, 50)
     }, [pathname])
 
     return (

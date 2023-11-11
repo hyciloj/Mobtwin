@@ -13,12 +13,6 @@ const EmailPasswordComponent: FC<EmailPasswordComponentInterface> = ({
 
     return (
         <>
-            {/*<div className="mb-10 p-8 rounded">*/}
-            {/*    <div className="d-flex flex-column align-items-center auth-info" style={{borderColor: bg}}>*/}
-            {/*        <span>{msg}</span>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-
             <div className="d-flex flex-column align-items-center mb-3">
                 <InputComponent formik={formik} id={"email"} type={"email"} label={'email'}
                                 placeholder={'name@host.com'}/>

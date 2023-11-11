@@ -2,6 +2,7 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import {logout} from "../redux/AuthCRUD";
 import * as auth from "../redux/AuthRedux";
+import {Navigate} from "react-router-dom";
 
 export default function Logout() {
 
@@ -10,13 +11,11 @@ export default function Logout() {
     const handleLogout = () => {
         logout().then(r => {
             const {status} = r.data
-            console.log(status)
             if (status === 200) {
                 dispatch(auth.actions.logout())
             }
         })
     };
-
 
     return (
         <div className="col-1 offset-8 d-flex justify-content-center align-items-center">

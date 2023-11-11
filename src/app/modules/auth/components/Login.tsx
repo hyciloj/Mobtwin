@@ -50,17 +50,16 @@ const initialValuesResetPassword = {
 
 export default function Login() {
 
-    const [formData, setFormData] = useState<formData>({email: 'admin@email.com', password: 'admin'})
     const [loading, setLoading] = useState(false);
     const [loadingResetPassword, setLoadingResetPassword] = useState(false);
-    const [isToggled, toggle] = useToggle(false);
     const [info, setInfo] = useState({
         show: false,
-        msg: ""
+        msg: "",
+        bg: "",
     });
     const [child, setChild] = useState<ChildProps>('login')
 
-    const {  t: translate } = useTranslation();
+    const {t: translate} = useTranslation();
 
 
     // const [info, setInfo] = useState<PropsInfo>({
@@ -87,35 +86,28 @@ export default function Login() {
         validationSchema: loginSchema,
         onSubmit: async (values, {setStatus, setSubmitting}) => {
             setLoading(true);
+            const emailValue = values.email;
+            const passwordValue = values.password;
 
             try {
                 let response;
 
                 if (child === 'login') {
-                    response = await login({email: values.email, password: values.password});
+                    response = await login({email: emailValue, password: passwordValue});
 
-                    const {message_code, status, user, token} = response.data;
-                    const {id, name, email, role, workspace} = user;
-
+                    const {token} = response.data;
                     dispatch(auth.actions.login({accessToken: token}))
-
                 } else if (child === 'register') {
-                    response = await register({email: values.email, password: values.password});
 
+                    response = await register({email: emailValue, password: passwordValue});
                     const {status} = response.data;
-
-                    console.log("try" , response)
-
                     if (status === 200) {
-                        setInfo({show: true, msg: "we sent a link to the mailbox"})
-                        setTimeout(() => {
-                            setInfo({show: false, msg: ""})
-                        }, 2000)
+                        showInfoMessage("we sent a link to the mailbox", "#3cdd78")
                     }
                 }
-            } catch (error) {
-                console.log("catch: ", error)
+            } catch (error: any) {
 
+                handleApiError(error, child);
             } finally {
                 setLoading(false);
             }
@@ -134,25 +126,41 @@ export default function Login() {
                 const {status} = response.data;
 
                 if (status === 200) {
-                    console.log("formikResetPassword: ", status)
-                    setInfo({show: true, msg: "we sent a link to the mailbox"})
+                    setInfo({show: true, msg: "we sent a link to the mailbox", bg: "#3cdd78"})
                     setTimeout(() => {
-                        setInfo({show: false, msg: ""})
+                        setInfo({show: false, msg: "", bg: ""})
                     }, 2000)
                 }
+            } catch (error: any) {
 
-
-            } catch (err: any) {
-                console.log({err})
-                setInfo({
-                    show: true, msg: 'demo.title'
-                })
+                handleApiError(error, child, );
             } finally {
                 setLoadingResetPassword(false);
             }
         },
     });
 
+    const showInfoMessage = (msg: string, bg: string, duration = 2000) => {
+        setInfo({ show: true, msg, bg });
+        setTimeout(() => {
+            setInfo({ show: false, msg, bg });
+        }, duration);
+    };
+
+    const handleApiError = (error: any, child: ChildProps) => {
+        const { data } = error.response;
+        let msg;
+
+        if (child === 'login') {
+            msg = data.message;
+        } else if (child === 'register') {
+            msg = data.errors.email[0];
+        } else if (child === 'forgotPassword') {
+            msg = data.errors.email;
+        }
+
+        showInfoMessage(msg, "#F56565");
+    };
 
     return (
         <Container>
@@ -177,7 +185,19 @@ export default function Login() {
                                             </div>
                                         </EmailPasswordComponent>
 
-                                        <SubmitComponent formik={formik} labelBtn={"Sign In"} loading={loading}/>
+                                        {
+                                            info.show
+                                                ? <div className="mt-4 p-8 rounded">
+                                                    <div className="d-flex flex-column align-items-center auth-info" style={{
+                                                        borderColor: info.bg,
+                                                        color: info.bg,
+                                                    }}>
+                                                        <span>{info.msg}</span>
+                                                    </div>
+                                                </div>
+                                                : <SubmitComponent formik={formik} labelBtn={"Sign In"} loading={loading}/>
+                                        }
+
 
                                         <div className="row mt-1">
                                             <div className="col-12 d-flex justify-content-center align-items-center">
@@ -200,14 +220,15 @@ export default function Login() {
                                         {
                                             info.show
                                                 ? <div className="mb-10 p-8 rounded">
-                                                    <div className="d-flex flex-column align-items-center auth-info">
+                                                    <div className="d-flex flex-column align-items-center auth-info" style={{
+                                                        borderColor: info.bg,
+                                                        color: info.bg,
+                                                    }}>
                                                         <span>{info.msg}</span>
                                                     </div>
                                                 </div>
                                                 : <SubmitComponent formik={formik} labelBtn={"Sign Up"} loading={loading}/>
                                         }
-
-
                                         <div className="row mt-1">
                                             <div className="col-12 d-flex justify-content-center align-items-center">
                                                 <a href="#" className="link"
@@ -242,7 +263,10 @@ export default function Login() {
                             {
                                 info.show
                                     ? <div className="mb-10 p-8 rounded">
-                                        <div className="d-flex flex-column align-items-center auth-info">
+                                        <div className="d-flex flex-column align-items-center auth-info"style={{
+                                            borderColor: info.bg,
+                                            color: info.bg,
+                                        }}>
                                             <span>{translate(info.msg)}</span>
                                         </div>
                                     </div>
@@ -260,8 +284,6 @@ export default function Login() {
                                         </>
                                     )
                             }
-
-
                         </form>
                     )
             }
@@ -269,4 +291,3 @@ export default function Login() {
         </Container>
     )
 }
-

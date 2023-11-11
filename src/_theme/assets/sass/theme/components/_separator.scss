@@ -22,7 +22,7 @@
     width: $_sizes-8;
     height: $_sizes-8;
     border-radius: 999rem;
-    background-color: if(isDarkMode($mode), $colors-gray-900, $colors-gray-100);
+    background-color: $white;
     border: 1px solid if(isDarkMode($mode), $_colors-whiteAlpha-300, $_colors-blackAlpha-300);
     -webkit-box-pack: center;
     justify-content: center;
