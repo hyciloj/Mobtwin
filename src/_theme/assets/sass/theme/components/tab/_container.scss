@@ -1,5 +1,8 @@
 @mixin tab($mode) {
   .tab-container {
+
+    margin: $_space-12 0;
+
     .tab-menu {
 
       margin-bottom: $_space-6;
@@ -21,9 +24,9 @@
 
         &:hover {
           background: radial-gradient(80.23% 80.23% at 50% 88.37%, rgba(174, 78, 245, 0.22) 0%, rgba(174, 78, 245, 0.22) 0.01%, rgba(174, 78, 245, 0) 100%);
-          span {
-            color: #AE4EF5;
 
+          span {
+            color: $deepFuchsia;
           }
         }
 
@@ -39,17 +42,21 @@
           border-image-slice: 1;
         }
 
-        &.tab-open span {
-          color: if(isDarkMode($mode), $white, $black),
+        &.tab-open {
+          span {
+            color: $deepFuchsia,
+          }
         }
       }
     }
 
     .tab-block {
       margin-bottom: $_space-12;
+
       .tab-block-left {
 
         padding: $_space-16 0;
+
         .tab-block-title {
           @include typography(
                           $_colors-whiteAlpha-400,
@@ -62,7 +69,6 @@
         .tab-block-sub-title {
           @include typography(
                           if(isDarkMode($mode), $_colors-whiteAlpha-800, $_colors-blackAlpha-900),
-
                           $_fontSizes-2xl,
                           500,
                           $_lineHeights-10
@@ -82,6 +88,63 @@
       .tab-block-right {
         background-repeat: no-repeat;
         background-size: cover;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .tab-container {
+
+      margin: $_space-4 0;
+
+      .tab-menu {
+
+        margin-bottom: $_space-4;
+
+        .tab-title {
+          padding: $_space-2;
+
+          span {
+            @include typography(
+                            if(isDarkMode($mode), $white, $black),
+                            $_fontSizes-md,
+                            600,
+                            $_lineHeights-1
+            );
+          }
+        }
+      }
+
+      .tab-block {
+        margin-bottom: $_space-8;
+
+        .tab-block-left {
+
+          padding: $_space-4 0;
+
+          .tab-block-sub-title {
+            @include typography(
+                            if(isDarkMode($mode), $_colors-whiteAlpha-800, $_colors-blackAlpha-900),
+                            $_fontSizes-md,
+                            500,
+                            $_lineHeights-10
+            );
+          }
+
+          .tab-sub-description {
+            @include typography(
+                            $colors-gray-500,
+                            $_fontSizes-md,
+                            400,
+                            $_lineHeights-7
+            );
+          }
+        }
+
+        .tab-block-right {
+          min-height: $_sizes-40;
+        }
+
       }
     }
   }

@@ -34,6 +34,6 @@ body.dark {
 }
 
 body.light {
-  background-color: $white;
+  background-color: $bg-light;
   @import "theme/light/light";
 }

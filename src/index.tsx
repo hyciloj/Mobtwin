@@ -4,6 +4,7 @@ import {App} from "./app/App";
 import {I18nProvider} from "./_theme/i18n/I18nProvider";
 import './_theme/assets/sass/style.scss'
 import {LayoutProvider} from "./_theme/layout/core/provider";
+
 // Redux
 // https://github.com/rt2zz/redux-persist
 import {PersistGate} from 'redux-persist/integration/react'

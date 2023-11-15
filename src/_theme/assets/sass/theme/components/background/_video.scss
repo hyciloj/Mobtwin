@@ -1,0 +1,17 @@
+@mixin VideoContainer($mode) {
+  .video-container{
+    .video-wrapper {
+      position: relative;
+      min-height: 90vh;
+      .video {
+        video {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: auto;
+          height: auto;
+        }
+      }
+    }
+  }
+}

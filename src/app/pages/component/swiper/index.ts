@@ -1,0 +1,1 @@
+export {SwiperP} from "./SwiperP"

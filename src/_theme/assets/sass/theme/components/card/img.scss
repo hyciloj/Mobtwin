@@ -1,0 +1,39 @@
+@mixin CardImg($mode) {
+  .card-img {
+    min-height: $_sizes-md;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    border-radius: $_sizes-3;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .card-img-body {
+      width: 100%;
+      padding: 1rem;
+
+      .title {
+        @include typography(
+                        $_colors-whiteAlpha-800,
+                        $_fontSizes-sm,
+                        400,
+                        1.5
+        );
+        text-transform: capitalize;
+        margin-bottom: $_space-2;
+      }
+      .subtitle {
+        @include typography(
+                        $_colors-whiteAlpha-900,
+                        $_fontSizes-md,
+                        700,
+                        1.5
+        );
+        text-transform: capitalize
+      }
+      .details {
+        margin-top: $_space-4;
+      }
+    }
+  }
+}

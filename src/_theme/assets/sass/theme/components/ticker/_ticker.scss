@@ -1,0 +1,161 @@
+@mixin TickerContainer($mode) {
+
+  .ticker-container {
+    margin-top: $_space-20;
+    height: calc(100vh - 5rem);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+
+    > div:first-child {
+      min-width: 50% !important;
+    }
+
+    .ticker-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20%;
+        height: 100%;
+        background: linear-gradient(
+                        90deg,
+                        if(isDarkMode($mode), $black, $bg-light) 10%,
+                        if(isDarkMode($mode), $_colors-blackAlpha-50, $_colors-whiteAlpha-50) 33%
+        );
+        z-index: 1;
+      }
+
+      .tickers {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+
+        .tickers-imgs {
+          width: 100%;
+          display: flex;
+
+          .tickers-img {
+            background-size: cover;
+            margin: $_sizes-2;
+            height: $_sizes-24;
+            width: $_sizes-24;
+            border-radius: 12px;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+
+        }
+
+      }
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    .ticker-container {
+      flex-direction: column;
+      padding: 0;
+
+      .ticker-wrapper {
+        margin: $_space-4 0;
+
+        &::before {
+          width: 20%;
+          height: 100%;
+          background: linear-gradient(
+                          90deg,
+                          if(isDarkMode($mode), $black, $bg-light) 70%,
+                          if(isDarkMode($mode), $_colors-blackAlpha-50, $_colors-whiteAlpha-50) 100%
+          );
+        }
+
+        .tickers {
+          .tickers-imgs {
+            width: 100%;
+            display: flex;
+
+            .tickers-img {
+              margin: $_sizes-2;
+              height: $_sizes-20;
+              width: $_sizes-20;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .ticker-container {
+      padding: 0;
+
+      .ticker-wrapper {
+        &::before {
+          width: 2%;
+          height: 100%;
+          background: linear-gradient(
+                          90deg,
+                          if(isDarkMode($mode), $black, $bg-light) 70%,
+                          if(isDarkMode($mode), $_colors-blackAlpha-50, $_colors-whiteAlpha-50) 100%
+          );
+        }
+
+        .tickers {
+          .tickers-imgs {
+
+            .tickers-img {
+              margin: $_sizes-1;
+              height: $_sizes-20;
+              width: $_sizes-20;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .ticker-container {
+      padding: 0;
+
+      .ticker-wrapper {
+        margin: $_space-4 0;
+
+        &::before {
+          width: 30%;
+          height: 100%;
+          background: linear-gradient(
+                          90deg,
+                          if(isDarkMode($mode), $black, $bg-light) 80%,
+                          if(isDarkMode($mode), $_colors-blackAlpha-50, $_colors-whiteAlpha-50) 100%
+          );
+        }
+
+        .tickers {
+          .tickers-imgs {
+
+            .tickers-img {
+              margin: $_sizes-1;
+              height: $_sizes-16;
+              width: $_sizes-16;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

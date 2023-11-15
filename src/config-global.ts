@@ -1,10 +1,11 @@
 // ROOT PATH AFTER LOGIN SUCCESSFUL
-import {PATH_DASHBOARD} from "./app/routing/paths";
+import {PATH_BETA, PATH_DASHBOARD} from "./app/routing/paths";
 import React from "react";
 import {FieldInputProps, FormikErrors, FormikTouched, FormikValues} from "formik/dist/types";
 import {FieldConfig} from "formik/dist/Field";
 
 export const PATH_AFTER_LOGIN = PATH_DASHBOARD.search;
+export const PATH_AFTER_LOGIN_BETA = PATH_BETA;
 export const PATH_BEFORE_LOGIN = '/';
 
 export type ChildrenProps = {

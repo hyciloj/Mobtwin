@@ -41,7 +41,10 @@
         display: flex;
         align-items: center;
         width: get($menu, link, icon, width);
+        height: get($menu, link, icon, width);
         margin-right: get($menu, link, icon, space);
+        background: linear-gradient(310deg, #F06292 0%, #F06292 100%);
+        border-radius: 0.3rem;
 
         .svg-icon {
           line-height: 1;

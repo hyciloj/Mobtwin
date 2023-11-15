@@ -1,10 +1,6 @@
 import React, {FC} from "react";
-import {Link} from "react-router-dom";
-import {PATH_DASHBOARD} from "../../routing/paths";
-import {useDispatch} from "react-redux";
-import * as auth from "../../../app/modules/auth/redux/AuthRedux";
-import {logout} from "../../modules/auth/redux/AuthCRUD";
 import Logout from "../../modules/auth/components/Logout";
+import {CardImage} from "../component";
 
 export default function Search() {
 
@@ -12,153 +8,12 @@ export default function Search() {
         <>
             <Logout />
             <div className={"_pt-10"}>
+                <div className="row">
+                    <div className="col-12 col-md-3">
+                        <CardImage />
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Consectetur fugit molestias mollitia odio pariatur sunt ullam? Alias deleniti deserunt dolor enim esse,
-                excepturi magnam molestias neque nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Consectetur fugit molestias mollitia odio pariatur sunt ullam? Alias deleniti deserunt dolor enim esse,
-                excepturi magnam molestias neque nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Consectetur fugit molestias mollitia odio pariatur sunt ullam? Alias deleniti deserunt dolor enim esse,
-                excepturi magnam molestias neque nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Consectetur fugit molestias mollitia odio pariatur sunt ullam? Alias deleniti deserunt dolor enim esse,
-                excepturi magnam molestias neque nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Consectetur fugit molestias mollitia odio pariatur sunt ullam? Alias deleniti deserunt dolor enim esse,
-                excepturi magnam molestias neque nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Consectetur fugit molestias mollitia odio pariatur sunt ullam? Alias deleniti deserunt dolor enim esse,
-                excepturi magnam molestias neque nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fugit molestias mollitia odio
-                    pariatur sunt ullam? Alias deleniti deserunt dolor enim esse, excepturi magnam molestias neque
-                    nesciunt nulla repudiandae sint!</p>
-
-
+                    </div>
+                </div>
             </div>
         </>
     )

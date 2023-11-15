@@ -4,14 +4,44 @@
     color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
     margin: $_space-8 0;
   }
-  .text-h1 {
+
+  .text-h2 {
     font-weight: 600;
-    font-size: 3rem;
+    font-size: 2rem;
     color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
   }
   .text-p {
     font-weight: 400;
     font-size: 1rem;
     color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
+  }
+
+  @include media-breakpoint-up(lg) {
+    .text-h1 {
+      font-weight: 600;
+      font-size: $_sizes-12;
+      color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    .text-h1 {
+      font-weight: 600;
+      font-size: $_sizes-8;
+      color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .text-heading {
+      font-size: $_fontSizes-2xl;
+      margin: $_space-3 0;
+    }
+    .text-h1 {
+      font-size: $_sizes-6;
+    }
+    .text-h2 {
+      font-size: $_sizes-4;
+    }
   }
 }

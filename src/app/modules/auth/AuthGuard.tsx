@@ -4,7 +4,6 @@ import React, {useState} from "react";
 import Login from "./components/Login";
 import {shallowEqual, useSelector} from "react-redux";
 import {RootState} from "../../../setup";
-import Search from "../../pages/search/Search";
 import {PATH_AUTH} from "../../routing/paths";
 
 function AuthGuard({children}: ChildrenProps) {

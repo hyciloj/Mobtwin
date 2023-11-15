@@ -17,10 +17,12 @@ export const PATH_AUTH = {
   register: path(ROOTS_AUTHENTICATION, '/register'),
   forgotPassword: path(ROOTS_AUTHENTICATION, '/forgot-password'),
 };
+export const PATH_BETA = {
+  root: ROOTS_BETA,
+};
 
 export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
-  beta: path(ROOTS_DASHBOARD, '/beta'),
   search: path(ROOTS_DASHBOARD, '/search'),
   logout: path(ROOTS_DASHBOARD, '/logout'),
   two: path(ROOTS_DASHBOARD, '/two'),

@@ -1,0 +1,17 @@
+@mixin NavBarFixed($mode) {
+  .navbar-fixed{
+    background-color: $_colors-whiteAlpha-400;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: $_space-2 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 7;
+
+    a {
+      color: $black;
+    }
+  }
+}

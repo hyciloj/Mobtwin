@@ -10,7 +10,7 @@ const MasterLayout: FC<ChildrenProps> = ({children}) => {
         <PageDataProvider>
             <div className='d-flex flex-row flex-column-fluid'>
                 <AsideDefault/>
-                <div className='wrapper d-flex flex-column flex-row-fluid' id='kt_wrapper'>
+                <div className='container-fluid wrapper d-flex flex-column flex-row-fluid' id='kt_wrapper'>
                     <div id='kt_content' className='content d-flex flex-column flex-column-fluid'>
                         {children}
                     </div>

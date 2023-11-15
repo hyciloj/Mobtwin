@@ -17,53 +17,12 @@ $themeMode: "light";
 @include tab($themeMode);
 @include text($themeMode);
 @include loadingPrimary($themeMode);
-
-.ticker-container {
-  margin-top: $_space-20;
-}
-.ticker-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.ticker-wrapper::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg,
-          if(isDarkMode($themeMode), $black, $white) 5%,
-          if(isDarkMode($themeMode), $_colors-blackAlpha-50, $_colors-whiteAlpha-50) 33%);
-  z-index: 1;
-}
-.tickers {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-
-}
-
-.avatar-container {
-  position: relative;
-  margin-bottom: $_space-4;
-
-  &::before {
-    background-image: linear-gradient(180deg, rgb(231 234 239 / 0%) 40%, #1a2335 100%);
-    position: absolute;
-    content: "";
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    pointer-events: none;
-  }
-}
+@include CardImg($themeMode);
+@include NavBarFixed($themeMode);
+@include SwiperContainer($themeMode);
+@include TickerContainer($themeMode);
+@include Gallery($themeMode);
+@include VideoContainer($themeMode);
 
 
 
@@ -104,17 +63,6 @@ $themeMode: "light";
   landing page
 */
 
-._header{
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  padding: $_space-4 $_space-40;
-  -webkit-backdrop-filter: blur(10px);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-}
 
 
 .brxe-ukrozz {
