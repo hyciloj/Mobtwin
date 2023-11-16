@@ -1,26 +1,33 @@
-import React, {FC} from "react";
-import {motion} from "framer-motion";
+import React, { FC, memo, useCallback } from "react";
+import { motion } from "framer-motion";
 
 type itemData = {
-    id: number,
-    filename: string,
-}
+    id: number;
+    filename: string;
+};
 
 interface InterfaceTickersX {
-    data: itemData[]
-    duration: number
-    from: number
-    to: number
+    data: itemData[];
+    duration: number;
+    from: number;
+    to: number;
 }
+const TickerX: FC<InterfaceTickersX> = memo(({ data, duration, from, to }) => {
 
-const TickerX: FC<InterfaceTickersX> = ({data, duration, from, to}) => {
+    const renderTickerItems = useCallback(() => {
+        return data.map((item, index) => (
+            <div key={index} style={{ backgroundImage: `url(${item.filename})` }} className="tickers-img" />
+        ));
+    }, [data]);
+
+
 
     return (
         <>
             <motion.div style={{
                 display: 'flex',
                 flexDirection: 'row',
-                overflow: 'hidden', // Hide overflowing content
+                overflow: 'hidden',
             }}
             >
 
@@ -34,17 +41,12 @@ const TickerX: FC<InterfaceTickersX> = ({data, duration, from, to}) => {
                         ease: 'linear', // Linear easing for a continuous effect
                     }}
                 >
-                    {data.map((item, index) => (
-                        <div key={index}
-                             style={{backgroundImage: `url(${item.filename})`,}}
-                             className="tickers-img"
-                        />
-                    ))}
+                    {renderTickerItems()}
                 </motion.div>
 
             </motion.div>
         </>
     )
-}
+});
 
 export {TickerX}

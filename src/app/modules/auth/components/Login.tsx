@@ -6,10 +6,7 @@ import {InputComponent, SubmitComponent} from "../../components";
 import {useFormik} from "formik";
 import * as Yup from 'yup'
 import {Container} from "./Container";
-import {useToggle} from "../../../hooks";
-import {FormikProps} from "../../../../config-global";
 import {EmailPasswordComponent} from "./EmailPasswordComponent";
-import {AxiosError} from "axios";
 import {useTranslation} from "react-i18next";
 
 interface formData {

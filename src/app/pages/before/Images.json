@@ -1,0 +1,50 @@
+{
+  "firstColumn": [
+    {
+      "id": 1,
+      "filename": "https://cdn.leonardo.ai/users/21d284aa-a0e1-40f7-9b6e-76d339ab5cc0/generations/dcc43671-5906-49c4-a4b5-d78c14d82658/variations/Default_full_body_photoshoot_of_a_blonde_woman_wearing_a_white_3_dcc43671-5906-49c4-a4b5-d78c14d82658_1.jpg?w=512"
+    },
+    {
+      "id": 2,
+      "filename": "https://cdn.leonardo.ai/users/21d284aa-a0e1-40f7-9b6e-76d339ab5cc0/generations/5f6dd90b-0fa7-42f9-b4cc-533a26509cf2/variations/Default_high_quality_beautiful_and_fantastically_designed_silh_0_5f6dd90b-0fa7-42f9-b4cc-533a26509cf2_1.jpg?w=512"
+    }
+  ],
+  "secondColumn": [
+    {
+      "id": 1,
+      "filename": "https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/image-129-300x200.jpeg"
+    },
+    {
+      "id": 2,
+      "filename": "https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/Default_hyper_realistic_ultra_detailed_photograph_of_a_woman_s_1_6d8066d4-4036-4de0-a215-98461459e598_1.jpeg"
+    },
+    {
+      "id": 2,
+      "filename": "https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/image-129-300x200.jpeg"
+    }
+  ],
+  "thirdColumn": [
+    {
+      "id": 1,
+      "filename": "https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/image-131-300x169.jpeg"
+    },
+    {
+      "id": 2,
+      "filename": "https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/Default_Unleash_the_power_of_the_cyberpunk_world_in_an_evocati_0_1f5ee7cd-9c1a-4b87-816e-9a825b6158c4_1-360x540.jpeg"
+    },
+    {
+      "id": 2,
+      "filename": "https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/image-129-300x200.jpeg"
+    }
+  ],
+  "fourthColumn": [
+    {
+      "id": 1,
+      "filename": "https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/Default_hyper_realistic_ultra_detailed_photograph_of_a_woman_s_1_6d8066d4-4036-4de0-a215-98461459e598_1.jpeg"
+    },
+    {
+      "id": 2,
+      "filename": "https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/image-129-300x200.jpeg"
+    }
+  ]
+}

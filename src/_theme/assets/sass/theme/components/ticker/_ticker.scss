@@ -24,12 +24,12 @@
         position: absolute;
         left: 0;
         top: 0;
-        width: 20%;
+        width: 10%;
         height: 100%;
         background: linear-gradient(
                         90deg,
-                        if(isDarkMode($mode), $black, $bg-light) 10%,
-                        if(isDarkMode($mode), $_colors-blackAlpha-50, $_colors-whiteAlpha-50) 33%
+                        if(isDarkMode($mode), $black, $bg-light) 0%,
+                        if(isDarkMode($mode), $_colors-blackAlpha-50, $_colors-whiteAlpha-50) 100%
         );
         z-index: 1;
       }
@@ -104,7 +104,7 @@
 
       .ticker-wrapper {
         &::before {
-          width: 2%;
+          width: 37%;
           height: 100%;
           background: linear-gradient(
                           90deg,

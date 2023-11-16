@@ -1,15 +1,12 @@
 import React, {FC, useEffect, useState} from "react";
 import {Container} from "./Container";
-import {useToggle} from "../../../hooks";
-import {useDispatch} from "react-redux";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import {InputComponent, SubmitComponent} from "../../components";
 import {useNavigate, useLocation, Navigate} from 'react-router-dom';
 import {encryptEmail} from "../../../../_theme/helpers";
-import {EmailPasswordComponent} from "./EmailPasswordComponent";
 import {login, resetPassword} from "../redux/AuthCRUD";
-import {PATH_AUTH, ROOTS_AUTHENTICATION} from "../../../routing/paths";
+import {PATH_AUTH} from "../../../routing/paths";
 
 const initialValues = {
     password: '',

@@ -31,3 +31,9 @@
     width: $size valueif($important, !important, null);
   }
 }
+
+@mixin svg-icon-transform($transform, $value, $unit, $important: false) {
+  svg {
+    transform: #{$transform}(#{$value}#{$unit}) #{"#{if($important, ' !important', '')}"};
+  }
+}

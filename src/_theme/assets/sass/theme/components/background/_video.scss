@@ -1,17 +1,127 @@
 @mixin VideoContainer($mode) {
-  .video-container{
+  .video-container {
+    position: relative;
+    overflow: hidden;
+
+    video {
+      min-width: 100%;
+      min-height: 100%;
+    }
+
     .video-wrapper {
-      position: relative;
       min-height: 90vh;
-      .video {
-        video {
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: auto;
-          height: auto;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+
+      &::before {
+        background-image: linear-gradient(180deg, $bg-light 4%, rgb(0 0 0 / 0%) 100%);
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 20%;
+      }
+
+
+      header {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      footer {
+        position: absolute;
+        bottom: $_space-2;
+        left: $_space-2;
+        right: $_space-2;
+        backdrop-filter: blur(40px);
+        padding: $_space-12;
+        background-color: $_colors-blackAlpha-700;
+        border-radius: $_space-2;
+        overflow: hidden;
+
+        .brand-img {
+          img {
+            width: $_sizes-20;
+            height: $_sizes-20;
+          }
+
+          margin-bottom: $_space-2;
+        }
+
+        .brand-name {
+          @include typography(
+                          $_colors-whiteAlpha-900,
+                          $_fontSizes-2xl,
+                          400,
+                          1.5
+          );
+        }
+
+        h5 {
+          color: $white;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+
+          li {
+            padding: $_space-1;
+            margin-bottom: $_space-1;
+            cursor: pointer;
+            @include typography(
+                            $_colors-whiteAlpha-400,
+                            $_fontSizes-md,
+                            400,
+                            1.5
+            );
+
+            &:hover {
+              color: $_colors-whiteAlpha-900;
+            }
+          }
         }
       }
     }
   }
+
+  @include media-breakpoint-down(sm) {
+    .video-container {
+
+      .video-wrapper {
+
+        &::before {
+          height: 20%;
+        }
+
+        header {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        footer {
+          padding: $_space-4;
+
+          .brand-img {
+            img {
+              width: $_sizes-16;
+              height: $_sizes-16;
+            }
+
+            margin-bottom: $_space-1;
+          }
+        }
+      }
+    }
+  }
+
 }

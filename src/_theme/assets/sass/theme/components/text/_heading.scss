@@ -10,6 +10,12 @@
     font-size: 2rem;
     color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
   }
+
+  .text-h4 {
+    font-weight: 400;
+    font-size: $_sizes-5;
+    color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
+  }
   .text-p {
     font-weight: 400;
     font-size: 1rem;

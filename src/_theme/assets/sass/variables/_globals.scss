@@ -1,9 +1,8 @@
 $black: #000000;
 $white: #ffffff;
 $bg-light: #f8f9fa;
-$deepFuchsia: #F06292 ;
+$deepFuchsia: #f06292;
 $wildOrchid: #E57373;
-$blueberry: #4d91ff;
 $linearGradient: linear-gradient(310deg, $deepFuchsia 0%, $wildOrchid 100%);
 
 $_ring-offset-width: 0px;
@@ -43,6 +42,17 @@ $_colors-blackAlpha-600: rgba(0, 0, 0, 0.48);
 $_colors-blackAlpha-700: rgba(0, 0, 0, 0.64);
 $_colors-blackAlpha-800: rgba(0, 0, 0, 0.80);
 $_colors-blackAlpha-900: rgba(0, 0, 0, 0.92);
+
+$_colors-deepFuchsiaAlpha-50: rgba(240, 98, 146, 0.04);
+$_colors-deepFuchsiaAlpha-100: rgba(240, 98, 146, 0.06);
+$_colors-deepFuchsiaAlpha-200: rgba(240, 98, 146, 0.08);
+$_colors-deepFuchsiaAlpha-300: rgba(240, 98, 146, 0.16);
+$_colors-deepFuchsiaAlpha-400: rgba(240, 98, 146, 0.24);
+$_colors-deepFuchsiaAlpha-500: rgba(240, 98, 146, 0.36);
+$_colors-deepFuchsiaAlpha-600: rgba(240, 98, 146, 0.48);
+$_colors-deepFuchsiaAlpha-700: rgba(240, 98, 146, 0.64);
+$_colors-deepFuchsiaAlpha-800: rgba(240, 98, 146, 0.80);
+$_colors-deepFuchsiaAlpha-900: rgba(240, 98, 146, 0.92);
 
 $colors-gray-100: #e5e5e5 !default;
 $colors-gray-200: #d0d0d0 !default;
