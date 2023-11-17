@@ -44,13 +44,13 @@ const Accordion = () => {
                             <div className="header" onClick={() => {
                                 toggle(index)
                             }}>
-                                <div className="title">{item.question}</div>
+                                <div className="title text-white">{item.question}</div>
                                 <div className="svg-icon">
                                     <SVG src={toAbsoluteUrl('media/icons/duotune/arrows/arr023.svg')}/>
                                 </div>
                             </div>
                             <div className="content">
-                                <div className="description">
+                                <div className="description text-white">
                                     {item.answer}
                                 </div>
                             </div>

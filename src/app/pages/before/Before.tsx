@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useState} from "react";
+import React, {FC, useCallback, useEffect, useRef, useState} from "react";
 import {PATH_AUTH} from "../../routing/paths";
 import {Link} from "react-router-dom";
 import {Gallery, SwiperP, TickerX, Accordion} from "../component";
@@ -6,7 +6,8 @@ import ImagesGallery from "./ImageGallery.json"
 import Images from "./Images.json"
 import {toAbsoluteUrl} from "../../../_theme/helpers";
 import SVG from "react-inlinesvg";
-
+import {useClickInside, useClickOutside, useEventListener} from "../../hooks";
+import {motion, useInView} from "framer-motion";
 
 interface Tab {
     id: number;
@@ -90,62 +91,79 @@ export default function Before() {
     const {firstColumn, secondColumn, thirdColumn, fourthColumn} = Images
 
     const [showNavBar, setShowNavBar] = useState<boolean>(false)
+
+    const navbarRef = useRef<HTMLDivElement | null>(null);
+    const scrollRef = useRef<HTMLDivElement | null>(null)
+
+    // const handleClickOutsideNavbar = useCallback((event: MouseEvent) => {
+    //     if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
+    //         // Clicked outside the navbar, close it
+    //         console.log("hello")
+    //     }
+    // }, []);
+    //
+    //
+    // const handleClickInsideNavbar = useCallback((event: MouseEvent) => {
+    //     if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
+    //         // Clicked outside the navbar, close it
+    //         console.log("hello")
+    //     }
+    // }, []);
+
+    useClickOutside(navbarRef, () => {
+        if (showNavBar) setShowNavBar(false)
+    })
+
+    const toRight = {
+        hidden: {x: -20, opacity: 0},
+        visible: {
+            x: 0,
+            opacity: 1
+        }
+    };
+    const toLeft = {
+        hidden: {x: 20, opacity: 0},
+        visible: {
+            x: 0,
+            opacity: 1
+        }
+    };
+
+
     return (
-        <>
+        <div>
             <div className="position-relative">
-                {/*<div className="navbar-fixed d-flex justify-content-end align-items-center">*/}
-                <div className={`navbar-fixed${showNavBar ? ' show' : ''}`}>
+                <div className={`navbar-fixed${showNavBar ? ' show' : ''}`} ref={navbarRef}>
                     <div className="parent">
-                        <div className="">hello</div>
+                        <div className="brand">
+                            <img src={toAbsoluteUrl('media/logos/favicon.png')} alt="Mobtwin"/>
+                            <span>Mobtwin</span>
+                        </div>
                         <div className="child">
                             <div className="item"><Link to={PATH_AUTH.login}>Login</Link></div>
                             <div className="item"><Link to={PATH_AUTH.login}>Login</Link></div>
                             <div className="item"><Link to={PATH_AUTH.login}>Login</Link></div>
-                            <div className="item"><Link to={PATH_AUTH.login} className="main_button-xl">Login</Link></div>
+                            <div className="item"><Link to={PATH_AUTH.login}
+                                                        className="main_button-xl px-2 p-sm-0">Login</Link></div>
                             <div className="item svg-icon" onClick={() => {
+
                                 setShowNavBar(prevState => !prevState);
                             }}>
                                 <SVG src={toAbsoluteUrl('media/icons/duotune/arrows/arr023.svg')}/>
                             </div>
                         </div>
                     </div>
-                    {/*<div className="container">*/}
-                    {/*    <div className="row justify-content-center align-items-center">*/}
-                    {/*        <div className="col-4">*/}
-                    {/*            <div className="brand">*/}
-                    {/*                <img src="" alt=""/>*/}
-                    {/*                <span className="brand-name">mobtwin</span>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*        <div className="col-8 links">*/}
-                    {/*            <div className="row d-flex justify-content-end align-items-center">*/}
-                    {/*                <div className="col-2">*/}
-                    {/*                    <Link to={PATH_AUTH.login}>Login</Link>*/}
-                    {/*                </div>*/}
-                    {/*                <div className="col-2">*/}
-                    {/*                    <Link to={PATH_AUTH.login}>Login</Link>*/}
-                    {/*                </div>*/}
-                    {/*                <div className="col-2">*/}
-                    {/*                    <Link to={PATH_AUTH.login}>Login</Link>*/}
-                    {/*                </div>*/}
-                    {/*                <div className="col-2">*/}
-                    {/*                    <Link to={PATH_AUTH.login} className="main_button-xl">Login</Link>*/}
-                    {/*                </div>*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
                 </div>
             </div>
 
-            <main className="container-fluid p-0">
+            <main className="container-fluid p-0" style={{backgroundColor: '#151718'}}>
 
                 <div className="container">
 
                     <div className="ticker-container">
                         <div className="row">
                             <div className="col-12">
-                                <h1 className="text-h1">Unleash your <span
+                                <h1 className="text-h1 text-white">Unleash your <span
                                     className="h1-700 rad-color-2">Creativity</span> with the power of <span
                                     className="h1-700 rad-color-1">Leonardo Ai </span>
                                 </h1>
@@ -187,21 +205,21 @@ export default function Before() {
                         <div
                             className="col-12 col-md-4 p-4 d-flex justify-content-center align-items-center flex-column">
                             <h3 className="gradient-color-full">Cultivate Originality</h3>
-                            <div className="text-p text-p text-center">Your imagination, our
+                            <div className="text-p text-p text-center text-white">Your imagination, our
                                 technology. Generate distinctive art with pre-trained AI models or train your own.
                             </div>
                         </div>
                         <div
                             className="col-12 col-md-4 p-4 d-flex justify-content-center align-items-center flex-column">
                             <h3 className="gradient-color-full">Cultivate Originality</h3>
-                            <div className="text-p text-p text-center">Your imagination, our
+                            <div className="text-p text-p text-center text-white">Your imagination, our
                                 technology. Generate distinctive art with pre-trained AI models or train your own.
                             </div>
                         </div>
                         <div
                             className="col-12 col-md-4 p-4 d-flex justify-content-center align-items-center flex-column">
                             <h3 className="gradient-color-full">Cultivate Originality</h3>
-                            <div className="text-p text-p text-center">Your imagination, our
+                            <div className="text-p text-p text-center text-white">Your imagination, our
                                 technology. Generate distinctive art with pre-trained AI models or train your own.
                             </div>
                         </div>
@@ -213,7 +231,7 @@ export default function Before() {
 
                     <div className="tab-container">
                         <div className="row ">
-                            <h2 className="col-12 d-flex justify-content-center align-items-center text-heading">
+                            <h2 className="col-12 d-flex justify-content-center align-items-center text-heading text-white">
                                 <span className="gradient-color-full _pr-2">Leonardo’s</span> Toolkit&nbsp;
                             </h2>
                         </div>
@@ -235,7 +253,7 @@ export default function Before() {
 
                     <div className="gallery-container">
                         <div className="row ">
-                            <h2 className="col-12 d-flex justify-content-center align-items-center text-heading">
+                            <h2 className="col-12 d-flex justify-content-center align-items-center text-heading text-white">
                                 <span className="gradient-color-full _pr-2">Platform</span> Gallery🎨
                             </h2>
                         </div>
@@ -288,7 +306,7 @@ export default function Before() {
                         </div>
                     </div>
 
-                    <Accordion />
+                    <Accordion/>
 
                 </div>
 
@@ -296,25 +314,29 @@ export default function Before() {
                     <video autoPlay muted loop playsInline>
                         {/*<source src="/media/cc0-videos/flower.webm" type="video/webm" />*/}
 
-                        <source src="https://www.gstatic.com/play/games/videos/join-waitlist-desktop-4f2b63c9.mp4" type="video/mp4" />
+                        <source src="https://www.gstatic.com/play/games/videos/join-waitlist-desktop-4f2b63c9.mp4"
+                                type="video/mp4"/>
                     </video>
 
                     <div className="video-wrapper">
                         <header>
-                            <h1 className="text-h1 text-center">lorem ipsum</h1>
+                            <h1 className="text-h1 text-white text-center">lorem ipsum</h1>
                             <p className="description text-center">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti fugit illo illum impedit iste magnam nemo nisi quisquam vero, voluptatum.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti fugit illo illum
+                                impedit iste magnam nemo nisi quisquam vero, voluptatum.
                             </p>
                         </header>
-                        <footer >
+                        <footer>
                             <div className="row">
-                                <div className="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column mb-3 mb-md-0">
+                                <div
+                                    className="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column mb-3 mb-md-0">
                                     <div className="brand-img">
                                         <img src={toAbsoluteUrl("media/logos/favicon.png")} alt=""/>
                                     </div>
                                     <div className="brand-name">Mobtwin</div>
                                 </div>
-                                <div className="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column mb-3 mb-md-0">
+                                <div
+                                    className="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column mb-3 mb-md-0">
                                     <h5>About</h5>
                                     <ul>
                                         <li>lorem</li>
@@ -323,7 +345,8 @@ export default function Before() {
                                         <li>lorem</li>
                                     </ul>
                                 </div>
-                                <div className="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column mb-3 mb-md-0">
+                                <div
+                                    className="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column mb-3 mb-md-0">
                                     <h5>Stay tuned!</h5>
                                     <ul>
                                         <li>Discord</li>
@@ -333,10 +356,15 @@ export default function Before() {
                                         <li>Instagram</li>
                                     </ul>
                                 </div>
-                                <div className="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column mb-0">
+                                <div
+                                    className="col-12 col-md-3 d-flex justify-content-center align-items-center flex-column mb-0">
                                     <h5>Get the App</h5>
-                                    <img className="mb-2 mb-md-3" src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/08/Frame-427318315.svg" alt=""/>
-                                    <img src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/10/playstore-coming-soon.svg" alt=""/>
+                                    <img className="mb-2 mb-md-3"
+                                         src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/08/Frame-427318315.svg"
+                                         alt=""/>
+                                    <img
+                                        src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/10/playstore-coming-soon.svg"
+                                        alt=""/>
                                 </div>
                             </div>
                         </footer>
@@ -345,8 +373,6 @@ export default function Before() {
 
             </main>
 
-
-
-        </>
+        </div>
     )
 }

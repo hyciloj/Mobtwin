@@ -21,8 +21,8 @@ const ColumnItemComponent: React.FC<ColumnItem> = ({filename}) => (
 
 const ColumnComponent: React.FC<{ items: ColumnItem[] }> = ({items}) => (
     <div className="gallery-column">
-        {items.map((item) => (
-            <ColumnItemComponent key={item.id} {...item} />
+        {items.map((item, index) => (
+            <ColumnItemComponent key={index} {...item} />
         ))}
     </div>
 );

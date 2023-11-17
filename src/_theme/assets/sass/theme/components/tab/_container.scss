@@ -15,7 +15,7 @@
 
         span {
           @include typography(
-                          if(isDarkMode($mode), $white, $black),
+                          $white,
                           $_fontSizes-xl,
                           600,
                           $_lineHeights-1
@@ -68,7 +68,7 @@
 
         .tab-block-sub-title {
           @include typography(
-                          if(isDarkMode($mode), $_colors-whiteAlpha-800, $_colors-blackAlpha-900),
+                          $white,
                           $_fontSizes-2xl,
                           500,
                           $_lineHeights-10

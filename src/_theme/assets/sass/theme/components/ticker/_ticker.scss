@@ -1,7 +1,7 @@
 @mixin TickerContainer($mode) {
 
   .ticker-container {
-    margin-top: $_space-20;
+    //margin-top: $_space-20;
     height: calc(100vh - 5rem);
     display: flex;
     align-items: center;
@@ -28,8 +28,8 @@
         height: 100%;
         background: linear-gradient(
                         90deg,
-                        if(isDarkMode($mode), $black, $bg-light) 0%,
-                        if(isDarkMode($mode), $_colors-blackAlpha-50, $_colors-whiteAlpha-50) 100%
+                        if(isDarkMode($mode), $black, #151718) 0%,
+                        rgba(255, 255, 255, 0) 100%
         );
         z-index: 1;
       }
@@ -40,7 +40,7 @@
         justify-content: space-between;
         align-items: center;
         overflow: hidden;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+        //background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 
         .tickers-imgs {
           width: 100%;

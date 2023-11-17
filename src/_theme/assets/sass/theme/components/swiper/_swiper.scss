@@ -9,7 +9,7 @@
       user-select: none;
 
       &::before {
-        background-image: linear-gradient(90deg, $bg-light, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, $bg-light 100%);
+        background-image: linear-gradient(90deg, #151718, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, #151718 100%);
         position: absolute;
         content: "";
         top: 0;
@@ -49,7 +49,7 @@
       &::before {
         background-image: linear-gradient(
                         0deg,
-                        #fff,
+                        #151718,
                         rgba(0, 0, 0, 0) 40%
         );
         position: absolute;
@@ -88,7 +88,7 @@
         position: relative;
 
         &::before {
-          background-image: linear-gradient(90deg, #fff, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, #fff 100%);
+          background-image: linear-gradient(90deg, #151718, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, #151718 100%);
           position: absolute;
           content: "";
           top: 0;
@@ -107,7 +107,7 @@
       .swiper-imgs {
 
         .swiper-img {
-          height: $_sizes-sm;
+          height: auto;
           //border-radius: $_sizes-4;
           //border: 0.3rem solid $wildOrchid;
         }
