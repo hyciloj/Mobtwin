@@ -36,4 +36,9 @@ body.dark {
 body.light {
   background-color: $bg-light;
   @import "theme/light/light";
+  .landing {
+    background-color: #151718;
+    padding-top: 5rem;
+    overflow: hidden;
+  }
 }

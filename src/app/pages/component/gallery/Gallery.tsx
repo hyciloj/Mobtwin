@@ -1,4 +1,5 @@
 import React, {FC, memo} from "react";
+import {Reveal} from "../../../modules/components/framer-motion";
 
 type ColumnItem = {
     id: number;
@@ -13,9 +14,11 @@ interface GalleryProps {
 }
 
 const ColumnItemComponent: React.FC<ColumnItem> = ({filename}) => (
-    <div className="gallery-img">
-        <img src={filename} alt=""/>
-    </div>
+    <Reveal from={{x: 0, y: 75}} to={{x: 0, y: 0}}>
+        <div className="gallery-img">
+            <img src={filename} alt=""/>
+        </div>
+    </Reveal>
 );
 
 

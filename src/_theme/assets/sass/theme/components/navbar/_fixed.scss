@@ -3,9 +3,9 @@
   @include media-breakpoint-up(sm) {
     .navbar-fixed {
       background-color: $_colors-whiteAlpha-400;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(30px);
-      padding: 0 $_space-8;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: $_space-2 $_space-8;
       position: fixed;
       top: $_space-2;
       left: $_space-2;

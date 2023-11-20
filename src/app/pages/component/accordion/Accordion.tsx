@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import SVG from "react-inlinesvg";
 import {toAbsoluteUrl} from "../../../../_theme/helpers";
+import {Reveal} from "../../../modules/components/framer-motion";
 
 const data = [
     {
@@ -40,21 +41,23 @@ const Accordion = () => {
 
                 {
                     data.map((item, index) => (
-                        <div className={`accordion-item${selected === index ? ' active' : ''}`} key={index}>
-                            <div className="header" onClick={() => {
-                                toggle(index)
-                            }}>
-                                <div className="title text-white">{item.question}</div>
-                                <div className="svg-icon">
-                                    <SVG src={toAbsoluteUrl('media/icons/duotune/arrows/arr023.svg')}/>
+                        <Reveal from={{x: 0, y: 75}} to={{x: 0, y: 0}}>
+                            <div className={`accordion-item${selected === index ? ' active' : ''}`} key={index}>
+                                <div className="header" onClick={() => {
+                                    toggle(index)
+                                }}>
+                                    <div className="title text-white">{item.question}</div>
+                                    <div className="svg-icon">
+                                        <SVG src={toAbsoluteUrl('media/icons/duotune/arrows/arr023.svg')}/>
+                                    </div>
+                                </div>
+                                <div className="content">
+                                    <div className="description text-white">
+                                        {item.answer}
+                                    </div>
                                 </div>
                             </div>
-                            <div className="content">
-                                <div className="description text-white">
-                                    {item.answer}
-                                </div>
-                            </div>
-                        </div>
+                        </Reveal>
                     ) )
                 }
 

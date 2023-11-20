@@ -5,45 +5,50 @@
 
     .tab-menu {
 
-      margin-bottom: $_space-6;
-      border-bottom: .5px solid $_colors-blackAlpha-500;
+      margin-bottom: $_space-12;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: $_space-5;
+      grid-row-gap: $_space-5;
 
-      .tab-title {
+      .tab-item {
         padding: $_space-4;
         text-align: center;
         cursor: pointer;
+        background-color: #212121;
+        border-radius: 1rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        span {
+        @include svg-icon-size($_sizes-6);
+        @include svg-icon-color($_colors-pink-600);
+
+        .tab-title {
           @include typography(
                           $white,
                           $_fontSizes-xl,
-                          600,
+                          400,
                           $_lineHeights-1
           );
+          margin-left: $_space-2;
+          text-transform: capitalize;
         }
 
         &:hover {
-          background: radial-gradient(80.23% 80.23% at 50% 88.37%, rgba(174, 78, 245, 0.22) 0%, rgba(174, 78, 245, 0.22) 0.01%, rgba(174, 78, 245, 0) 100%);
-
-          span {
+          @include svg-icon-color($_colors-pink-400);
+          .tab-title {
             color: $deepFuchsia;
           }
         }
 
         &.tab-open {
-          background: radial-gradient(
-                          80.23% 80.23% at 50% 88.37%,
-                          rgba(174, 78, 245, 0.22) 0%,
-                          rgba(174, 78, 245, 0.22) 0.01%,
-                          rgba(174, 78, 245, 0) 100%
-          );
-          border-bottom: 2px solid;
-          border-image-source: $linearGradient;
-          border-image-slice: 1;
         }
 
         &.tab-open {
-          span {
+          .tab-title {
             color: $deepFuchsia,
           }
         }
@@ -51,11 +56,17 @@
     }
 
     .tab-block {
-      margin-bottom: $_space-12;
+      margin-bottom: $_space-6;
+      border-radius: $_space-6;
+      overflow: hidden;
+      background: #212121;
+      min-height: $_space-80;
 
       .tab-block-left {
 
-        padding: $_space-16 0;
+        padding-top: $_space-14;
+        padding-bottom: $_space-14;
+        padding-left: $_space-14;
 
         .tab-block-title {
           @include typography(
@@ -99,16 +110,22 @@
 
       .tab-menu {
 
-        margin-bottom: $_space-4;
+        margin: $_space-4 0;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: $_space-3;
+        grid-row-gap: $_space-3;
 
-        .tab-title {
+        .tab-item {
           padding: $_space-2;
+          border-radius: $_space-2;
 
-          span {
+          @include svg-icon-size($_sizes-5);
+
+          .tab-title {
             @include typography(
-                            if(isDarkMode($mode), $white, $black),
-                            $_fontSizes-md,
-                            600,
+                            $white,
+                            $_fontSizes-xs,
+                            400,
                             $_lineHeights-1
             );
           }
@@ -116,15 +133,16 @@
       }
 
       .tab-block {
-        margin-bottom: $_space-8;
+        margin: $_space-4 0;
+        border-radius: $_space-4;
 
         .tab-block-left {
 
-          padding: $_space-4 0;
+          padding: $_space-4;
 
           .tab-block-sub-title {
             @include typography(
-                            if(isDarkMode($mode), $_colors-whiteAlpha-800, $_colors-blackAlpha-900),
+                            $_colors-whiteAlpha-800,
                             $_fontSizes-md,
                             500,
                             $_lineHeights-10
@@ -134,15 +152,15 @@
           .tab-sub-description {
             @include typography(
                             $colors-gray-500,
-                            $_fontSizes-md,
+                            $_fontSizes-sm,
                             400,
-                            $_lineHeights-7
+                            $_lineHeights-5
             );
           }
         }
 
         .tab-block-right {
-          min-height: $_sizes-40;
+          min-height: $_sizes-52;
         }
 
       }

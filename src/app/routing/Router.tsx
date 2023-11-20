@@ -9,23 +9,6 @@ import {MasterLayout} from "../../_theme/layout/MasterLayout";
 
 export default function Router() {
 
-    const isAuthorized = false
-    const windowUrl = window.location.href
-    const searched = "https://www.mobtwin.com/"
-
-    const [currentUrl, setCurrentUrl] = useState(false)
-
-    useEffect(() => {
-        let position = windowUrl.search(searched);
-        if (position !== -1) {
-            setCurrentUrl(true)
-        } else {
-            setCurrentUrl(false)
-
-        }
-    })
-
-
     return useRoutes([
         {
             path: '/',
@@ -60,23 +43,23 @@ export default function Router() {
             ),
         },
 
-        // {
-        //     path: ROOTS_DASHBOARD,
-        //     element: (
-        //         <AuthGuard>
-        //             <MasterLayout>
-        //                 <DashboardWrapper/>
-        //             </MasterLayout>
-        //         </AuthGuard>
-        //
-        //     ),
-        //     children: [
-        //         {element: <Navigate to={PATH_AFTER_LOGIN} replace/>, index: true},
-        //         {path: 'search', element: <Search/>},
-        //         {path: 'two', element: <h1>PageTwo</h1>},
-        //         {path: 'three', element: <h1>PageThree</h1>},
-        //     ],
-        // },
+        {
+            path: ROOTS_DASHBOARD,
+            element: (
+                <AuthGuard>
+                    <MasterLayout>
+                        <DashboardWrapper/>
+                    </MasterLayout>
+                </AuthGuard>
+
+            ),
+            children: [
+                {element: <Navigate to={PATH_AFTER_LOGIN} replace/>, index: true},
+                {path: 'search', element: <Search/>},
+                {path: 'two', element: <h1>PageTwo</h1>},
+                {path: 'three', element: <h1>PageThree</h1>},
+            ],
+        },
 
 
         {path: '*', element: <Navigate to={ROOTS_AUTHENTICATION} replace/>},

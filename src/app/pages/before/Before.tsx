@@ -1,13 +1,12 @@
 import React, {FC, useCallback, useEffect, useRef, useState} from "react";
 import {PATH_AUTH} from "../../routing/paths";
 import {Link} from "react-router-dom";
-import {Gallery, SwiperP, TickerX, Accordion} from "../component";
+import {Gallery, SwiperP, TickerX, Accordion, Testimonial} from "../component";
 import ImagesGallery from "./ImageGallery.json"
 import Images from "./Images.json"
-import {toAbsoluteUrl} from "../../../_theme/helpers";
-import SVG from "react-inlinesvg";
-import {useClickInside, useClickOutside, useEventListener} from "../../hooks";
-import {motion, useInView} from "framer-motion";
+import {KTSVG, toAbsoluteUrl} from "../../../_theme/helpers";
+import {motion, useAnimation, useInView, useViewportScroll, useTransform} from "framer-motion";
+import {NavBar, Reveal} from "../../modules/components";
 
 interface Tab {
     id: number;
@@ -29,7 +28,7 @@ const tabBlockData: Tab[] = [
         id: 1,
         title: "title-2",
         subTitle: "sub-title-2",
-        description: "description-1 Take creativity a step further with the transformative power of our Image Generation tool. It’s not just about bringing your concepts to life — redefine the impossible. From beginners to professionals, we offer a spectrum of settings that can be intuitively tailored to your needs.",
+        description: "description-1 Take creativity a step further with the transformative power of our Image Generation tool.",
         image: "https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/0-2022-12-02T033131-1-3.png",
     },
     {
@@ -45,25 +44,24 @@ interface TabBlockProps {
     tab: Tab | undefined;
 }
 
-const animationVariants = {
-    initial: {x: '100%'},
-    animate: {x: '-100%', transition: {duration: 10, repeat: Infinity}},
-}
 const TabBlock: FC<TabBlockProps> = ({tab}) => (
     <>
         {tab && (
             <>
                 <div className="col-12 col-md-6 tab-block-left">
+                    {/*<Reveal from={{x: -75, y: 0}} to={{x: 0, y: 0}}>*/}
+
                     <span className="tab-block-title gradient-color-full">{tab.title}</span>
                     <div className="tab-block-sub-title">{tab.subTitle}</div>
                     <p className="tab-sub-description">{tab.description}</p>
+                    {/*</Reveal>*/}
+
                 </div>
 
-                <div
-                    className="col-12 col-md-6 tab-block-right"
-                    style={{
-                        backgroundImage: `url(${tab.image})`
-                    }}
+                <div className="col-12 col-md-6 tab-block-right"
+                     style={{
+                         backgroundImage: `url(${tab.image})`
+                     }}
                 />
             </>
         )}
@@ -71,9 +69,12 @@ const TabBlock: FC<TabBlockProps> = ({tab}) => (
     </>
 );
 
-const tabTitles = ["Title 1", "Title 2", "Title 3"];
-
-const colors = ['#632bf3', '#f122c8', '#f16022', '#9ef344', '#44d3f3', '#632bf3', '#f122c8', '#f16022', '#9ef344', '#44d3f3'];
+const tabTitles = [
+    {title: "dribbble", icon: "media/svg/brand-logos/hp-3.svg"},
+    {title: "twitch", icon: "media/svg/brand-logos/twitch.svg"},
+    {title: "twitter", icon: "media/svg/brand-logos/twitter.svg"},
+    {title: "vimeo", icon: "media/svg/brand-logos/vimeo.svg"},
+];
 
 export default function Before() {
 
@@ -90,111 +91,60 @@ export default function Before() {
 
     const {firstColumn, secondColumn, thirdColumn, fourthColumn} = Images
 
-    const [showNavBar, setShowNavBar] = useState<boolean>(false)
 
-    const navbarRef = useRef<HTMLDivElement | null>(null);
     const scrollRef = useRef<HTMLDivElement | null>(null)
 
-    // const handleClickOutsideNavbar = useCallback((event: MouseEvent) => {
-    //     if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
-    //         // Clicked outside the navbar, close it
-    //         console.log("hello")
-    //     }
-    // }, []);
-    //
-    //
-    // const handleClickInsideNavbar = useCallback((event: MouseEvent) => {
-    //     if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
-    //         // Clicked outside the navbar, close it
-    //         console.log("hello")
-    //     }
-    // }, []);
 
-    useClickOutside(navbarRef, () => {
-        if (showNavBar) setShowNavBar(false)
-    })
-
-    const toRight = {
-        hidden: {x: -20, opacity: 0},
-        visible: {
-            x: 0,
-            opacity: 1
-        }
-    };
-    const toLeft = {
-        hidden: {x: 20, opacity: 0},
-        visible: {
-            x: 0,
-            opacity: 1
-        }
-    };
-
+    const {scrollYProgress} = useViewportScroll()
+    const scale = useTransform(scrollYProgress, [0, 11], [0.8, 15]);
+    const opacity = useTransform(scrollYProgress, [0, 1], [.7, 1]);
 
     return (
-        <div>
-            <div className="position-relative">
-                <div className={`navbar-fixed${showNavBar ? ' show' : ''}`} ref={navbarRef}>
-                    <div className="parent">
-                        <div className="brand">
-                            <img src={toAbsoluteUrl('media/logos/favicon.png')} alt="Mobtwin"/>
-                            <span>Mobtwin</span>
-                        </div>
-                        <div className="child">
-                            <div className="item"><Link to={PATH_AUTH.login}>Login</Link></div>
-                            <div className="item"><Link to={PATH_AUTH.login}>Login</Link></div>
-                            <div className="item"><Link to={PATH_AUTH.login}>Login</Link></div>
-                            <div className="item"><Link to={PATH_AUTH.login}
-                                                        className="main_button-xl px-2 p-sm-0">Login</Link></div>
-                            <div className="item svg-icon" onClick={() => {
+        <div className={"landing"}>
 
-                                setShowNavBar(prevState => !prevState);
-                            }}>
-                                <SVG src={toAbsoluteUrl('media/icons/duotune/arrows/arr023.svg')}/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <NavBar/>
 
-            <main className="container-fluid p-0" style={{backgroundColor: '#151718'}}>
+            <main className="container-fluid p-0">
 
                 <div className="container">
 
-                    <div className="ticker-container">
-                        <div className="row">
-                            <div className="col-12">
-                                <h1 className="text-h1 text-white">Unleash your <span
-                                    className="h1-700 rad-color-2">Creativity</span> with the power of <span
-                                    className="h1-700 rad-color-1">Leonardo Ai </span>
-                                </h1>
-                                <h2 className={"brxe-ukrozz"}>Create production-quality visual assets for
-                                    your projects with unprecedented quality, speed, and style-consistency.</h2>
-                                <div className="row">
-                                    <div className="col-6">
-                                        <Link to={PATH_AUTH.login} className="main_button-xl">Create account</Link>
+                    <div>
+                        <div className="ticker-container">
+                            <div className="row">
+                                <div className="col-12">
+                                    <h1 className="text-h1 text-white">Unleash your <span
+                                        className="h1-700 rad-color-2">Creativity</span> with the power of <span
+                                        className="h1-700 rad-color-1">Leonardo Ai </span>
+                                    </h1>
+                                    <h2 className={"brxe-ukrozz"}>Create production-quality visual assets for
+                                        your projects with unprecedented quality, speed, and style-consistency.</h2>
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <Link to={PATH_AUTH.login} className="main_button-xl">Create account</Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="ticker-wrapper">
-                                    <div className="tickers">
-                                        <TickerX data={ImagesGallery.firstLine}
-                                                 duration={10}
-                                                 from={0}
-                                                 to={-10}
-                                        />
-                                        <TickerX data={ImagesGallery.secondLine}
-                                                 duration={35}
-                                                 from={0}
-                                                 to={10}
-                                        />
-                                        <TickerX data={ImagesGallery.firstLine}
-                                                 duration={25}
-                                                 from={0}
-                                                 to={-10}
-                                        />
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="ticker-wrapper">
+                                        <div className="tickers">
+                                            <TickerX data={ImagesGallery.firstLine}
+                                                     duration={10}
+                                                     from={0}
+                                                     to={-10}
+                                            />
+                                            <TickerX data={ImagesGallery.secondLine}
+                                                     duration={35}
+                                                     from={0}
+                                                     to={10}
+                                            />
+                                            <TickerX data={ImagesGallery.firstLine}
+                                                     duration={25}
+                                                     from={0}
+                                                     to={-10}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -225,8 +175,13 @@ export default function Before() {
                         </div>
                     </div>
 
-                    <div className="swiper-container">
-                        <SwiperP/>
+                    <div ref={scrollRef}>
+
+                        <motion.div className="swiper-container" style={{opacity, scale}}>
+                            <div>
+                                <SwiperP/>
+                            </div>
+                        </motion.div>
                     </div>
 
                     <div className="tab-container">
@@ -236,20 +191,22 @@ export default function Before() {
                             </h2>
                         </div>
                         <div className="row tab-menu">
-                            {tabTitles.map((title, index) => (
+                            {tabTitles.map((item, index) => (
                                 <div
-                                    className={`col-4 col-md-3 col-lg-2 tab-title ${
-                                        tabOpen === index ? "tab-open" : ""
+                                    className={`tab-item${
+                                        tabOpen === index ? " tab-open" : ""
                                     }`}
                                     onClick={() => handleTabClick(index)}
                                     key={index}
                                 >
-                                    <span>{title}</span>
+                                    <KTSVG path={toAbsoluteUrl(`${item.icon}`)} className='tab-icon'/>
+                                    <span className="tab-title">{item.title}</span>
                                 </div>
                             ))}
                         </div>
                         <div className="row tab-block">{tabBlockOpen()}</div>
                     </div>
+
 
                     <div className="gallery-container">
                         <div className="row ">
@@ -264,49 +221,24 @@ export default function Before() {
                                          thirdColumn={thirdColumn}
                                          fourthColumn={fourthColumn}
                                 />
-                                {/*<div className="gallery-column">*/}
-                                {/*    <div className="gallery-img">*/}
-                                {/*        <img src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/Default_A_detailed_logo_for_twitch_illustration_mans_face_with_2_69c97ab5-7d8a-443f-b7dd-07fbd94b9ec1_1.jpeg" alt=""/>*/}
-                                {/*    </div>*/}
-                                {/*    <div className="gallery-img">*/}
-                                {/*        <img src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/Default_A_detailed_logo_for_twitch_illustration_mans_face_with_2_69c97ab5-7d8a-443f-b7dd-07fbd94b9ec1_1.jpeg" alt=""/>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className="gallery-column">*/}
-                                {/*    <div className="gallery-img">*/}
-                                {/*        <img src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/image-129-300x200.jpeg" alt=""/>*/}
-                                {/*    </div>*/}
-                                {/*    <div className="gallery-img">*/}
-                                {/*        <img src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/Default_hyper_realistic_ultra_detailed_photograph_of_a_woman_s_1_6d8066d4-4036-4de0-a215-98461459e598_1.jpeg" alt=""/>*/}
-                                {/*    </div>*/}
-                                {/*    <div className="gallery-img">*/}
-                                {/*        <img src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/image-129-300x200.jpeg" alt=""/>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className="gallery-column">*/}
-                                {/*    <div className="gallery-img">*/}
-                                {/*        <img src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/image-131-300x169.jpeg" alt=""/>*/}
-                                {/*    </div>*/}
-                                {/*    <div className="gallery-img">*/}
-                                {/*        <img src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/Default_Unleash_the_power_of_the_cyberpunk_world_in_an_evocati_0_1f5ee7cd-9c1a-4b87-816e-9a825b6158c4_1-360x540.jpeg" alt=""/>*/}
-                                {/*    </div>*/}
-                                {/*    <div className="gallery-img">*/}
-                                {/*        <img src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/image-129-300x200.jpeg" alt=""/>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
-                                {/*<div className="gallery-column">*/}
-                                {/*    <div className="gallery-img">*/}
-                                {/*        <img src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/Default_hyper_realistic_ultra_detailed_photograph_of_a_woman_s_1_6d8066d4-4036-4de0-a215-98461459e598_1.jpeg" alt=""/>*/}
-                                {/*    </div>*/}
-                                {/*    <div className="gallery-img">*/}
-                                {/*        <img src="https://leonardo-cdn.b-cdn.net/wp-content/uploads/2023/07/image-129-300x200.jpeg" alt=""/>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
                             </div>
                         </div>
                     </div>
 
                     <Accordion/>
+
+                    <div className="testimonials-container">
+                        <div className="row ">
+                            <h2 className="col-12 d-flex justify-content-center align-items-center text-heading text-white">
+                                <span className="gradient-color-full _pr-2">Testimonials</span> ⭐
+                            </h2>
+                        </div>
+                        <Reveal from={{x: 0, y: 75}} to={{x: 0, y: 0}}>
+                            <div className="testimonials-wrapper">
+                                <Testimonial/>
+                            </div>
+                        </Reveal>
+                    </div>
 
                 </div>
 
@@ -317,7 +249,6 @@ export default function Before() {
                         <source src="https://www.gstatic.com/play/games/videos/join-waitlist-desktop-4f2b63c9.mp4"
                                 type="video/mp4"/>
                     </video>
-
                     <div className="video-wrapper">
                         <header>
                             <h1 className="text-h1 text-white text-center">lorem ipsum</h1>
@@ -370,6 +301,7 @@ export default function Before() {
                         </footer>
                     </div>
                 </div>
+
 
             </main>
 

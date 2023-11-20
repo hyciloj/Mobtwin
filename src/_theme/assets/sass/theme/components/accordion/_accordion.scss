@@ -1,11 +1,17 @@
 @mixin AccordionContainer($mode) {
   .accordion-container {
 
-    margin: $_space-8 0;
+    margin: $_space-20 0;
 
     .accordion-wrapper {
+      border-radius: $_space-4;
 
       .accordion-item {
+
+        overflow: hidden;
+        background-color: #212121;
+        border-radius: $_space-6;
+        margin-bottom: $_space-4;
 
         .header {
 
@@ -22,15 +28,15 @@
           .svg-icon {
             display: flex;
             @include svg-icon-size($_sizes-4);
-            @include svg-icon-color($_colors-purple-700);
+            @include svg-icon-color($_colors-purple-300);
             @include svg-icon-transform(rotate, 90, deg);
           }
 
           &:hover {
-            background-color: $_colors-deepFuchsiaAlpha-200;
+            background-color: $_colors-blackAlpha-300;
 
             .svg-icon {
-              @include svg-icon-color($_colors-purple-900);
+              @include svg-icon-color($_colors-purple-500);
             }
 
           }
@@ -50,7 +56,8 @@
         &.active {
 
           .header {
-            background-color: $_colors-deepFuchsiaAlpha-200;
+            background-color: $_colors-blackAlpha-100;
+            transition: all $_transition-duration-ultra-fast $_transition-easing-ease-in;
 
             .svg-icon {
               display: flex;
@@ -60,9 +67,45 @@
 
           .content {
             height: auto;
-            max-height: 10rem;
+            max-height: 30rem;
+            transition: all $_transition-duration-normal $_transition-easing-ease-in;
           }
         }
+      }
+
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .accordion-container {
+      margin: $_space-8 0;
+
+      .accordion-wrapper {
+        border-radius: $_space-2;
+
+        .accordion-item {
+
+          border-radius: $_space-4;
+          margin-bottom: $_space-3;
+
+          .header {
+
+            padding: $_space-4;
+
+            .title {
+              font-size: $_fontSizes-xs;
+            }
+          }
+
+          .content {
+            .description {
+              padding: $_space-4;
+              font-size: $_fontSizes-sm;
+            }
+          }
+
+        }
+
       }
 
     }

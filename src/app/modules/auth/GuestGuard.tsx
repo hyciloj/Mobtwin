@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Navigate } from 'react-router-dom';
 import {ChildrenProps} from "../../../config-global";
 import {useSelector, shallowEqual} from "react-redux";
@@ -9,8 +9,25 @@ function GuestGuard({ children }: ChildrenProps) {
 
     const isAuthorized = useSelector<RootState>(({auth}) => auth.user, shallowEqual)
 
+    const windowUrl = window.location.href
+    const searched = "https://www.mobtwin.com/"
+    const [currentUrl, setCurrentUrl] = useState(false)
+
+    useEffect(() => {
+        let position = windowUrl.search(searched);
+        if (position !== -1) {
+            setCurrentUrl(true)
+        } else {
+            setCurrentUrl(false)
+
+        }
+    }, [])
+
+
+
     if (isAuthorized) {
-        return <Navigate to={ROOTS_BETA} />;
+        return <Navigate to={ROOTS_DASHBOARD} />;
+        // return <Navigate to={ROOTS_BETA} />;
     }
 
     return <> {children} </>;

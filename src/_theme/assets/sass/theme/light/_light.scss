@@ -24,6 +24,7 @@ $themeMode: "light";
 @include Gallery($themeMode);
 @include VideoContainer($themeMode);
 @include AccordionContainer($themeMode);
+@include TestimonialContainer($themeMode);
 
 
 
