@@ -28,7 +28,7 @@ const AsideMenuItemWithSub: React.FC<Props> = ({
 
   return (
     <div
-      className={clsx('menu-item', {'here show': isActive}, 'menu-accordion')}
+      className={clsx('menu-item', {'here show': isActive}, 'menu-accordions')}
       data-kt-menu-trigger='click'
     >
       <span className='menu-link'>
@@ -46,7 +46,7 @@ const AsideMenuItemWithSub: React.FC<Props> = ({
         <span className='menu-title'>{title}</span>
         <span className='menu-arrow'></span>
       </span>
-      <div className={clsx('menu-sub menu-sub-accordion', {'menu-active-bg': isActive})}>
+      <div className={clsx('menu-sub menu-sub-accordions', {'menu-active-bg': isActive})}>
         {children}
       </div>
     </div>

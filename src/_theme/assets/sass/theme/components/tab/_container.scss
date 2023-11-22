@@ -1,16 +1,13 @@
 @mixin tab($mode) {
   .tab-container {
 
-    margin: $_space-12 0;
+    margin: $_space-40 0;
 
     .tab-menu {
 
       margin-bottom: $_space-12;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 1fr;
-      grid-column-gap: $_space-5;
-      grid-row-gap: $_space-5;
+      @include Grid(4, 1, $_space-5, $_space-5);
+
 
       .tab-item {
         padding: $_space-4;
@@ -22,6 +19,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        opacity: 0.6;
+        filter: blur(.04rem);
 
         @include svg-icon-size($_sizes-6);
         @include svg-icon-color($_colors-pink-600);
@@ -38,18 +37,24 @@
         }
 
         &:hover {
+
+          opacity: 1;
+          filter: blur(0);
+
           @include svg-icon-color($_colors-pink-400);
+
           .tab-title {
-            color: $deepFuchsia;
+            color: $_colors-whiteAlpha-900;
           }
         }
 
         &.tab-open {
-        }
+          opacity: 1;
+          filter: blur(0);
+          border: 1px solid $_colors-whiteAlpha-500;
 
-        &.tab-open {
           .tab-title {
-            color: $deepFuchsia,
+            color: $_colors-whiteAlpha-900,
           }
         }
       }
@@ -111,9 +116,8 @@
       .tab-menu {
 
         margin: $_space-4 0;
-        grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: $_space-3;
-        grid-row-gap: $_space-3;
+        @include Grid(2, 1, $_space-3, $_space-3);
+
 
         .tab-item {
           padding: $_space-2;

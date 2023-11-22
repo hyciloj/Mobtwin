@@ -33,7 +33,10 @@ interface loginProps {
 }
 
 export const reducer = persistReducer(
-  {storage, key: 'v100-demo1-auth', whitelist: ['user', 'accessToken']},
+  {
+    storage, key: 'v.1-mobtwin-auth',
+    whitelist: ['user', 'accessToken']
+  },
   (state: IAuthState = initialAuthState, action: ActionWithPayload<IAuthState>) => {
     switch (action.type) {
       case actionTypes.Login: {
@@ -95,7 +98,7 @@ export function* saga() {
   })
 
   yield takeLatest(actionTypes.UserRequested, function* userRequested() {
-    const {data: user} = yield getUserByToken()
-    yield put(actions.fulfillUser(user))
+    const {data} = yield getUserByToken()
+    yield put(actions.fulfillUser(data))
   })
 }

@@ -5,8 +5,8 @@ import {FormDataLogin, FormDataRegister, FormDataResetPassword} from "../models/
 
 const API_URL = process.env.REACT_APP_CORE_API_URL || 'api'
 
-export const GET_USER_BY_ACCESS_TOKEN_URL = `${API_URL}profile`
 export const LOGIN_URL = `${API_URL}login`
+export const GET_USER_BY_ACCESS_TOKEN_URL = `${API_URL}profile`
 export const REGISTER_URL = `${API_URL}register`
 export const REQUEST_PASSWORD_URL = `${API_URL}forgot-password`
 export const RESET_PASSWORD = `${API_URL}reset-password`
@@ -36,6 +36,7 @@ export function register<T>({email, password}: FormDataRegister) {
 export function requestPassword({email}:{email: string}) {
   return axios.post<PropertiesReturnModel>(REQUEST_PASSWORD_URL, {email})
 }
+
 export function resetPassword<T>({email, password, token, password_confirmation}: FormDataResetPassword) {
   return axios.post<PropertiesReturnModel>(RESET_PASSWORD, {email, password, token, password_confirmation})
 }
@@ -47,6 +48,5 @@ export function getUserByToken() {
 }
 
 export function logout() {
-  console.log("logout")
   return axios.post(LOGOUT_URL)
 }

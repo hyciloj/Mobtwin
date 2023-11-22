@@ -49,8 +49,8 @@
           .tickers-img {
             background-size: cover;
             margin: $_sizes-2;
-            height: $_sizes-24;
-            width: $_sizes-24;
+            height: 8vw;
+            width: 8vw;
             border-radius: 12px;
 
             &:hover {
@@ -89,8 +89,8 @@
 
             .tickers-img {
               margin: $_sizes-2;
-              height: $_sizes-20;
-              width: $_sizes-20;
+              height: 13vw;
+              width: 13vw;
             }
           }
         }
@@ -149,8 +149,8 @@
 
             .tickers-img {
               margin: $_sizes-1;
-              height: $_sizes-16;
-              width: $_sizes-16;
+              height: 20vw;
+              width: 20vw;
             }
           }
         }

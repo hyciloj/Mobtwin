@@ -1,0 +1,12 @@
+.section-container {
+  margin: $_space-20 0;
+}
+@include media-breakpoint-down(lg) {
+  margin: $_space-16 0;
+}
+@include media-breakpoint-down(md) {
+   margin: $_space-10 0;
+}
+@include media-breakpoint-down(sm) {
+   margin: $_space-8 0;
+}

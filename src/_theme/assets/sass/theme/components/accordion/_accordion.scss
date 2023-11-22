@@ -4,71 +4,77 @@
     margin: $_space-20 0;
 
     .accordion-wrapper {
-      border-radius: $_space-4;
+      width: 100%;
+      @include Grid(2, auto, $_space-8, $_space-8);
+      align-items: start;
 
-      .accordion-item {
+      .accordion-col {
+        .accordion-item {
 
-        overflow: hidden;
-        background-color: #212121;
-        border-radius: $_space-6;
-        margin-bottom: $_space-4;
-
-        .header {
-
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: $_space-4;
-          cursor: pointer;
-          transition: all $_transition-duration-ultra-fast $_transition-easing-ease-in;
-
-          .title {
-          }
-
-          .svg-icon {
-            display: flex;
-            @include svg-icon-size($_sizes-4);
-            @include svg-icon-color($_colors-purple-300);
-            @include svg-icon-transform(rotate, 90, deg);
-          }
-
-          &:hover {
-            background-color: $_colors-blackAlpha-300;
-
-            .svg-icon {
-              @include svg-icon-color($_colors-purple-500);
-            }
-
-          }
-        }
-
-        .content {
-          max-height: 0;
           overflow: hidden;
-          transition: all $_transition-duration-normal $_transition-easing-ease-in;
-
-          .description {
-            padding: $_space-4 $_space-8;
-          }
-        }
-
-        // accordion active
-        &.active {
+          background-color: #212121;
+          border-radius: $_space-4;
+          margin-bottom: $_space-4;
 
           .header {
-            background-color: $_colors-blackAlpha-100;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $_space-4;
+            cursor: pointer;
             transition: all $_transition-duration-ultra-fast $_transition-easing-ease-in;
+
+            .title {
+            }
 
             .svg-icon {
               display: flex;
-              @include svg-icon-transform(rotate, -90, deg);
+              @include svg-icon-size($_sizes-4);
+              @include svg-icon-color($_colors-purple-300);
+              @include svg-icon-transform(rotate, 90, deg);
+            }
+
+            &:hover {
+              background-color: $_colors-blackAlpha-300;
+
+              .svg-icon {
+                @include svg-icon-color($_colors-purple-500);
+              }
+
             }
           }
 
           .content {
-            height: auto;
-            max-height: 30rem;
+            //max-height: 0;
+            //overflow: hidden;
+            display: none;
             transition: all $_transition-duration-normal $_transition-easing-ease-in;
+
+            .description {
+              padding: $_space-4 $_space-8;
+            }
+          }
+
+          // accordions active
+          &.active {
+
+            .header {
+              background-color: $_colors-blackAlpha-100;
+              transition: all $_transition-duration-ultra-fast $_transition-easing-ease-in;
+
+              .svg-icon {
+                display: flex;
+                @include svg-icon-transform(rotate, -90, deg);
+              }
+            }
+
+            .content {
+              display: block;
+              //height: auto;
+              //max-height: 30rem;
+              //transition: all $_transition-duration-normal $_transition-easing-ease-in;
+            }
           }
         }
       }
@@ -76,12 +82,14 @@
     }
   }
 
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     .accordion-container {
       margin: $_space-8 0;
 
       .accordion-wrapper {
         border-radius: $_space-2;
+        @include Grid(1, auto, $_space-4, 0);
+
 
         .accordion-item {
 

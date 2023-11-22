@@ -10,6 +10,10 @@
     font-size: 2rem;
     color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
   }
+  .text-h3 {
+    font-weight: 400;
+    font-size: $_sizes-6;
+  }
 
   .text-h4 {
     font-weight: 400;
@@ -19,7 +23,6 @@
   .text-p {
     font-weight: 400;
     font-size: 1rem;
-    color: if(isDarkMode($mode), $_colors-whiteAlpha-900, $_colors-blackAlpha-900);
   }
 
   @include media-breakpoint-up(lg) {
@@ -48,6 +51,9 @@
     }
     .text-h2 {
       font-size: $_sizes-4;
+    }
+    .text-h3 {
+      font-size: $_sizes-3;
     }
   }
 }

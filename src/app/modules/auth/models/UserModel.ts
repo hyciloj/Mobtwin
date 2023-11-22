@@ -1,11 +1,7 @@
-import {UserAddressModel} from "./UserAddressModel";
-import {UserSocialNetworksModel} from "./UserSocialNetworksModel";
+import {AuthModel} from "./AuthModel";
 
-export interface UserModel {
-    id: number
-    name: string
-    email: string | undefined
-    workspace: string
+export interface UserModel extends AuthModel{
+    tokenUser: string
 }
 
 export interface PropertiesReturnModel {

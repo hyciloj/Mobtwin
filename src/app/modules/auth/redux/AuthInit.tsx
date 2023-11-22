@@ -32,8 +32,8 @@ const AuthInit: FC<PropsFromRedux> = (props) => {
       try {
         if (!didRequest.current) {
 
-          const {data: user} = await getUserByToken()
-          dispatch(props.fulfillUser(user))
+          const {data} = await getUserByToken()
+          dispatch(props.fulfillUser(data))
         }
       } catch (error) {
         if (!didRequest.current) {

@@ -19,33 +19,35 @@
 
 
       .parent {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 1fr;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
+
+        @include Grid(2, 1, 0, 0);
 
         .brand {
           img {
             width: $_space-12;
             height: $_space-12;
           }
+
           span {
             margin: 0 $_sizes-2;
           }
         }
+
         .child {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          grid-template-rows: 1fr;
-          grid-column-gap: 0;
-          grid-row-gap: 0;
+          //display: grid;
+          //grid-template-columns: repeat(4, 1fr);
+          //grid-template-rows: 1fr;
+          //grid-column-gap: 0;
+          //grid-row-gap: 0;
+          @include Grid(4, 1, 0, 0);
+
           text-align: center;
 
           .item {
             display: flex;
             justify-content: center;
             align-items: center;
+
             &.svg-icon {
               display: none;
 
@@ -62,24 +64,21 @@
       -webkit-backdrop-filter: blur(30px);
       padding: 0 $_space-8;
       position: fixed;
-      top: calc(-20rem + 5rem - 1.5rem);
+      top: calc(-17.5rem);
       left: $_space-2;
       right: $_space-2;
       border-radius: $_space-2;
       z-index: 7;
-      max-height: $_space-80;
+      min-height: $_space-80;
       transition: all $_transition-duration-slow $_transition-easing-ease-in-out;
 
       a {
         color: $black;
+        padding: $_space-3 $_space-4;
       }
 
       .parent {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: 2fr;
-        grid-column-gap: 0;
-        grid-row-gap: 0;
+        @include Grid(1, 1, $_space-2, $_space-2);
 
         .brand {
           display: flex;
@@ -90,21 +89,19 @@
             width: $_space-12;
             height: $_space-12;
           }
+
           span {
             margin: 0 $_sizes-2;
           }
         }
 
         .child {
-          display: grid;
-          grid-column-gap: 0;
-          grid-row-gap: 0;
-          justify-content: center;
+          @include Grid(1, auto, $_space-2, $_space-2);
           align-items: center;
+          justify-content: center;
+          justify-items: center;
 
           .item {
-            padding: $_space-2;
-            margin-bottom: $_space-2;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -114,6 +111,7 @@
               justify-content: center;
               align-items: center;
               transition: all $_transition-duration-slow $_transition-easing-ease-in-out;
+              padding: $_space-2;
 
               @include svg-icon-size($_sizes-6);
               @include svg-icon-color($_colors-purple-900);

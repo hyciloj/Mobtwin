@@ -6,16 +6,13 @@
 
     .testimonials-wrapper {
 
-      display: grid;
-      grid-column-gap: $_space-8;
-      grid-row-gap: $_space-8;
-      grid-template-rows: auto;
-      grid-template-columns: 1fr 1fr 1fr;
+      @include Grid(3, 1, $_space-8, $_space-8);
+
 
       .testimonial {
         background-color: rgba(129, 129, 139, .1);
         border-radius: $_space-8;
-        padding: $_space-16;
+        padding: $_space-12;
         grid-column-gap: $_space-6;
         grid-row-gap: $_space-6;
         flex-direction: column;
@@ -92,10 +89,8 @@
       margin: $_space-10 0;
 
       .testimonials-wrapper {
+        @include Grid(1, 1, $_space-4, $_space-4);
 
-        grid-column-gap: $_space-4;
-        grid-row-gap: $_space-4;
-        grid-template-columns: 1fr;
 
         .testimonial {
           border-radius: $_space-6;

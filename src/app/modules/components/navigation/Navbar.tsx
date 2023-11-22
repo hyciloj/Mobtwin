@@ -32,12 +32,12 @@ const NavBar = () => {
                     animate="visible"
         >
             <div className={`navbar-fixed${show ? ' show' : ''}`} ref={ref}>
-                <div className="parent">
+                <div className="parent grid-container">
                     <div className="brand">
                         <img src={toAbsoluteUrl('media/logos/favicon.png')} alt="Mobtwin"/>
                         <span>Mobtwin</span>
                     </div>
-                    <div className="child">
+                    <div className="child grid-container">
                         <div className="item"><Link to={PATH_AUTH.login}>Login</Link></div>
                         <div className="item"><Link to={PATH_AUTH.login}>Login</Link></div>
                         <div className="item"><Link to={PATH_AUTH.login}>Login</Link></div>

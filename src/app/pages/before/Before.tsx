@@ -1,7 +1,7 @@
 import React, {FC, useCallback, useEffect, useRef, useState} from "react";
 import {PATH_AUTH} from "../../routing/paths";
 import {Link} from "react-router-dom";
-import {Gallery, SwiperP, TickerX, Accordion, Testimonial} from "../component";
+import {Gallery, SwiperP, TickerX, Accordions, Testimonial, Step} from "../component";
 import ImagesGallery from "./ImageGallery.json"
 import Images from "./Images.json"
 import {KTSVG, toAbsoluteUrl} from "../../../_theme/helpers";
@@ -108,72 +108,48 @@ export default function Before() {
 
                 <div className="container">
 
-                    <div>
-                        <div className="ticker-container">
-                            <div className="row">
-                                <div className="col-12">
-                                    <h1 className="text-h1 text-white">Unleash your <span
-                                        className="h1-700 rad-color-2">Creativity</span> with the power of <span
-                                        className="h1-700 rad-color-1">Leonardo Ai </span>
-                                    </h1>
-                                    <h2 className={"brxe-ukrozz"}>Create production-quality visual assets for
-                                        your projects with unprecedented quality, speed, and style-consistency.</h2>
-                                    <div className="row">
-                                        <div className="col-6">
-                                            <Link to={PATH_AUTH.login} className="main_button-xl">Create account</Link>
-                                        </div>
+                    <div className="ticker-container">
+                        <div className="row">
+                            <div className="col-12">
+                                <h1 className="text-h1 text-white">Unleash your <span
+                                    className="h1-700 rad-color-2">Creativity</span> with the power of <span
+                                    className="h1-700 rad-color-1">Leonardo Ai </span>
+                                </h1>
+                                <h2 className={"brxe-ukrozz"}>Create production-quality visual assets for
+                                    your projects with unprecedented quality, speed, and style-consistency.</h2>
+                                <div className="row">
+                                    <div className="col-6">
+                                        <Link to={PATH_AUTH.login} className="main_button-xl">Create account</Link>
                                     </div>
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="ticker-wrapper">
-                                        <div className="tickers">
-                                            <TickerX data={ImagesGallery.firstLine}
-                                                     duration={10}
-                                                     from={0}
-                                                     to={-10}
-                                            />
-                                            <TickerX data={ImagesGallery.secondLine}
-                                                     duration={35}
-                                                     from={0}
-                                                     to={10}
-                                            />
-                                            <TickerX data={ImagesGallery.firstLine}
-                                                     duration={25}
-                                                     from={0}
-                                                     to={-10}
-                                            />
-                                        </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="ticker-wrapper">
+                                    <div className="tickers">
+                                        <TickerX data={ImagesGallery.firstLine}
+                                                 duration={10}
+                                                 from={0}
+                                                 to={-10}
+                                        />
+                                        <TickerX data={ImagesGallery.secondLine}
+                                                 duration={35}
+                                                 from={0}
+                                                 to={10}
+                                        />
+                                        <TickerX data={ImagesGallery.firstLine}
+                                                 duration={25}
+                                                 from={0}
+                                                 to={-10}
+                                        />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="row d-flex justify-content-around align-items-center mb-5">
-                        <div
-                            className="col-12 col-md-4 p-4 d-flex justify-content-center align-items-center flex-column">
-                            <h3 className="gradient-color-full">Cultivate Originality</h3>
-                            <div className="text-p text-p text-center text-white">Your imagination, our
-                                technology. Generate distinctive art with pre-trained AI models or train your own.
-                            </div>
-                        </div>
-                        <div
-                            className="col-12 col-md-4 p-4 d-flex justify-content-center align-items-center flex-column">
-                            <h3 className="gradient-color-full">Cultivate Originality</h3>
-                            <div className="text-p text-p text-center text-white">Your imagination, our
-                                technology. Generate distinctive art with pre-trained AI models or train your own.
-                            </div>
-                        </div>
-                        <div
-                            className="col-12 col-md-4 p-4 d-flex justify-content-center align-items-center flex-column">
-                            <h3 className="gradient-color-full">Cultivate Originality</h3>
-                            <div className="text-p text-p text-center text-white">Your imagination, our
-                                technology. Generate distinctive art with pre-trained AI models or train your own.
-                            </div>
-                        </div>
-                    </div>
+                    <Step/>
 
                     <div ref={scrollRef}>
 
@@ -190,7 +166,7 @@ export default function Before() {
                                 <span className="gradient-color-full _pr-2">Leonardo’s</span> Toolkit&nbsp;
                             </h2>
                         </div>
-                        <div className="row tab-menu">
+                        <div className="row tab-menu grid-container">
                             {tabTitles.map((item, index) => (
                                 <div
                                     className={`tab-item${
@@ -206,7 +182,6 @@ export default function Before() {
                         </div>
                         <div className="row tab-block">{tabBlockOpen()}</div>
                     </div>
-
 
                     <div className="gallery-container">
                         <div className="row ">
@@ -225,7 +200,7 @@ export default function Before() {
                         </div>
                     </div>
 
-                    <Accordion/>
+                    <Accordions/>
 
                     <div className="testimonials-container">
                         <div className="row ">
@@ -234,7 +209,7 @@ export default function Before() {
                             </h2>
                         </div>
                         <Reveal from={{x: 0, y: 75}} to={{x: 0, y: 0}}>
-                            <div className="testimonials-wrapper">
+                            <div className="testimonials-wrapper grid-container">
                                 <Testimonial/>
                             </div>
                         </Reveal>
