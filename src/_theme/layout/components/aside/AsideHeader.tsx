@@ -16,19 +16,16 @@ const AsideHeader = () => {
     };
     return (
         <>
-            <div className="aside-header d-flex justify-content-between align-items-center"
-            >
 
-                <div className="aside-logo flex-column-auto" id="kt_aside_logo">
-                    <Link to='/dashboard'>
-                        <img
-                            alt='Logo'
-                            className='_h-10 logo'
-                            src={toAbsoluteUrl('/media/logos/favicon.png')}
-                        />
-                    </Link>
-                </div>
-
+            {/* begin::Brand */}
+            <div className='aside-logo flex-column-auto' id='kt_aside_logo'>
+                <Link to='/dashboard'>
+                    <img
+                        alt='Logo'
+                        className='_h-10 logo'
+                        src={toAbsoluteUrl('/media/logos/favicon.png')}
+                    />
+                </Link>
                 <div
                     id='kt_aside_toggle'
                     className='aside-toggle'
@@ -45,10 +42,41 @@ const AsideHeader = () => {
                         })
                     }
                 >
-                    <KTSVG path={'/media/icons/duotune/arrows/arr026.svg'} className=''/>
+                    <KTSVG path={'/media/icons/duotune/arrows/arr080.svg'} className=''/>
                 </div>
-
             </div>
+            {/* end::Brand */}
+
+            {/*<div className="aside-header d-flex justify-content-between align-items-center"*/}
+            {/*>*/}
+            {/*    <div className="aside-logo flex-column-auto" id="kt_aside_logo">*/}
+            {/*        <Link to='/dashboard'>*/}
+            {/*            <img*/}
+            {/*                alt='Logo'*/}
+            {/*                className='_h-10 logo'*/}
+            {/*                src={toAbsoluteUrl('/media/logos/favicon.png')}*/}
+            {/*            />*/}
+            {/*        </Link>*/}
+            {/*        <div*/}
+            {/*            id='kt_aside_toggle'*/}
+            {/*            className='aside-toggle'*/}
+            {/*            data-kt-toggle={minimized}*/}
+            {/*            data-kt-toggle-state='active'*/}
+            {/*            data-kt-toggle-target='body'*/}
+            {/*            data-kt-toggle-name='aside-minimize'*/}
+            {/*            onClick={() =>*/}
+            {/*                updateData({*/}
+            {/*                    aside: {*/}
+            {/*                        ...config.aside,*/}
+            {/*                        minimized: !minimized*/}
+            {/*                    }*/}
+            {/*                })*/}
+            {/*            }*/}
+            {/*        >*/}
+            {/*            <KTSVG path={'/media/icons/duotune/arrows/arr026.svg'} className=''/>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </>
     )
 }

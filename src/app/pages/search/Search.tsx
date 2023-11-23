@@ -7,14 +7,13 @@ export default function Search() {
     return (
         <>
             <Logout />
-            <div className={"_pt-10"}>
-                <div className="row">
-                    <div className="col-12 col-md-3">
-                        <CardImage />
-
-                    </div>
-                </div>
-            </div>
+            {/*<div className={"_pt-10"}>*/}
+            {/*    <div className="row">*/}
+            {/*        <div className="col-12 col-md-3">*/}
+            {/*            <CardImage />*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </>
     )
 }

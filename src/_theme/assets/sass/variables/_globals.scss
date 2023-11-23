@@ -525,3 +525,13 @@ $_breakpoints-lg: 70rem;
 $_breakpoints-xl: 82rem;
 $_breakpoints-2xl: 96em;
 $_breakpoints-xs: 26rem;
+
+$bullet: (
+        bg-color: $gray-400,
+        dot-size: 4px,
+        bar-height: 4px,
+        bar-width: 8px,
+        bar-border-radius: 6px,
+        line-height: 1px,
+        line-width: 5px,
+) !default;

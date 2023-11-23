@@ -1,8 +1,9 @@
 import React, {FC, useEffect, useRef, useState} from "react";
 import {clsx} from "clsx";
 import {AsideMenu} from "./AsideMenu";
-import {useLayout} from "../../core/provider";
+import {useLayout, usePageData} from "../../core/provider";
 import {AsideHeader} from "./AsideHeader";
+import {useClickInside, useClickOutside, useHover} from "../../../../app/hooks";
 
 
 // https://dribbble.com/shots/17143561-Sidebar-Navigation-Menu-Animation
@@ -12,6 +13,11 @@ const AsideDefault: FC = () => {
 
     const {config, classes} = useLayout()
     const {aside} = config
+    const ref = useRef<HTMLDivElement | null>(null);
+    const [hovered, setHovered] = useState<boolean>(false)
+
+    useHover(ref, setHovered)
+
 
     // const boxRef = useRef<HTMLDivElement | null>(null);
 
@@ -31,6 +37,7 @@ const AsideDefault: FC = () => {
     // }, [])
 
 
+
     return (
         <>
             {/*<motion.div drag*/}
@@ -47,14 +54,16 @@ const AsideDefault: FC = () => {
             {/*>*/}
 
             <div id='kt_aside'
-                 className={clsx('aside', classes.aside.join(' '))}
+                 className={`aside${hovered ? ' aside-hoverable' : ''}`}
                  data-kt-aside='true'
                  data-kt-aside-name='aside'
                  data-kt-aside-activate='{default: true, lg: false}'
                  data-kt-aside-overlay='true'
                  data-kt-aside-direction='start'
                  data-kt-aside-toggle='#kt_aside_mobile_toggle'
+                 ref={ref}
             >
+
                 {/*header::start*/}
                 <AsideHeader/>
                 {/*header::end*/}

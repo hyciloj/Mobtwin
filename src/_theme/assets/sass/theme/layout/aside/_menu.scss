@@ -10,6 +10,29 @@
     .menu-item {
       display: block;
 
+      .menu-sub {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        flex-direction: column;
+        //display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: .3s ease-in-out;
+
+      }
+
+      &.show {
+        .menu-sub {
+          transition: .3s ease-in-out;
+          max-height: 30rem;
+          .menu-link {
+            padding-left: 2rem;
+          }
+        }
+      }
+
+
       // Menu Link
       .menu-link {
         cursor: pointer;
@@ -56,6 +79,15 @@
       // Title
       .menu-title {
         font-size: $_fontSizes-sm;
+      }
+
+      .menu-bullet {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: get($menu, link, bullet, width);
+        margin-right: get($menu, link, bullet, space);
       }
     }
   }
