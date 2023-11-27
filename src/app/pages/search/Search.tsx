@@ -1,19 +1,25 @@
 import React, {FC} from "react";
 import Logout from "../../modules/auth/components/Logout";
-import {CardImage} from "../component";
+import {Card1} from "../../../_theme/partials/content/cards";
 
 export default function Search() {
 
     return (
         <>
             <Logout />
-            {/*<div className={"_pt-10"}>*/}
-            {/*    <div className="row">*/}
-            {/*        <div className="col-12 col-md-3">*/}
-            {/*            <CardImage />*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            <div className="grid-3">
+                <Card1 />
+                <Card1 />
+                <Card1 />
+            </div>
+            <div className="grid-1-3">
+                <Card1 />
+                <Card1 />
+            </div>
+            <div className="grid-2-3">
+                <Card1 />
+                <Card1 />
+            </div>
         </>
     )
 }

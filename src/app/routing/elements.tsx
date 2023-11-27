@@ -33,6 +33,7 @@ export const ResetPassword = Loadable(lazy(() => import('../modules/auth/compone
  */
 
 export const Search = Loadable(lazy(() => import("../pages/search/Search")))
+export const Charts = Loadable(lazy(() => import("../pages/charts/Charts")))
 export const Home = Loadable(lazy(() => import("../pages/home/Home")))
 
 export const Beta = Loadable(lazy(() => import('../pages/Beta')));

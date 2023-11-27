@@ -1,11 +1,18 @@
 @mixin Grid($columns, $rows, $column-gap, $row-gap) {
-  &.grid-container {
-    display: grid;
-    grid-template-columns: repeat($columns, 1fr);
-    grid-template-rows: repeat($rows, 1fr);
-    grid-column-gap: #{$column-gap};
-    grid-row-gap: #{$row-gap};
-  }
+
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  grid-template-rows: repeat($rows, 1fr);
+  grid-column-gap: #{$column-gap};
+  grid-row-gap: #{$row-gap};
+
+  //&.grid-container {
+  //  display: grid;
+  //  grid-template-columns: repeat($columns, 1fr);
+  //  grid-template-rows: repeat($rows, 1fr);
+  //  grid-column-gap: #{$column-gap};
+  //  grid-row-gap: #{$row-gap};
+  //}
 
   //@include media-breakpoint-down(md) {
   //  display: grid;

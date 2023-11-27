@@ -4,6 +4,7 @@ import {clsx} from "clsx";
 import {KTSVG} from "../../../helpers";
 import {AsideMenuItem} from "./AsideMenuItem";
 import {AsideMenuItemWithSub} from "./AsideMenuItemWithSub";
+import {PATH_DASHBOARD, ROOTS_DASHBOARD} from "../../../../app/routing/paths";
 
 const AsideMenuMain: FC = () => {
 
@@ -15,27 +16,39 @@ const AsideMenuMain: FC = () => {
     return (
         <>
             <AsideMenuItem
-                to='/dashboard'
-                icon='/media/icons/duotune/art/art002.svg'
+                to={PATH_DASHBOARD.home}
+                icon='/media/icons/duotune/art/art003.svg'
                 title="Home"
                 fontIcon='bi-app-indicator'
             />
+            <AsideMenuItem
+                to={PATH_DASHBOARD.search}
+                icon='/media/icons/duotune/art/art002.svg'
+                title="Search"
+                fontIcon='bi-app-indicator'
+            />
+            <AsideMenuItem
+                to={PATH_DASHBOARD.charts}
+                icon='/media/icons/duotune/art/art004.svg'
+                title="Charts"
+                fontIcon='bi-app-indicator'
+            />
 
-            <AsideMenuItemWithSub
-                to='/crafted/widgets'
-                title='Widgets'
-                icon='/media/icons/duotune/general/gen025.svg'
-                fontIcon='bi-layers'
-                onClick={onClick}
-                show={show}
-            >
-                <AsideMenuItem to='/crafted/widgets/lists' title='Lists' hasBullet={true} />
-                <AsideMenuItem to='/crafted/widgets/statistics' title='Statistics' hasBullet={true} />
-                <AsideMenuItem to='/crafted/widgets/charts' title='Charts' hasBullet={true} />
-                <AsideMenuItem to='/crafted/widgets/mixed' title='Mixed' hasBullet={true} />
-                <AsideMenuItem to='/crafted/widgets/tables' title='Tables' hasBullet={true} />
-                <AsideMenuItem to='/crafted/widgets/feeds' title='Feeds' hasBullet={true} />
-            </AsideMenuItemWithSub>
+            {/*<AsideMenuItemWithSub*/}
+            {/*    to='/crafted/widgets'*/}
+            {/*    title='Widgets'*/}
+            {/*    icon='/media/icons/duotune/general/gen025.svg'*/}
+            {/*    fontIcon='bi-layers'*/}
+            {/*    onClick={onClick}*/}
+            {/*    show={show}*/}
+            {/*>*/}
+            {/*    <AsideMenuItem to='/crafted/widgets/lists' title='Lists' hasBullet={true} />*/}
+            {/*    <AsideMenuItem to='/crafted/widgets/statistics' title='Statistics' hasBullet={true} />*/}
+            {/*    <AsideMenuItem to='/crafted/widgets/charts' title='Charts' hasBullet={true} />*/}
+            {/*    <AsideMenuItem to='/crafted/widgets/mixed' title='Mixed' hasBullet={true} />*/}
+            {/*    <AsideMenuItem to='/crafted/widgets/tables' title='Tables' hasBullet={true} />*/}
+            {/*    <AsideMenuItem to='/crafted/widgets/feeds' title='Feeds' hasBullet={true} />*/}
+            {/*</AsideMenuItemWithSub>*/}
 
             {/*<div className="menu-item">*/}
             {/*    <Link className={clsx('menu-link without-sub', {active: true})} to={"/"}>*/}

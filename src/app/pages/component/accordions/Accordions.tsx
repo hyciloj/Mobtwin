@@ -54,7 +54,7 @@ const Accordions = () => {
 
     return (
         <div className="accordion-container">
-            <div className="accordion-wrapper grid-container">
+            <div className="accordion-wrapper ">
                 <div className="accordion-col">
                     {
                         col1.map((item, index) => (

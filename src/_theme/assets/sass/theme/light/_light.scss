@@ -17,7 +17,7 @@ $themeMode: "light";
 @include tab($themeMode);
 @include text($themeMode);
 @include loadingPrimary($themeMode);
-@include CardImg($themeMode);
+@include Card($themeMode);
 @include NavBarFixed($themeMode);
 @include SwiperContainer($themeMode);
 @include TickerContainer($themeMode);
@@ -26,6 +26,7 @@ $themeMode: "light";
 @include AccordionContainer($themeMode);
 @include TestimonialContainer($themeMode);
 @include StepsContainer($themeMode);
+@include WidgetsCard($themeMode);
 
 
 

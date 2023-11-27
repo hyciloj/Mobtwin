@@ -1,0 +1,101 @@
+@mixin WidgetsCard($mode) {
+
+  .widget-card {
+    box-shadow: 0px 0px 20px 0px rgba(76, 87, 125, 0.02);
+    background-color: $white;
+    border-radius: 1rem;
+
+    .widget-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: wrap;
+      min-height: 70px;
+      padding: 1rem 2.25rem;
+      background-color: transparent;
+
+      // Title
+      .widget-card-title {
+        display: flex;
+        align-items: center;
+        margin: 0.5rem;
+        margin-left: 0;
+
+        &.flex-column {
+          align-items: flex-start;
+          justify-content: center;
+        }
+
+        .widget-card-icon {
+          margin-right: 0.75rem;
+          line-height: 0;
+
+          i {
+            font-size: 1.25rem;
+            color: $gray-600;
+            line-height: 0;
+
+            &:after,
+            &:before {
+              line-height: 0;
+            }
+          }
+
+          .svg-icon {
+            @include svg-icon-size(24px);
+            @include svg-icon-color($gray-600);
+          }
+        }
+
+        &,
+        .widget-card-label {
+          font-weight: 500;
+          font-size: 1.275rem;
+          color: $dark;
+          margin: 0 0.75rem 0 0;
+          flex-wrap: wrap;
+        }
+
+        .widget-card-sub-label {
+          font-size: .7rem;
+          opacity: .5;
+        }
+
+        // Description
+        small {
+          color: $text-muted;
+          font-size: 1rem;
+        }
+
+        // Headings
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          margin-bottom: 0;
+        }
+      }
+
+      // Toolbar
+      .widget-card-toolbar {
+        display: flex;
+        align-items: center;
+        margin: 0.5rem 0;
+        flex-wrap: wrap;
+      }
+    }
+
+    .widget-card-body {
+      padding: 1rem 2rem;
+    }
+
+    .widget-card-footer {
+      padding: 2rem;
+      background-color: transparent;
+    }
+
+  }
+
+}

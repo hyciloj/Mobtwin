@@ -7,16 +7,15 @@ const Beta: React.FC = () => {
     useEffect(() => {
         const windowUrl = window.location.href;
 
-        // Check if the URL contains 'www'
         if (windowUrl.includes("mobtwin")) {
 
-            window.location.href = "https://mobtwin.com/beta/";
+            window.location.href = "https://app.mobtwin.com/";
         }
     }, []);
 
     return (
         <div/>
     );
-};
+}
 
 export default Beta;

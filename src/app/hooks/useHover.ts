@@ -17,8 +17,6 @@ function useHover(
             }
             return;
         } else {
-            console.log("else")
-
             cb(false)
         }
 

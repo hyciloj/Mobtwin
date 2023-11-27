@@ -166,7 +166,7 @@ export default function Before() {
                                 <span className="gradient-color-full _pr-2">Leonardo’s</span> Toolkit&nbsp;
                             </h2>
                         </div>
-                        <div className="row tab-menu grid-container">
+                        <div className="row tab-menu">
                             {tabTitles.map((item, index) => (
                                 <div
                                     className={`tab-item${
@@ -209,7 +209,7 @@ export default function Before() {
                             </h2>
                         </div>
                         <Reveal from={{x: 0, y: 75}} to={{x: 0, y: 0}}>
-                            <div className="testimonials-wrapper grid-container">
+                            <div className="testimonials-wrapper">
                                 <Testimonial/>
                             </div>
                         </Reveal>

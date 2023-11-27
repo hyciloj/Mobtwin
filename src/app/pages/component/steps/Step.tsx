@@ -44,7 +44,7 @@ const Step = () => {
     return (
 
         <div className="steps-container" ref={ref}>
-            <motion.ul className="steps-wrapper grid-container"
+            <motion.ul className="steps-wrapper"
                        variants={container}
                        initial={"hidden"}
                        animate={controls}

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Navigate, useRoutes, Outlet} from "react-router-dom";
 import {AuthGuard, GuestGuard} from "../modules/auth";
-import {Before, Beta, Login, Register, ResetPassword, Search} from "./elements";
+import {Before, Beta, Charts, Home, Login, Register, ResetPassword, Search} from "./elements";
 import {PATH_AFTER_LOGIN, PATH_AFTER_LOGIN_BETA, PATH_BEFORE_LOGIN} from "../../config-global";
 import {DashboardWrapper, AuthPage, Demo} from "../pages";
 import {ROOTS_AUTHENTICATION, ROOTS_DASHBOARD, ROOT_DEMO, PATH_AUTH, ROOTS_BETA} from "./paths";
@@ -55,8 +55,9 @@ export default function Router() {
             ),
             children: [
                 {element: <Navigate to={PATH_AFTER_LOGIN} replace/>, index: true},
+                {path: 'home', element: <Home />},
                 {path: 'search', element: <Search/>},
-                {path: 'two', element: <h1>PageTwo</h1>},
+                {path: 'charts', element: <Charts />},
                 {path: 'three', element: <h1>PageThree</h1>},
             ],
         },
