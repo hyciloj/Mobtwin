@@ -4,8 +4,8 @@ import {useLayout} from '../../core'
 
 export function HeaderWrapper() {
     const {pathname} = useLocation()
-    const {config, classes} = useLayout()
-    const {aside} = config
+    const {layout, setLayout} = useLayout();
+    const {aside} = layout
 
 
     return (

@@ -27,8 +27,8 @@ const AsideMenuItemWithSub: React.FC<Props> = ({
                                                }) => {
     const {pathname} = useLocation()
     const isActive = checkIsActive(pathname, to)
-    const {config} = useLayout()
-    const {aside} = config
+    const {layout} = useLayout()
+    const {aside} = layout
 
     return (
         <div className={clsx('menu-item', {'show': show}, 'menu-accordions')} onClick={onClick}>

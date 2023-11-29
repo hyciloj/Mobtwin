@@ -71,6 +71,12 @@
             }
           }
         }
+        a {
+          background-color: $white;
+          padding: $_space-2;
+          border-radius: $_space-3;
+          font-size: $_fontSizes-sm;
+        }
       }
 
     }

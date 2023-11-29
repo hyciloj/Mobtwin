@@ -2,6 +2,7 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
 
 
 @mixin asideHeader($mode) {
+
   .aside-toggle {
 
     //background: $linearGradient;
@@ -37,6 +38,20 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
       //background: $_colors-whiteAlpha-700;
     }
 
+  }
+
+  &[data-kt-aside-minimize='on'] {
+    .aside-logo {
+      .logo {
+        cursor: pointer;
+      }
+      .brand-name {
+        display: none;
+      }
+    }
+    .aside-toggle {
+      display: none;
+    }
   }
 
     //@for $i from 1 through length($icon-colors) {

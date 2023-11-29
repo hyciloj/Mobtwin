@@ -3,7 +3,7 @@ import {clsx} from "clsx";
 import {AsideMenu} from "./AsideMenu";
 import {useLayout, usePageData} from "../../core/provider";
 import {AsideHeader} from "./AsideHeader";
-import {useClickInside, useClickOutside, useHover} from "../../../../app/hooks";
+import {useHover} from "../../../../app/hooks";
 
 
 // https://dribbble.com/shots/17143561-Sidebar-Navigation-Menu-Animation
@@ -11,32 +11,12 @@ import {useClickInside, useClickOutside, useHover} from "../../../../app/hooks";
 
 const AsideDefault: FC = () => {
 
-    const {config, classes} = useLayout()
-    const {aside} = config
+    const {layout, setLayout} = useLayout();
+    const {aside} = layout
     const ref = useRef<HTMLDivElement | null>(null);
     const [hovered, setHovered] = useState<boolean>(false)
 
-    useHover(ref, setHovered)
-
-
-    // const boxRef = useRef<HTMLDivElement | null>(null);
-
-    // const [boxWidth, setBoxWidth] = useState<number>(0)
-    // const [boxHeight, setBoxHeight] = useState<number>(0)
-    // const windowWidth = window.innerWidth;
-    // const windowHeight = window.innerHeight;
-
-    // useEffect(() => {
-        // if (!boxRef.current) {
-        //     return;
-        // }
-        //
-        // const box = boxRef.current;
-        // setBoxWidth(box.clientWidth + (windowWidth - document.documentElement.clientWidth) + 2)
-        // setBoxHeight(windowHeight - 75)
-    // }, [])
-
-
+    // useHover(ref, setHovered)
 
     return (
         <>
@@ -54,7 +34,7 @@ const AsideDefault: FC = () => {
             {/*>*/}
 
             <div id='kt_aside'
-                 className={`aside${hovered ? ' aside-hoverable' : ''}`}
+                 className={`aside`}
                  data-kt-aside='true'
                  data-kt-aside-name='aside'
                  data-kt-aside-activate='{default: true, lg: false}'
@@ -69,8 +49,8 @@ const AsideDefault: FC = () => {
                 {/*header::end*/}
 
                 {/*menu::start*/}
-                <div className="aside-menu flex-column-fluid">
-                    <AsideMenu asideMenuCSSClasses={classes.asideMenu}/>
+                <div className="aside-menu flex-column-fluid hover-scroll-overlay-y">
+                    <AsideMenu />
                 </div>
                 {/*menu::end*/}
 

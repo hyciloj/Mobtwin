@@ -5,6 +5,7 @@
   //
 
   // General mode(all devices)
+
   .aside {
     display: flex;
     flex-direction: column;
@@ -36,49 +37,76 @@
         width: 0;
       }
     }
+
+    & .hover-scroll-overlay-y {
+      overflow-y: hidden;
+      position: relative;
+
+      --scrollbar-space: #{get($scrollbar, space)};
+
+      // Webkit
+      &::-webkit-scrollbar {
+        width: calc(#{get($scrollbar, width)} + var(--scrollbar-space));
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-clip: content-box;
+        border-right: var(--scrollbar-space) solid transparent;
+        background-color: get($scrollbar, color);
+        border-radius:  get($scrollbar, radius);
+      }
+
+      &:hover {
+        overflow-y: overlay;
+      }
+
+      // Firefox hack
+      @-moz-document url-prefix() {
+        overflow-y: scroll;
+        position: relative;
+      }
+    }
   }
+
 
   // Desktop mode
   @include media-breakpoint-up(lg) {
-    .aside {
-      width: get($aside-config, width);
-      transition: width get($aside-config, transition-speed) ease;
 
-      // Logo
-      .aside-logo {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: get($header-config, default, height, desktop);
-        padding: 0 get($aside-config, padding-x);
-      }
 
-      // Aside menu
-      .aside-menu {
+    &.aside-fixed {
+
+      .aside {
         width: get($aside-config, width);
-      }
-
-      // Fixed aside mode
-      .aside-fixed & {
+        transition: width get($aside-config, transition-speed) ease;
         position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
         z-index: get($aside-config, z-index);
         overflow: hidden;
-      }
+        background: $_colors-whiteAlpha-700;
+        backdrop-filter: blur($_space-6);
 
-      // Static aside mode
-      .aside-static & {
-        position: relative;
-        z-index: 1;
-      }
+        .aside-logo {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: get($header-config, default, height, desktop);
+          padding: 0 get($aside-config, padding-x);
+        }
 
-      // Minimize aside mode
-      &[data-kt-aside-minimize='on'] {
+        // Aside menu
+        .aside-menu {
+          width: get($aside-config, width);
+
+        }
+      }
+    }
+
+    &[data-kt-aside-minimize='on'] {
+      .aside {
         width: get($aside-config, minimized-width);
         transition: width get($aside-config, transition-speed) ease;
-
         // Logo
         .aside-logo {
           .logo-default {
@@ -90,23 +118,12 @@
           }
         }
 
-        // Hoverable
-        &.aside-hoverable:hover:not(.animating) {
-          transition: width get($aside-config, transition-speed) ease;
-          width: get($aside-config, width);
-          box-shadow: get($aside-config, minimized-hover-box-shadow);
-        }
-
         // Not hovered mode
         &:not(.aside-hoverable),
         &:not(:hover) {
           // Logo
           .aside-logo {
             justify-content: center;
-
-            .logo {
-              display: none;
-            }
 
             .logo-default {
               display: none;
@@ -123,6 +140,7 @@
             .menu-title {
               opacity: 0;
               transition: opacity get($aside-config, transition-speed) ease;
+              display: none;
             }
 
             .menu-item.show > .menu-sub {
@@ -149,6 +167,119 @@
         }
       }
     }
+
+
+    //&.aside-fixed {
+    //  .aside {
+    //    width: get($aside-config, width);
+    //    transition: width get($aside-config, transition-speed) ease;
+    //
+    //    // Logo
+    //    .aside-logo {
+    //      display: flex;
+    //      justify-content: space-between;
+    //      align-items: center;
+    //      height: get($header-config, default, height, desktop);
+    //      padding: 0 get($aside-config, padding-x);
+    //    }
+    //
+    //    // Aside menu
+    //    .aside-menu {
+    //      width: get($aside-config, width);
+    //    }
+    //
+    //    // Fixed aside mode
+    //    .aside-fixed & {
+    //      position: fixed;
+    //      top: 0;
+    //      bottom: 0;
+    //      left: 0;
+    //      z-index: get($aside-config, z-index);
+    //      overflow: hidden;
+    //    }
+    //
+    //    // Static aside mode
+    //    .aside-static & {
+    //      position: relative;
+    //      z-index: 1;
+    //    }
+    //
+    //    // Minimize aside mode
+    //    &[data-kt-aside-minimize='on'] {
+    //      width: get($aside-config, minimized-width);
+    //      transition: width get($aside-config, transition-speed) ease;
+    //
+    //      // Logo
+    //      .aside-logo {
+    //        .logo-default {
+    //          display: inline-block;
+    //        }
+    //
+    //        .logo-minimize {
+    //          display: none;
+    //        }
+    //      }
+    //
+    //      // Hoverable
+    //      &.aside-hoverable:hover:not(.animating) {
+    //        transition: width get($aside-config, transition-speed) ease;
+    //        width: get($aside-config, width);
+    //        box-shadow: get($aside-config, minimized-hover-box-shadow);
+    //      }
+    //
+    //      // Not hovered mode
+    //      &:not(.aside-hoverable),
+    //      &:not(:hover) {
+    //        // Logo
+    //        .aside-logo {
+    //          justify-content: center;
+    //
+    //          .logo {
+    //            display: none;
+    //          }
+    //
+    //          .logo-default {
+    //            display: none;
+    //          }
+    //
+    //          .logo-minimize {
+    //            display: inline-block;
+    //          }
+    //        }
+    //
+    //        // Menu
+    //        .aside-menu {
+    //          .menu-content,
+    //          .menu-title {
+    //            opacity: 0;
+    //            transition: opacity get($aside-config, transition-speed) ease;
+    //          }
+    //
+    //          .menu-item.show > .menu-sub {
+    //            height: 0;
+    //            overflow: hidden;
+    //            transition: height get($aside-config, transition-speed) ease;
+    //          }
+    //        }
+    //
+    //        // Custom button
+    //        .btn-custom {
+    //          .btn-label {
+    //            width: 0;
+    //            opacity: 0;
+    //            transition: opacity get($aside-config, transition-speed) ease;
+    //          }
+    //
+    //          .btn-icon {
+    //            width: auto;
+    //            opacity: 1;
+    //            transition: opacity get($aside-config, transition-speed) ease;
+    //          }
+    //        }
+    //      }
+    //    }
+    //  }
+    //}
   }
 
   // Tablet & mobile modes
@@ -163,70 +294,5 @@
     }
   }
 
-  //.aside {
-  //  //position: fixed;
-  //  //left: 0;
-  //  //top: 0;
-  //  height: get($aside-config, height);
-  //  user-select: none;
-  //  //background-color: $_colors-blackAlpha-500;
-  //  backdrop-filter: blur($_sizes-3);
-  //  display: flex;
-  //  flex-direction: column;
-  //  padding: 0;
-  //  border: 1px solid $_colors-whiteAlpha-300;
-  //  border-radius: $_space-2;
-  //  transition: height 0.3s ease;
-  //  overflow: hidden;
-  //  cursor: pointer;
-  //
-  //  &[data-kt-aside-minimize-y="on"] {
-  //    transition: height 0.3s ease;
-  //    height: get($aside-config, minimized-height);;
-  //
-  //    #kt_aside_toggle svg {
-  //      transform: rotate(180deg);
-  //    }
-  //
-  //    .aside-menu, .aside-footer {
-  //      //display: none;
-  //    }
-  //  }
-  //
-  //  // Logo
-  //  .aside-logo {
-  //    display: flex;
-  //    justify-content: space-between;
-  //    align-items: center;
-  //    height: get($header-config, default, height, desktop);
-  //    padding: 0 get($aside-config, padding-x);
-  //  }
-  //
-  //  // Separator
-  //  .separator {
-  //    border-bottom-color: #282a3d;
-  //  }
-  //
-  //  // Aside menu
-  //  .aside-menu {
-  //    width: get($aside-config, width);
-  //  }
-  //}
-  //
-  //
-  //// Desktop mode
-  //@include media-breakpoint-up(lg) {
-  //  .aside {
-  //    height: get($aside-config, height);
-  //    width: get($aside-config, width);
-  //    transition: width get($aside-config, transition-speed) ease;
-  //
-  //    // Minimize aside mode
-  //    [data-kt-aside-minimize='on'] & {
-  //      height: get($aside-config, height);
-  //      transition: height get($aside-config, transition-speed) ease;
-  //    }
-  //  }
-  //}
 }
 

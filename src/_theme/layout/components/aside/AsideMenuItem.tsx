@@ -4,16 +4,9 @@ import {Link} from 'react-router-dom'
 import {useLocation} from 'react-router'
 import {checkIsActive, KTSVG} from '../../../helpers'
 import {useLayout} from '../../core'
+import {AsideMenuItemInterface} from "./types";
 
-type Props = {
-    to: string
-    title: string
-    icon?: string
-    fontIcon?: string
-    hasBullet?: boolean
-}
-
-const AsideMenuItem: React.FC<Props> = ({
+const AsideMenuItem: React.FC<AsideMenuItemInterface> = ({
                                             to,
                                             title,
                                             icon,
@@ -22,8 +15,8 @@ const AsideMenuItem: React.FC<Props> = ({
                                         }) => {
     const {pathname} = useLocation()
     const isActive = checkIsActive(pathname, to)
-    const {config} = useLayout()
-    const {aside} = config
+    const {layout} = useLayout()
+    const {aside} = layout
 
     return (
         <div className='menu-item'>

@@ -11,6 +11,7 @@ $themeMode: "light";
 @include bgImage($themeMode);
 // aside
 @include asideBase($themeMode);
+@include Main($themeMode);
 @include asideHeader($themeMode);
 @include asideMenu($themeMode);
 @include authContainer($themeMode);

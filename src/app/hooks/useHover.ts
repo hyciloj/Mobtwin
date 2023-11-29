@@ -11,10 +11,8 @@ function useHover(
     const handleHovered: HoveredCallback = useCallback((e) => {
 
         if (ref.current == null || ref.current.contains(e.target as Node)) {
-            let a = ref.current?.dataset.ktAsideMinimize
-            if (a == "on") {
-                cb(true);
-            }
+            // let a = ref.current?.dataset.ktAsideMinimize
+            cb(true);
             return;
         } else {
             cb(false)

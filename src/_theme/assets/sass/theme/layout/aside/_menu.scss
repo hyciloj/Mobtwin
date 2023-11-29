@@ -1,10 +1,15 @@
 @mixin asideMenu($mode) {
   .aside-menu {
+
     .menu {
       // Link padding x
       @include menu-link-padding-x(get($aside-config, padding-x));
 
     }
+
+    // wrapper
+    // Hover overflow overlay
+
 
     // Item
     .menu-item {
@@ -26,12 +31,18 @@
         .menu-sub {
           transition: .3s ease-in-out;
           max-height: 30rem;
+
           .menu-link {
             padding-left: 2rem;
           }
         }
       }
 
+      .menu-content {
+        .menu-section {
+          font-size: $_space-3;
+        }
+      }
 
       // Menu Link
       .menu-link {
@@ -44,15 +55,37 @@
         outline: none !important;
 
         &.active {
-          background-color: $_colors-whiteAlpha-200;
+          background-color: $_colors-blackAlpha-50;
 
           .svg-icon svg [fill]:not(.permanent):not(g) {
-            fill: #009ef7;
+            fill: $white;
+          }
+
+          .menu-icon {
+            background: $linearGradient;
+          }
+
+          .menu-title {
+            font-size: $_fontSizes-sm;
+            color: $wildOrchid;
+          }
+
+          &:hover {
+            .svg-icon svg [fill]:not(.permanent):not(g) {
+              fill: $white;
+            }
           }
         }
+
         &:hover {
+          background-color: $_colors-blackAlpha-200;
+
           .svg-icon svg [fill]:not(.permanent):not(g) {
-            fill: #009ef7;
+            fill: $deepFuchsia;
+          }
+
+          .menu-title {
+            color: $wildOrchid;
           }
         }
       }
@@ -66,19 +99,20 @@
         width: get($menu, link, icon, width);
         height: get($menu, link, icon, width);
         margin-right: get($menu, link, icon, space);
-        background: linear-gradient(310deg, #F06292 0%, #F06292 100%);
         border-radius: 0.3rem;
 
         .svg-icon {
           line-height: 1;
           @include svg-icon-size(get($font-sizes, 5));
-          @include svg-icon-color($slate-blue-900);
+          @include svg-icon-color($colors-gray-500);
         }
       }
 
       // Title
       .menu-title {
         font-size: $_fontSizes-sm;
+        color: $colors-gray-500;
+        text-transform: capitalize;
       }
 
       .menu-bullet {
@@ -91,5 +125,6 @@
       }
     }
   }
+
 }
 

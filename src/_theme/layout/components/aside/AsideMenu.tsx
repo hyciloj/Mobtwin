@@ -6,7 +6,7 @@ type Props = {
     asideMenuCSSClasses: string[]
 }
 
-const AsideMenu: FC<Props> = ({asideMenuCSSClasses}) => {
+const AsideMenu: FC = () => {
 
     const scrollRef = useRef<HTMLDivElement | null>(null)
     const {pathname} = useLocation()
@@ -18,7 +18,7 @@ const AsideMenu: FC<Props> = ({asideMenuCSSClasses}) => {
         <div
             id='kt_aside_menu_wrapper'
             ref={scrollRef}
-            className='hover-scroll-overlay-y my-5 my-lg-5'
+            className=' my-3 my-lg-3'
             data-kt-scroll='true'
             data-kt-scroll-activate='{default: false, lg: true}'
             data-kt-scroll-height='auto'
@@ -31,7 +31,6 @@ const AsideMenu: FC<Props> = ({asideMenuCSSClasses}) => {
                 data-kt-menu='true'
                 className={clsx(
                     'menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500',
-                    asideMenuCSSClasses.join(' ')
                 )}
             >
                 <AsideMenuMain />

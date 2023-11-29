@@ -1,19 +1,29 @@
 import {FC, useState} from 'react'
 import '../_theme/assets/sass/style.scss';
-import {useLayout, getLayout, LayoutSetup, ILayout} from "../_theme/layout/core";
+import {useLayout, getLayout, LayoutSetup, ILayout, LayoutContextModel} from "../_theme/layout/core";
+
+type UpdateDataProps = {
+    config: LayoutContextModel
+    fieldsToUpdate: Partial<ILayout>
+}
+
+export const UpdateData = ({config, fieldsToUpdate}: UpdateDataProps) => {
+
+    const {layout, setLayout} = config
+    const updatedData = {...layout, ...fieldsToUpdate}
+
+    setLayout(updatedData)
+}
 
 const Header: FC = () => {
 
-    const {setLayout} = useLayout()
+    const {layout, setLayout} = useLayout();
+
     const [configLoading, setConfigLoading] = useState<boolean>(false)
     const [config, setConfig] = useState<ILayout>(getLayout())
 
-    const updateData = (fieldsToUpdate: Partial<ILayout>) => {
-        const updatedData = {...config, ...fieldsToUpdate}
+    const {theme: {mode}} = layout
 
-        setConfig(updatedData)
-        LayoutSetup.setConfig(updatedData)
-    }
 
 
 
@@ -35,9 +45,10 @@ const Header: FC = () => {
                         {/*    checked={theme === 'light'}*/}
                         {/*/>*/}
                         <button type="button" className={`toggle-btn__input-label`}
-                                onClick={() =>
-                                    updateData({
-                                        mode: 'light'
+                                onClick={ () =>
+                                    UpdateData({
+                                        config: {layout, setLayout},
+                                        fieldsToUpdate: {theme: {mode: mode === 'light' ? 'dark' : 'light'}}
                                     })
                                 }
                         >
@@ -51,7 +62,7 @@ const Header: FC = () => {
                     </div>
                 </div>
 
-                <h1 style={{padding: 5}}>{config.mode}</h1>
+                <h1 style={{padding: 5}}>{config.theme.mode}</h1>
             </div>
         </header>
     );

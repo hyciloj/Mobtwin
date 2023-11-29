@@ -27,9 +27,9 @@ const ChartsWidget2: React.FC<Props> = ({className}) => {
   }, [chartRef])
 
   return (
-      <div className={`card ${className}`}>
+      <div className={`widget-card ${className}`}>
         {/* begin::Header */}
-        <div className='card-header border-0 pt-5'>
+        <div className='widget-card-header border-0 pt-5'>
           <h3 className='card-title align-items-start flex-column'>
             <span className='card-label fw-bolder fs-3 mb-1'>Recent Transactions</span>
 

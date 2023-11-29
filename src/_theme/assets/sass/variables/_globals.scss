@@ -535,3 +535,13 @@ $bullet: (
         line-height: 1px,
         line-width: 5px,
 ) !default;
+
+// Custom scrollbar
+$scrollbar: (
+        space: 0.25rem,
+        width: 0.4rem,
+        height: 0.4rem,
+        radius: 0.2rem,
+        color: $colors-gray-100,
+        hover-color: darken($colors-gray-100, 2%),
+) !default;

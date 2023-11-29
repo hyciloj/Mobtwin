@@ -5,6 +5,8 @@ import {KTSVG} from "../../../helpers";
 import {AsideMenuItem} from "./AsideMenuItem";
 import {AsideMenuItemWithSub} from "./AsideMenuItemWithSub";
 import {PATH_DASHBOARD, ROOTS_DASHBOARD} from "../../../../app/routing/paths";
+import {AsideMenuSection} from "./AsideMenuSection";
+import {asoToolsSection, builderSection, chartsSection, pagesGeneratorSection} from "./Sections";
 
 const AsideMenuMain: FC = () => {
 
@@ -12,27 +14,39 @@ const AsideMenuMain: FC = () => {
     const onClick = () => {
         setShow(prevState => !prevState)
     }
-
     return (
         <>
             <AsideMenuItem
                 to={PATH_DASHBOARD.home}
-                icon='/media/icons/duotune/art/art003.svg'
-                title="Home"
+                icon='/media/icons/duotune/general/gen001.svg'
+                title="home"
                 fontIcon='bi-app-indicator'
             />
-            <AsideMenuItem
-                to={PATH_DASHBOARD.search}
-                icon='/media/icons/duotune/art/art002.svg'
-                title="Search"
-                fontIcon='bi-app-indicator'
-            />
-            <AsideMenuItem
-                to={PATH_DASHBOARD.charts}
-                icon='/media/icons/duotune/art/art004.svg'
-                title="Charts"
-                fontIcon='bi-app-indicator'
-            />
+            
+            <AsideMenuSection name={'charts'} item={chartsSection} />
+            <AsideMenuSection name={'builder'} item={builderSection} />
+            <AsideMenuSection name={'aso tools'} item={asoToolsSection} />
+            <AsideMenuSection name={'aso tools'} item={pagesGeneratorSection} />
+
+            {/*<div className='menu-item'>*/}
+            {/*    <div className='menu-content pt-3 pb-2'>*/}
+            {/*        <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Crafted</span>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+            {/*<AsideMenuItem*/}
+            {/*    to={PATH_DASHBOARD.search}*/}
+            {/*    icon='/media/icons/duotune/art/art002.svg'*/}
+            {/*    title="Search"*/}
+            {/*    fontIcon='bi-app-indicator'*/}
+            {/*/>*/}
+            {/*<AsideMenuItem*/}
+            {/*    to={PATH_DASHBOARD.charts}*/}
+            {/*    icon='/media/icons/duotune/art/art004.svg'*/}
+            {/*    title="Charts"*/}
+            {/*    fontIcon='bi-app-indicator'*/}
+            {/*/>*/}
+
+
 
             {/*<AsideMenuItemWithSub*/}
             {/*    to='/crafted/widgets'*/}
