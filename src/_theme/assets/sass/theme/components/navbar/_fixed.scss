@@ -1,6 +1,7 @@
 @mixin NavBarFixed($mode) {
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(lg) {
+
     .navbar-fixed {
       background-color: $_colors-whiteAlpha-400;
       backdrop-filter: blur(20px);
@@ -56,17 +57,45 @@
         }
       }
     }
+
     .navbar-fixed-wrapper {
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       padding: $_space-2 $_space-8;
       position: fixed;
       top: 0;
+      right: 0;
+      left: get($aside-config, width);
       z-index: 7;
+      height: $_space-16;
+      background-color: $_colors-whiteAlpha-700;
+      display: flex;
+      align-items: center;
 
+      .symbol {
+        display: inline-block;
+        flex-shrink: 0;
+        position: relative;
+        border-radius: $_space-2;
+        overflow: hidden;
+        cursor: pointer;
+
+        img {
+          width: $_sizes-10;
+          height: $_sizes-10;
+        }
+      }
+    }
+
+    &[data-kt-aside-minimize='on'] {
+      .navbar-fixed-wrapper {
+        left: get($aside-config, minimized-width);
+      }
     }
   }
-  @include media-breakpoint-down(sm) {
+
+  @include media-breakpoint-down(lg) {
+
     .navbar-fixed {
       background-color: $_colors-whiteAlpha-400;
       backdrop-filter: blur(10px);
@@ -149,5 +178,10 @@
         }
       }
     }
+
+    .navbar-fixed-wrapper {
+      left: 0;
+    }
+
   }
 }

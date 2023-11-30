@@ -23,6 +23,7 @@ const AsideMenuSection: FC<AsideMenuSectionInterface> = ({
                             icon={item.icon}
                             title={item.title}
                             fontIcon={item.fontIcon}
+                            key={index}
                         />
                     )
                 )

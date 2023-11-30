@@ -83,7 +83,7 @@
         bottom: 0;
         left: 0;
         z-index: get($aside-config, z-index);
-        overflow: hidden;
+        //overflow: hidden;
         background: $_colors-whiteAlpha-700;
         backdrop-filter: blur($_space-6);
 
@@ -98,7 +98,6 @@
         // Aside menu
         .aside-menu {
           width: get($aside-config, width);
-
         }
       }
     }
@@ -107,6 +106,7 @@
       .aside {
         width: get($aside-config, minimized-width);
         transition: width get($aside-config, transition-speed) ease;
+        overflow: visible;
         // Logo
         .aside-logo {
           .logo-default {
@@ -118,6 +118,10 @@
           }
         }
 
+        // Aside menu
+        .aside-menu {
+          width: get($aside-config, minimized-width);
+        }
         // Not hovered mode
         &:not(.aside-hoverable),
         &:not(:hover) {

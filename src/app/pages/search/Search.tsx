@@ -7,19 +7,6 @@ export default function Search() {
     return (
         <>
             <Logout />
-            <div className="grid-3">
-                <Card1 />
-                <Card2 />
-                <Card1 />
-            </div>
-            <div className="grid-1-3">
-                <Card1 />
-                <Card1 />
-            </div>
-            <div className="grid-2-3">
-                <Card1 />
-                <Card1 />
-            </div>
         </>
     )
 }

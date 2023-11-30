@@ -19,7 +19,7 @@ const AsideMenuItem: React.FC<AsideMenuItemInterface> = ({
     const {aside} = layout
 
     return (
-        <div className='menu-item'>
+        <div className='menu-item position-relative'>
             <Link className={clsx('menu-link without-sub', {active: isActive})} to={to}>
                 {hasBullet && (
                     <span className='menu-bullet'>
@@ -33,6 +33,7 @@ const AsideMenuItem: React.FC<AsideMenuItemInterface> = ({
                 )}
                 {fontIcon && aside.menuIcon === 'font' && <i className={clsx('bi fs-3', fontIcon)}/>}
                 <span className='menu-title'>{title}</span>
+                <span className='menu-tooltip'>{title}</span>
             </Link>
             {/*{children}*/}
         </div>

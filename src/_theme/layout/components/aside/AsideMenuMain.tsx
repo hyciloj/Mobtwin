@@ -36,7 +36,7 @@ const AsideMenuMain: FC = () => {
             {/*<AsideMenuItem*/}
             {/*    to={PATH_DASHBOARD.search}*/}
             {/*    icon='/media/icons/duotune/art/art002.svg'*/}
-            {/*    title="Search"*/}
+            {/*    title="Search1"*/}
             {/*    fontIcon='bi-app-indicator'*/}
             {/*/>*/}
             {/*<AsideMenuItem*/}

@@ -30,4 +30,64 @@
     border-color: rgb(114, 88, 242);
     box-shadow: rgb(114, 88, 242) 0 0 0 calc(0.0625rem);
   }
+
+  .search {
+    height: 2.2rem;
+    background-color: $white;
+    color: $colors-gray-600;
+    border-radius: $_space-12;
+    overflow: hidden;
+    min-width: $_sizes-52;
+    width: $_sizes-96;
+    display: flex;
+
+    label {
+      width: 2.5rem;
+      background: $linearGradient;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .svg-icon {
+        @include svg-icon-size(24px);
+        @include svg-icon-color($white);
+
+        transition: all .3s ease;
+      }
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: $_space-2 $_space-3;
+      font-size: $_fontSizes-sm;
+      font-weight: 100;
+      color: $colors-gray-600;
+      outline: none;
+      border: none;
+
+    }
+
+    &:hover {
+      label {
+        .svg-icon svg path:nth-child(2) {
+          animation: opacity 2s ease infinite;
+        }
+
+      }
+    }
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: .3;
+  }
+  50% {
+    opacity: .7;
+  }
+  100% {
+    opacity: .3;
+  }
 }

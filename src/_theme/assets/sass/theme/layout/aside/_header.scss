@@ -5,9 +5,9 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
 
   .aside-toggle {
 
-    //background: $linearGradient;
-    //position: absolute;
-    //right: -15px;
+    background: $linearGradient;
+    position: absolute;
+    right: -15px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -15,8 +15,24 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition-property: $_transition-property-common;
-    transition-duration: $_transition-duration-slow;
+    //transition-property: $_transition-property-common;
+    //transition-duration: $_transition-duration-slow;
+    transition: all 1s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 110%;
+      height: 110%;
+      border: 1px solid $wildOrchid;
+      border-radius: 50%;
+      transform: translate(-4%, -4%);
+    }
+
 
     &[data-kt-toggle='true'] {
       .svg-icon {
@@ -26,16 +42,16 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
         transition-duration: $_transition-duration-slow;
       }
     }
+
     .svg-icon {
-      //line-height: 1;
       display: flex;
       transform: rotate(0deg);
       @include svg-icon-size($_sizes-6);
-      @include svg-icon-color($deepFuchsia);
+      @include svg-icon-color($white);
     }
 
     &:hover {
-      //background: $_colors-whiteAlpha-700;
+
     }
 
   }

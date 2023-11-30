@@ -86,4 +86,47 @@
 @mixin buttons($mode) {
   @include button-styles($mode, '.main_button-xl', $deepFuchsia, if(isDarkMode($mode), $slate-blue-300, $slate-blue-700));
   @include button-styles($mode, '.second_button-xl', if(isDarkMode($mode), $_colors-whiteAlpha-100, $_colors-blackAlpha-100), if(isDarkMode($mode), $_colors-whiteAlpha-800, $_colors-blackAlpha-800));
+
+  .group-button {
+    display: inline-flex;
+    background: $white;
+    border-radius: calc(1.25rem);
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    height: 2.2rem;
+
+    button {
+      width: $_sizes-16;
+      margin: 0 0.2rem;
+      min-width: $_sizes-16;
+      font-size: 0.75rem;
+
+      span {
+        position: relative;
+        text-transform: capitalize;
+        font-size: $_fontSizes-sm;
+        color: $colors-gray-600;
+      }
+
+      &.active {
+        span {
+          color: $_colors-whiteAlpha-900;
+        }
+      }
+    }
+
+    .glider {
+      background: $linearGradient;
+      padding-left: 1rem;
+      padding-inline-end: 1rem;
+      position: absolute;
+      width: 50%;
+      height: 100%;
+      border-radius: 1.25rem;
+      transition: left .3s ease;
+      z-index: -1;
+    }
+  }
 }
