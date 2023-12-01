@@ -8,7 +8,7 @@ const Search1 = () => {
             <label htmlFor="search">
                 <KTSVG path={toAbsoluteUrl('/media/icons/duotune/general/gen004.svg')} />
             </label>
-            <input type="text" name="search" id="search"/>
+            <input type="text" name="search" id="search" placeholder="type anything"/>
         </div>
     )
 }

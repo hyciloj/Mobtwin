@@ -15,7 +15,7 @@ export class SetSetup {
         }
 
         // Enable Aside
-        document.body.classList.add('aside-enabled')
+        document.body.classList.add('aside-enabled', 'toolbar-fixed')
 
         // Fixed Aside
         if (config.fixed) {

@@ -1,11 +1,11 @@
-import React, {FC, useCallback, useEffect, useRef, useState} from "react";
+import React, {FC, useCallback, useRef, useState} from "react";
 import {PATH_AUTH} from "../../routing/paths";
 import {Link} from "react-router-dom";
 import {Gallery, SwiperP, TickerX, Accordions, Testimonial, Step} from "../component";
 import ImagesGallery from "./ImageGallery.json"
 import Images from "./Images.json"
 import {KTSVG, toAbsoluteUrl} from "../../../_theme/helpers";
-import {motion, useAnimation, useInView, useViewportScroll, useTransform} from "framer-motion";
+import {motion, useViewportScroll, useTransform} from "framer-motion";
 import {NavBar, Reveal} from "../../modules/components";
 
 interface Tab {

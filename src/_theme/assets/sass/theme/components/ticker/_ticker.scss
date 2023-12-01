@@ -64,6 +64,33 @@
     }
   }
 
+  .tickers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    //background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+
+    .tickers-imgs {
+      width: 100%;
+      display: flex;
+
+      .tickers-img {
+        background-size: cover;
+        margin: $_sizes-2;
+        height: $_sizes-20;
+        width: $_sizes-20;
+        border-radius: 12px;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+    }
+
+  }
   @include media-breakpoint-down(lg) {
     .ticker-container {
       flex-direction: column;

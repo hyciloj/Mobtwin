@@ -129,4 +129,34 @@
       z-index: -1;
     }
   }
+
+  .button {
+    background: $colors-gray-100;
+    font-size: $_fontSizes-2xs;
+    font-weight: 900;
+    padding: $_space-2 $_space-3;
+    margin: 0 $_space-1;
+    border-radius: $_sizes-96;
+    color: $colors-gray-600;
+    text-wrap: nowrap;
+    white-space: nowrap;
+    border: 0;
+    outline: none;
+    transition: all .3s ease;
+    text-transform: capitalize;
+
+    &:hover {
+      background: $colors-gray-100;
+      color: $colors-gray-900;
+      transform: scale(1.01);
+    }
+
+    &.button-sm {
+      font-size: $_fontSizes-sm;
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+  }
 }

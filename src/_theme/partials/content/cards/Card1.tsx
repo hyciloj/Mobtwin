@@ -25,7 +25,7 @@ const Card1 = () => {
                         </div>
                     </div>
 
-                    <a href="">Discover</a>
+                    <a className="button" href={''}>Discover</a>
                 </div>
             </div>
         </div>

@@ -8,6 +8,8 @@
       .wrapper {
         transition: padding-left get($aside-config, transition-speed) ease;
         padding-left: get($aside-config, width);
+        padding-top: calc(get($aside-config, height) + get($toolbar-config, height, desktop));
+
       }
     }
 
@@ -15,6 +17,7 @@
       .wrapper {
         transition: padding-left get($aside-config, transition-speed) ease;
         padding-left: get($aside-config, minimized-width);
+        padding-top: calc(get($aside-config, height));
       }
     }
   }

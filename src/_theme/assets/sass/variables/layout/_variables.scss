@@ -32,6 +32,7 @@ $aside-config: (
         scrollbar-color: $gray-200,
         scrollbar-hover-color: $gray-300,
         width: 265px,
+        height: $_space-16,
         // Aside width for desktop mode
         minimized-width: 75px,
         // Aside minimized width for desktop mode
@@ -89,4 +90,24 @@ $menu: (
                         space: 0.5rem,
                 ),
         ),
+) !default;
+
+// Toolbar
+$toolbar-config: (
+        z-index: 99,
+        height: (
+                desktop: 75px,
+                tablet-and-mobile: 60px,
+        ),
+        padding: 0.5rem,
+        bg-color: $white,
+        box-shadow: 0px 30px 30px 0px rgba(82, 63, 105, 0.05),
+        border-top: 1px solid $colors-gray-400,
+) !default;
+
+// Content Spacing
+$content-spacing: (
+        desktop: 30px,
+        // Padding for desktop mode
+        tablet-and-mobile: 15px // Padding for tablet and mobile modes,,
 ) !default;

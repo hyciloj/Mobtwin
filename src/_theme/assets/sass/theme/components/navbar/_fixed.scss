@@ -71,6 +71,7 @@
       background-color: $_colors-whiteAlpha-700;
       display: flex;
       align-items: center;
+      transition: all $_transition-duration-slow $_transition-easing-ease-in-out;
 
       .symbol {
         display: inline-block;
