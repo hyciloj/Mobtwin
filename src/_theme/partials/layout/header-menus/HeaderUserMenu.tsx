@@ -6,6 +6,7 @@ import {toAbsoluteUrl} from "../../../helpers";
 import {Link} from "react-router-dom";
 import {PATH_AUTH, PATH_DASHBOARD} from "../../../../app/routing/paths";
 import {UserInterface} from "../../../../app/modules/auth/models/AuthModel";
+import Logout from "../../../../app/modules/auth/components/Logout";
 
 type HeaderUserMenuProps = {
     show: boolean
@@ -15,7 +16,6 @@ type HeaderUserMenuProps = {
 const HeaderUserMenu: FC<HeaderUserMenuProps> = ({show, user}) => {
 
     const {name, avatar} = user
-
 
     return (
         <div className={`menu menu-sub menu-sub-dropdown${show ? ' show' : ''}`} data-kt-menu='true'>
@@ -41,7 +41,7 @@ const HeaderUserMenu: FC<HeaderUserMenuProps> = ({show, user}) => {
                 <Link to={PATH_DASHBOARD.user.profile} className="menu-link">profile</Link>
             </div>
             <div className="menu-item">
-                <Link to={PATH_DASHBOARD.user.profile} className="menu-link">profile</Link>
+                <Logout />
             </div>
         </div>
     )

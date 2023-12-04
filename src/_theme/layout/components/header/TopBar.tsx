@@ -20,12 +20,17 @@ const TopBar: FC = () => {
     const {name, avatar} = user
 
     return (
-        <div className="d-flex align-items-center position-relative" id='kt_header_user_menu_toggle' ref={ref}>
-            <div className="symbol" onClick={() => {
+        <div className="d-flex align-items-center position-relative" id='kt_header_user_menu_toggle'
+             ref={ref}>
+            <div className="user" onClick={() => {
                 setShow(prevState => !prevState)
             }}>
-                <img src={avatar} alt='mobtwin'/>
+                <div className="symbol symbol-30px">
+                    <img src={avatar} alt='mobtwin'/>
+                </div>
+                <span className="fs-xs">{name}</span>
             </div>
+
             <HeaderUserMenu show={show} user={user}/>
         </div>
 

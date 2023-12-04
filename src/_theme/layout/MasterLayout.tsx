@@ -4,6 +4,7 @@ import {PageDataProvider} from "./core";
 import {AsideDefault} from './components/aside/AsideDefault'
 import {HeaderWrapper} from "./components/header/HeaderWrapper";
 import {Toolbar} from "./components/toolbar";
+import {Content} from "./components/Content";
 
 
 const MasterLayout: FC<ChildrenProps> = ({children}) => {
@@ -24,21 +25,20 @@ const MasterLayout: FC<ChildrenProps> = ({children}) => {
 
                         {/*<Toolbar />*/}
 
-                        <div className="row my-3">
-                            <div className="col-12 d-flex justify-content-center align-items-center">
-                                {
-                                    digits.map((item, index) => (
-                                        <button className="button" key={index}>
-                                            hello world!
-                                        </button>
-                                    ))
-                                }
-                            </div>
-                        </div>
-
-                        {/*<div className='post d-flex flex-column-fluid' id='kt_post'>*/}
-                            {children}
+                        {/*<div className="row my-3">*/}
+                        {/*    <div className="col-12 d-flex justify-content-center align-items-center">*/}
+                        {/*        {*/}
+                        {/*            digits.map((item, index) => (*/}
+                        {/*                <button className="button" key={index}>*/}
+                        {/*                    hello world!*/}
+                        {/*                </button>*/}
+                        {/*            ))*/}
+                        {/*        }*/}
+                        {/*    </div>*/}
                         {/*</div>*/}
+                        <div className='post d-flex flex-column-fluid' id='kt_post'>
+                            <Content>{children}</Content>
+                        </div>
                     </div>
 
                 </div>

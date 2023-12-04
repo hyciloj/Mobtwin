@@ -11,7 +11,7 @@ export default function Router() {
 
     return useRoutes([
         {
-            path: '/',
+            path: PATH_BEFORE_LOGIN,
             children: [
                 {path: '', element: <Before/>},
                 {path: '404', element: <h1>Page404</h1>},

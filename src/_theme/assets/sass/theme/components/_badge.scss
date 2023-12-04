@@ -1,0 +1,7 @@
+@mixin badge($mode) {
+
+  .badge {
+    border-radius: $_space-20;
+    padding: $_space-2;
+  }
+}

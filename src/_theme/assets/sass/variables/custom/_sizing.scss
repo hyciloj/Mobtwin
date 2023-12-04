@@ -55,3 +55,21 @@ $sizing: (
         "container-lg": $_sizes-container-lg,
         "container-xl": $_sizes-container-xl,
 ) !default;
+
+$fontSize: (
+        "3xs": $_fontSizes-3xs,
+        "2xs": $_fontSizes-2xs,
+        "xs": $_fontSizes-xs,
+        "sm": $_fontSizes-sm,
+        "md": $_fontSizes-md,
+        "lg": $_fontSizes-lg,
+        "xl": $_fontSizes-xl,
+        "2xl": $_fontSizes-2xl,
+        "3xl": $_fontSizes-3xl,
+        "4xl": $_fontSizes-4xl,
+        "5xl": $_fontSizes-5xl,
+        "6xl": $_fontSizes-6xl,
+        "7xl": $_fontSizes-7xl,
+        "8xl": $_fontSizes-8xl,
+        "9xl": $_fontSizes-9xl,
+) !default;

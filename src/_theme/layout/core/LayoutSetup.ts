@@ -37,6 +37,7 @@ export class LayoutSetup {
         const config = LayoutSetup.config
         const updatedConfig = {...config, ...fieldsToUpdate}
         LayoutSetup.config = updatedConfig
+
         SetSetup.setTheme(updatedConfig.theme)
         SetSetup.settAside(updatedConfig.aside)
 

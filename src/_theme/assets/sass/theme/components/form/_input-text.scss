@@ -78,6 +78,12 @@
       }
     }
   }
+
+  @include media-breakpoint-down(sm) {
+    .search {
+      width: $_sizes-40;
+    }
+  }
 }
 
 @keyframes opacity {

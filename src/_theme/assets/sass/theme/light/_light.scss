@@ -28,6 +28,7 @@ $themeMode: "light";
 @include TestimonialContainer($themeMode);
 @include StepsContainer($themeMode);
 @include WidgetsCard($themeMode);
+@include symbol($themeMode);
 
 
 

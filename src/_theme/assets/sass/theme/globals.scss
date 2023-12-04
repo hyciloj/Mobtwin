@@ -24,9 +24,9 @@
   }
 }
 
-@each $name, $fontSize in $_sizes {
-  ._fs-#{$name} {
-    font-size: $fontSize !important;
+@each $name, $size in $fontSize {
+  .fs-#{$name} {
+    font-size: $size !important;
   }
 }
 
@@ -36,6 +36,10 @@
   }
   ._h-#{$name} {
     height: $size !important;
+  }
+  .symbol-#{$name} {
+    width: $size;
+    height: $size;
   }
 }
 
