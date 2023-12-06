@@ -2,6 +2,26 @@
 
   .badge {
     border-radius: $_space-20;
-    padding: $_space-2;
+    padding: $_space-2 $_space-3;
+    display: inline-flex;
+    align-items: center;
   }
+  .badge-label {
+    text-transform: capitalize;
+  }
+  .badge-icon {
+
+  }
+
+  @include badge-light("gray");
+  @include badge-light("red");
+  @include badge-light("orange");
+  @include badge-light("yellow");
+  @include badge-light("green");
+  @include badge-light("teal");
+  @include badge-light("blue");
+  @include badge-light("cyan");
+  @include badge-light("purple");
+  @include badge-light("pink");
+
 }

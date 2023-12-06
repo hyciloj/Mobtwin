@@ -97,11 +97,14 @@
     z-index: 0;
     height: 2.2rem;
 
-    button {
+    a, button {
       width: $_sizes-16;
       margin: 0 0.2rem;
       min-width: $_sizes-16;
       font-size: 0.75rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       span {
         position: relative;
@@ -132,6 +135,50 @@
 
   }
 
+  .switch-button {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $_colors-whiteAlpha-800;
+    border-radius: $_sizes-2;
+    position: relative;
+    min-width: $_sizes-60;
+    width: $_sizes-80;
+
+    .label {
+      font-size: $_fontSizes-lg;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: $_space-4 $_space-8;
+      text-transform: capitalize;
+      width: 50%;
+      color: $_colors-purple-600;
+      z-index: 2;
+      cursor: pointer;
+      margin: 0 $_space-1;
+      transition: all .4s ease;
+
+      &.active {
+        color: $_colors-purple-800;
+      }
+    }
+
+    .glider {
+      position: absolute;
+      left: 1%;
+      top: 7.5%;
+      width: calc(50% - 2%);
+      height: calc(100% - 15%);
+      background-color: $white;
+      border-radius: $_sizes-2;
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      transition: all .3s cubic-bezier(0.86,0,0.07,1);
+    }
+  }
+
   .button {
     background: $colors-gray-100;
     font-size: $_fontSizes-2xs;
@@ -155,11 +202,29 @@
 
     &.button-sm {
       font-size: $_fontSizes-sm;
+
       &:hover {
         transform: scale(1.02);
       }
     }
 
   }
+
+
+
+
+
+  @include media-breakpoint-down(sm) {
+    .switch-button {
+
+      flex-direction: column;
+      .glider {
+        width: calc(90%);
+        height: calc(85%);
+      }
+    }
+  }
+
+
 
 }

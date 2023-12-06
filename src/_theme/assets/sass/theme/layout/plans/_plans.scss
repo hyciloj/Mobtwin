@@ -1,0 +1,112 @@
+@mixin plansContainer($mode) {
+  .plans-wrapper {
+
+    background-image: $linearGradient;
+    padding: $_space-4 $_space-20;
+    border-radius: $_sizes-4;
+    user-select: none;
+    //position: relative;
+
+    .brand {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: $_sizes-12;
+        height: $_sizes-12;
+      }
+      span {
+        color: $white;
+        font-size: $_fontSizes-4xl;
+      }
+    }
+
+    .plans-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $white;
+      text-align: center;
+      padding-bottom: $_space-40;
+
+      .title {
+        font-size: $_fontSizes-5xl;
+        margin: $_space-8 0;
+      }
+      .subtitle {
+        font-size: $_fontSizes-md;
+      }
+
+    }
+  }
+  .plans-cards {
+    //position: absolute;
+    //bottom: -70%;
+    margin-top: -$_space-32;
+    padding: 0 $_space-12;
+    @include Grid(3, 1, $_space-8, $_space-8);
+
+    .pack-price {
+      display: flex;
+      align-content: center;
+
+      span {
+        @include typography(
+                        $_colors-purple-800,
+                        $_fontSizes-5xl,
+                        900,
+                        1
+        );
+        text-transform: capitalize;
+        margin: 0 $_space-2-5;
+        display: none;
+
+        &.active {
+          display: flex;
+        }
+
+        &.inactive {
+          display: flex;
+          align-items: center;
+          text-decoration: line-through !important;
+          @include typography(
+                          $colors-gray-500,
+                          $_fontSizes-4xl,
+                          900,
+                          1
+          );
+        }
+      }
+    }
+    .list {
+      .item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: $_space-3 0;
+
+        .svg-icon {
+          margin-right: $_space-2;
+          @include svg-icon-size(24px);
+
+          &.svg-success{
+            @include svg-icon-color($_colors-green-500);
+          }
+          &.svg-gray{
+            @include svg-icon-color($colors-gray-500);
+          }
+        }
+        .item-text {
+
+        }
+      }
+    }
+  }
+
+
+  @include media-breakpoint-down(sm) {
+    .plans-wrapper {
+      padding: $_space-4 $_space-2;
+    }
+  }
+}

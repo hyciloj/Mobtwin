@@ -3,6 +3,16 @@
     min-height: $_sizes-lg;
     border-radius: $_sizes-3;
     overflow: hidden;
+    height: 100%;
+
+    .card-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $white;
+      flex-direction: column;
+      border: none;
+    }
 
     .card-wrapper {
       background-size: cover;

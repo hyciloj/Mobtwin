@@ -1,0 +1,15 @@
+@mixin badge-light($color) {
+  @if map-has-key($_colors, $color) {
+    $bg-color: map-get(map-get($_colors, $color), 100);
+    $text-color: map-get(map-get($_colors, $color), 500);
+
+    .badge-light-#{$color} {
+      background-color: $bg-color;
+      color: $text-color;
+    }
+  } @else {
+    @error "Color #{$color} not found in color map!";
+  }
+
+
+}

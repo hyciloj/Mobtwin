@@ -3,7 +3,6 @@ import {ChildrenProps} from "../../config-global";
 import {PageDataProvider} from "./core";
 import {AsideDefault} from './components/aside/AsideDefault'
 import {HeaderWrapper} from "./components/header/HeaderWrapper";
-import {Toolbar} from "./components/toolbar";
 import {Content} from "./components/Content";
 
 

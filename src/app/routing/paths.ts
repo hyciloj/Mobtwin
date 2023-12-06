@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------
 
 function path(root: string, subLink: string) {
-  return `${root}${subLink}`;
+  return `${root}/${subLink}`;
 }
 
 export const ROOT_DEMO = '/demo';
@@ -13,9 +13,9 @@ export const ROOTS_BETA = '/beta';
 
 export const PATH_AUTH = {
   root: ROOTS_AUTHENTICATION,
-  login: path(ROOTS_AUTHENTICATION, '/login'),
-  register: path(ROOTS_AUTHENTICATION, '/register'),
-  forgotPassword: path(ROOTS_AUTHENTICATION, '/forgot-password'),
+  login: path(ROOTS_AUTHENTICATION, 'login'),
+  register: path(ROOTS_AUTHENTICATION, 'register'),
+  forgotPassword: path(ROOTS_AUTHENTICATION, 'forgot-password'),
 };
 export const PATH_BETA = {
   root: ROOTS_BETA,
@@ -33,7 +33,7 @@ export const PATH_DASHBOARD = {
   smartDescription: path(ROOTS_DASHBOARD, 'smart-description'),
   developerProfile: path(ROOTS_DASHBOARD, 'developer-profile'),
   privacyPolicy: path(ROOTS_DASHBOARD, 'privacy-policy'),
-  TermsAndConditions: path(ROOTS_DASHBOARD, 'terms-Conditions'),
+  termsAndConditions: path(ROOTS_DASHBOARD, 'terms-Conditions'),
   logout: path(ROOTS_DASHBOARD, 'logout'),
   two: path(ROOTS_DASHBOARD, 'two'),
   three: path(ROOTS_DASHBOARD, 'three'),

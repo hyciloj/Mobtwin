@@ -8,7 +8,7 @@
       .wrapper {
         transition: padding-left get($aside-config, transition-speed) ease;
         padding-left: get($aside-config, width);
-        padding-top: calc(get($aside-config, height) + get($toolbar-config, height, desktop));
+        padding-top: calc(get($aside-config, height));
 
       }
     }
@@ -25,6 +25,11 @@
 
   // Tablet & mobile modes
   @include media-breakpoint-down(lg) {
+    .wrapper {
+      transition: padding-left get($aside-config, transition-speed) ease;
+      padding-left: get($aside-config, width);
+      padding-top: calc(get($aside-config, height) + get($toolbar-config, height, desktop));
+    }
     .header {
       display: flex;
       justify-content: space-between;

@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
-import {Navigate, useRoutes, Outlet} from "react-router-dom";
+import React from 'react'
+import {Navigate, useRoutes} from "react-router-dom";
 import {AuthGuard, GuestGuard} from "../modules/auth";
-import {Before, Beta, Charts, Home, Login, Register, ResetPassword, Search} from "./elements";
+import {Before, Beta, Charts, Home, Login, Plans, Register, ResetPassword, Search} from "./elements";
 import {PATH_AFTER_LOGIN, PATH_AFTER_LOGIN_BETA, PATH_BEFORE_LOGIN} from "../../config-global";
 import {DashboardWrapper, AuthPage, Demo} from "../pages";
 import {ROOTS_AUTHENTICATION, ROOTS_DASHBOARD, ROOT_DEMO, PATH_AUTH, ROOTS_BETA} from "./paths";
@@ -16,6 +16,8 @@ export default function Router() {
                 {path: '', element: <Before/>},
                 {path: '404', element: <h1>Page404</h1>},
                 {path: 'demo', element: <Demo/>},
+                {path: 'plans', element: <Plans />},
+
             ],
         },
 
@@ -61,7 +63,6 @@ export default function Router() {
                 {path: 'three', element: <h1>PageThree</h1>},
             ],
         },
-
 
         {path: '*', element: <Navigate to={ROOTS_AUTHENTICATION} replace/>},
 

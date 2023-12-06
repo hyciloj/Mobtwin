@@ -29,6 +29,9 @@ $themeMode: "light";
 @include StepsContainer($themeMode);
 @include WidgetsCard($themeMode);
 @include symbol($themeMode);
+@include plansContainer($themeMode);
+@include badge($themeMode);
+
 
 
 

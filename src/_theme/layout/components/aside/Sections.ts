@@ -73,7 +73,7 @@ export const pagesGeneratorSection: AsideMenuItemInterface[] = [
         fontIcon: `bi-app-indicator`
     },
     {
-        to: PATH_DASHBOARD.TermsAndConditions,
+        to: PATH_DASHBOARD.termsAndConditions,
         icon: svgPath("general/gen048"),
         title: `terms & conditions`,
         fontIcon: `bi-app-indicator`
