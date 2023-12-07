@@ -36,14 +36,14 @@ export default function Router() {
             ]
         },
 
-        {
-            path: ROOTS_BETA,
-            element: (
-                <AuthGuard>
-                    <Beta />
-                </AuthGuard>
-            ),
-        },
+        // {
+        //     path: ROOTS_BETA,
+        //     element: (
+        //         <AuthGuard>
+        //             <Beta />
+        //         </AuthGuard>
+        //     ),
+        // },
 
         {
             path: ROOTS_DASHBOARD,

@@ -11,8 +11,8 @@ function GuestGuard({ children }: ChildrenProps) {
 
 
     if (isAuthorized) {
-        // return <Navigate to={ROOTS_DASHBOARD} />;
-        return <Navigate to={ROOTS_BETA} />;
+        return <Navigate to={ROOTS_DASHBOARD} />;
+        // return <Navigate to={ROOTS_BETA} />;
     }
 
     return <> {children} </>;

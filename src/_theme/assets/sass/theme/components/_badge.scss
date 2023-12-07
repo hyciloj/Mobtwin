@@ -6,12 +6,36 @@
     display: inline-flex;
     align-items: center;
   }
+
   .badge-label {
     text-transform: capitalize;
   }
   .badge-icon {
+    margin-left: $_space-1-5;
+
+    &.svg-icon {
+      @include svg-icon-size($_sizes-4);
+      @include svg-icon-color($_colors-green-600);
+    }
+  }
+
+  .badge-sm {
+    .badge-label {
+      font-size: $_fontSizes-xs;
+    }
+  }
+  .badge-md {
+    .badge-label {
+      font-size: $_fontSizes-sm;
+    }
+  }
+  .badge-lg {
 
   }
+  .badge-xl {
+
+  }
+
 
   @include badge-light("gray");
   @include badge-light("red");

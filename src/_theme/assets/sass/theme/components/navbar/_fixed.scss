@@ -1,8 +1,8 @@
 @mixin NavBarFixed($mode) {
 
   .navbar-fixed-wrapper {
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
     padding: $_space-2 $_space-8;
     position: fixed;
     top: 0;
@@ -224,6 +224,12 @@
             margin-right: 0;
           }
         }
+      }
+    }
+
+    &[data-kt-aside-minimize='on'] {
+      .navbar-fixed-wrapper {
+        left: 0;
       }
     }
 

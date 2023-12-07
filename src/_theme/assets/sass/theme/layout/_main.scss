@@ -27,8 +27,8 @@
   @include media-breakpoint-down(lg) {
     .wrapper {
       transition: padding-left get($aside-config, transition-speed) ease;
-      padding-left: get($aside-config, width);
-      padding-top: calc(get($aside-config, height) + get($toolbar-config, height, desktop));
+      padding-left: 0;
+      padding-top: calc(get($aside-config, height));
     }
     .header {
       display: flex;

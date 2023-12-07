@@ -1,9 +1,7 @@
 @mixin Card($mode) {
   .card {
-    min-height: $_sizes-lg;
     border-radius: $_sizes-3;
     overflow: hidden;
-    height: 100%;
 
     .card-header {
       display: flex;
@@ -22,6 +20,8 @@
       display: flex;
       align-items: flex-end;
       flex-direction: column;
+      min-height: $_sizes-lg;
+
 
       .card-body {
         width: 100%;
@@ -105,6 +105,7 @@
             margin-bottom: $_space-2;
             text-align: center;
           }
+
           .card-title, .card-subtitle, .button {
             z-index: 2;
           }
@@ -194,6 +195,20 @@
       @include svg-icon-size($_sizes-6);
       @include svg-icon-color($_colors-whiteAlpha-800);
     }
+
+    .table-responsive {
+      thead, tbody, tfoot, tr, td, th {
+        border: none;
+      }
+
+      tr {
+        border-top: 1px solid $_colors-blackAlpha-100;
+      }
+
+      .ordinal-number {
+        text-align: center;
+      }
+    }
   }
 
   .card-xs {
@@ -222,4 +237,90 @@
       transform: scale(.95);
     }
   }
+
+  .card-sm {
+    padding: $_space-1;
+    transition: all .2s ease;
+
+    .img {
+      width: 100%;
+      height: 0;
+      padding-top: 100%;
+      background-size: cover;
+      border-radius: $_space-2;
+    }
+
+    .app {
+      margin-top: $_space-2;
+
+      .app-name {
+        font-size: $_fontSizes-sm;
+      }
+
+      .app-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: $_space-12;
+        font-weight: 900;
+        padding-right: $_space-2;
+
+        .details-icon {
+          width: $_sizes-6;
+          height: $_sizes-6;
+          border-radius: $_sizes-24;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &.svg-icon {
+            @include svg-icon-size($_sizes-3);
+            @include svg-icon-color($_colors-whiteAlpha-900);
+          }
+        }
+
+        .details-label {
+          font-size: $_fontSizes-xs;
+          color: $colors-gray-500;
+          font-weight: 400;
+        }
+
+        &.total {
+          .details-icon {
+            background-color: $_colors-deepFuchsiaAlpha-900;
+          }
+
+          .details-label {
+            color: $_colors-whiteAlpha-800;
+          }
+        }
+
+        &.daily {
+          .details-icon {
+            background-color: $_colors-purple-600;
+          }
+
+          .details-label {
+          }
+        }
+
+        &.date {
+          .details-icon {
+            background-color: $_colors-blue-500;
+          }
+
+          .details-label {
+          }
+        }
+      }
+    }
+
+    &:hover {
+      transform: scale(.97);
+      .img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
 }
