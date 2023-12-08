@@ -1,7 +1,7 @@
 import React from "react";
 
 const object = {
-    img: "https://cdn.leonardo.ai/users/438aafb3-8f5d-498c-aea5-29d687fafd7e/generations/67d48622-2136-433b-b73c-4a383baee70e/PhotoReal_Capture_a_breathtaking_scene_of_a_dragon_soaring_in_2.jpg"
+    img: "https://cdn.leonardo.ai/users/ad2bcb49-5d69-4ebb-a7c4-1bc5dac4cc31/generations/ba000dc7-e947-46b9-8d06-ad26b44b1108/variations/alchemyrefiner_alchemymagic_1_ba000dc7-e947-46b9-8d06-ad26b44b1108_0.jpg"
 
 }
 const Card1 = () => {

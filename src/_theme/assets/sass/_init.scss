@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/bootstrap.scss';
-@import url('https://fonts.googleapis.com/css2?family=Gugi');
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Nova+Square&display=swap');
 @import "variables";
 @import "functions";
 @import "mixin";
@@ -14,7 +14,7 @@
   transition-duration: $_transition-duration-normal;
   outline: none;
   text-decoration: none !important;
-  font-family: "Gugi", Open Sans;
+  font-family: "Barlow", Open Sans, sans-serif;
 }
 button {
   background: transparent;

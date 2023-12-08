@@ -16,6 +16,7 @@ const TopBar: FC = () => {
     })
 
     const {user}: UserModel = useSelector<RootState>(({auth}) => auth.user, shallowEqual) as UserModel
+    const {tokenUser}: UserModel = useSelector<RootState>(({auth}) => auth.user, shallowEqual) as UserModel
 
     const {name, avatar} = user
 

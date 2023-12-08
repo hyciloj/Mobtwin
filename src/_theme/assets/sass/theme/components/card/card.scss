@@ -2,6 +2,8 @@
   .card {
     border-radius: $_sizes-3;
     overflow: hidden;
+    box-shadow: 0 0 27px 0 rgba(0, 0, 0, 0.1);
+    border: none;
 
     .card-header {
       display: flex;
@@ -96,7 +98,7 @@
 
           .card-title {
             @include typography(
-                            $_colors-whiteAlpha-900,
+                            $_colors-blackAlpha-900,
                             $_fontSizes-2xl,
                             400,
                             1.3
@@ -104,6 +106,15 @@
             text-transform: capitalize;
             margin-bottom: $_space-2;
             text-align: center;
+          }
+
+          .card-subtitle {
+            @include typography(
+                            $_colors-blackAlpha-700,
+                            $_fontSizes-md,
+                            400,
+                            1
+            );
           }
 
           .card-title, .card-subtitle, .button {
@@ -117,7 +128,7 @@
             height: 70%;
             bottom: 0;
             z-index: 1;
-            background: linear-gradient(0deg, $black 20%, $_colors-blackAlpha-800 60%, $_colors-blackAlpha-50 100%);
+            background: linear-gradient(0deg, $white 20%, $_colors-whiteAlpha-800 60%, $_colors-whiteAlpha-50 100%);
           }
         }
 
@@ -130,6 +141,8 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        border: none;
+        background: linear-gradient(0deg, #ffffffba, transparent);
 
         .properties {
           display: flex;
@@ -239,7 +252,8 @@
   }
 
   .card-sm {
-    padding: $_space-1;
+    padding: $_space-2;
+    border-radius: $_sizes-6;
     transition: all .2s ease;
 
     .img {
@@ -247,7 +261,7 @@
       height: 0;
       padding-top: 100%;
       background-size: cover;
-      border-radius: $_space-2;
+      border-radius: $_sizes-6;
     }
 
     .app {
@@ -255,6 +269,8 @@
 
       .app-name {
         font-size: $_fontSizes-sm;
+        text-align: center;
+        margin-bottom: $_space-1-5;
       }
 
       .app-details {
@@ -287,7 +303,7 @@
 
         &.total {
           .details-icon {
-            background-color: $_colors-deepFuchsiaAlpha-900;
+            background: $linearGradient;
           }
 
           .details-label {
@@ -297,7 +313,7 @@
 
         &.daily {
           .details-icon {
-            background-color: $_colors-purple-600;
+            background: $linearGradient1;
           }
 
           .details-label {
@@ -306,7 +322,7 @@
 
         &.date {
           .details-icon {
-            background-color: $_colors-blue-500;
+            background: $linearGradient2;
           }
 
           .details-label {
@@ -317,9 +333,6 @@
 
     &:hover {
       transform: scale(.97);
-      .img {
-        transform: scale(1.05);
-      }
     }
   }
 

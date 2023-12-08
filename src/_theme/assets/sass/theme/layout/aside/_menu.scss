@@ -48,15 +48,14 @@
         display: flex;
         align-items: center;
         flex: 0 0 100%;
-        //padding: get($menu, link, self, padding-y) get($menu, link, self, padding-x);
-        padding: $_space-1 $_space-4;
+        padding: $_space-1;
         margin: $_space-1 0;
         border-radius: $_sizes-3;
         transition: none;
         outline: none !important;
 
         &.active {
-          background-color: $_colors-blackAlpha-50;
+          background-color: #f5f6fd;
 
           .svg-icon svg [fill]:not(.permanent):not(g) {
             fill: $white;
@@ -79,11 +78,11 @@
         }
 
         &:hover {
-          background-color: $_colors-blackAlpha-200;
+          background-color: #e4e9f7;
 
-          .svg-icon svg [fill]:not(.permanent):not(g) {
-            fill: $deepFuchsia;
-          }
+          //.svg-icon svg path {
+          //  fill: $deepFuchsia;
+          //}
 
           .menu-title {
             color: $wildOrchid;
@@ -93,14 +92,14 @@
 
       // Icon
       .menu-icon {
-        justify-content: center;
-        flex-shrink: 0;
         display: flex;
+        flex-shrink: 0;
         align-items: center;
-        width: get($menu, link, icon, width);
-        height: get($menu, link, icon, width);
+        justify-content: center;
+        width: $_sizes-10;
+        height: $_sizes-8;
         margin-right: get($menu, link, icon, space);
-        border-radius: 0.3rem;
+        border-radius: $_sizes-2;
 
         .svg-icon {
           line-height: 1;
@@ -112,7 +111,7 @@
       // Title
       .menu-title {
         font-size: $_fontSizes-sm;
-        color: $colors-gray-500;
+        color: #67748e;
         text-transform: capitalize;
       }
 

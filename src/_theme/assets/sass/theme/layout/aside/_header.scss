@@ -7,9 +7,9 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
 
     background: $linearGradient;
     position: absolute;
-    right: -15px;
-    width: 30px;
-    height: 30px;
+    right: -12px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -19,19 +19,19 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
     //transition-duration: $_transition-duration-slow;
     transition: all 1s ease;
 
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 110%;
-      height: 110%;
-      border: 1px solid $wildOrchid;
-      border-radius: 50%;
-      transform: translate(-4%, -4%);
-    }
+    //&::before {
+    //  content: '';
+    //  position: absolute;
+    //  left: 0;
+    //  right: 0;
+    //  top: 0;
+    //  bottom: 0;
+    //  width: 110%;
+    //  height: 110%;
+    //  border: 1px solid $wildOrchid;
+    //  border-radius: 50%;
+    //  transform: translate(-4%, -4%);
+    //}
 
 
     &[data-kt-toggle='true'] {
@@ -46,7 +46,7 @@ $icon-colors: #ff5c4c, #ffbf38, #66e14f; // Define an array of colors
     .svg-icon {
       display: flex;
       transform: rotate(0deg);
-      @include svg-icon-size($_sizes-6);
+      @include svg-icon-size($_sizes-5);
       @include svg-icon-color($white);
     }
 

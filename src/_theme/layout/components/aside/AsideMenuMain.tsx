@@ -18,7 +18,7 @@ const AsideMenuMain: FC = () => {
         <>
             <AsideMenuItem
                 to={PATH_DASHBOARD.home}
-                icon='/media/icons/duotune/general/gen001.svg'
+                icon='/media/icons/others/home.svg'
                 title="home"
                 fontIcon='bi-app-indicator'
             />

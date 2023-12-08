@@ -6,7 +6,7 @@ const Content: FC<ChildrenProps> = ({children}) => {
   const location = useLocation()
 
   return (
-    <div id='kt_content_container' className="container-fluid">
+    <div id='kt_content_container' className="container-fluid py-3">
       {children}
     </div>
   )

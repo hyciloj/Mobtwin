@@ -1,0 +1,25 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48px"
+     height="48px" viewBox="0,0,255.99609,255.99609">
+    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="none" stroke-linejoin="none"
+       stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+       font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+        <g transform="scale(5.33333,5.33333)">
+            <path d="M40.5,34.5v3c0,2.2 -1.8,4 -4,4h-25c-2.2,0 -4,-1.8 -4,-4v-12.9" fill="none" stroke="#67758e"
+                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M7.5,17.5v-5c0,-2.2 1.8,-4 4,-4h25c2.2,0 4,1.8 4,4v14.3" fill="none" stroke="#67758e"
+                  stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M20.5,18.5h14" fill="none" stroke="#67758e" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+            <circle cx="14.5" cy="18.5" r="2" fill="#67758e" stroke="none" stroke-width="1" stroke-linecap="butt"
+                    stroke-linejoin="miter"></circle>
+            <path d="M20.5,25.5h14" fill="none" stroke="#67758e" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+            <circle cx="14.5" cy="25.5" r="2" fill="#67758e" stroke="none" stroke-width="1" stroke-linecap="butt"
+                    stroke-linejoin="miter"></circle>
+            <path d="M20.5,32.5h14" fill="none" stroke="#67758e" stroke-width="3" stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+            <circle cx="14.5" cy="32.5" r="2" fill="#67758e" stroke="none" stroke-width="1" stroke-linecap="butt"
+                    stroke-linejoin="miter"></circle>
+        </g>
+    </g>
+</svg>

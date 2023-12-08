@@ -25,7 +25,7 @@ $aside-config: (
         // Aside's z-index property
         transition-speed: 0.3s,
         // transition speed
-        padding-x: $_space-4,
+        padding-x: $_space-2,
         menu-indention: 0.75rem,
         bg-color: #1e1e2d,
         logo-bg-color: darken(#1e1e2d, 2%),
@@ -34,7 +34,7 @@ $aside-config: (
         width: 265px,
         height: $_space-16,
         // Aside width for desktop mode
-        minimized-width: 75px,
+        minimized-width: 65px,
         // Aside minimized width for desktop mode
         box-shadow: 0 0 28px 0 rgba(82, 63, 105, 0.1),
         // Aside box shadow

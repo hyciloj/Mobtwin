@@ -1,30 +1,28 @@
 import {PATH_DASHBOARD} from "../../../../app/routing/paths";
 import {AsideMenuItemInterface} from "./types";
 
-const duotune = "/media/icons/duotune/"
+const svgPath = (folder: string, svgIcon: string) => {
 
-const svgPath = (svgIcon: string) => {
-
-    return `${duotune}${svgIcon}.svg`
+    return `/media/icons/${folder}/${svgIcon}.svg`
 }
 
 export const chartsSection: AsideMenuItemInterface[] = [
     {
         to: PATH_DASHBOARD.search,
-        icon: svgPath("general/gen004"),
+        icon: svgPath("others", "search"),
         title: `search`,
         fontIcon: `bi-app-indicator`
     },
     {
         to: PATH_DASHBOARD.charts,
-        icon: svgPath("graphs/gra012"),
+        icon: svgPath("others", "top-charts"),
         title: `top charts`,
         fontIcon: `bi-app-indicator`,
     },
     {
         to: PATH_DASHBOARD.topTrending,
-        icon: svgPath("graphs/gra012"),
-        title: `top treading`,
+        icon: svgPath("others", "niches-box"),
+        title: `niches box`,
         fontIcon: `bi-app-indicator`,
     }
 ]
@@ -32,7 +30,7 @@ export const chartsSection: AsideMenuItemInterface[] = [
 export const builderSection: AsideMenuItemInterface[] = [
     {
         to: PATH_DASHBOARD.builder,
-        icon: svgPath("abstract/abs014"),
+        icon: svgPath("others", "builder"),
         title: `builder`,
         fontIcon: `bi-app-indicator`
     },
@@ -41,19 +39,19 @@ export const builderSection: AsideMenuItemInterface[] = [
 export const asoToolsSection: AsideMenuItemInterface[] = [
     {
         to: PATH_DASHBOARD.trendingKeywords,
-        icon: svgPath("text/txt010"),
+        icon: svgPath("others", "trending-keywords"),
         title: `trending keywords`,
         fontIcon: `bi-app-indicator`
     },
     {
         to: PATH_DASHBOARD.iconGenerator,
-        icon: svgPath("art/art003"),
+        icon: svgPath("others", "icon-generator"),
         title: `icon generator`,
         fontIcon: `bi-app-indicator`
     },
     {
         to: PATH_DASHBOARD.smartDescription,
-        icon: svgPath("general/gen005"),
+        icon: svgPath("others", "smart-description"),
         title: `smart description`,
         fontIcon: `bi-app-indicator`
     },
@@ -62,19 +60,19 @@ export const asoToolsSection: AsideMenuItemInterface[] = [
 export const pagesGeneratorSection: AsideMenuItemInterface[] = [
     {
         to: PATH_DASHBOARD.developerProfile,
-        icon: svgPath("general/gen049"),
+        icon: svgPath("others", "developer-profile"),
         title: `developer profile`,
         fontIcon: `bi-app-indicator`
     },
     {
         to: PATH_DASHBOARD.privacyPolicy,
-        icon: svgPath("general/gen051"),
+        icon: svgPath("others", "privacy-policy"),
         title: `privacy policy`,
         fontIcon: `bi-app-indicator`
     },
     {
         to: PATH_DASHBOARD.termsAndConditions,
-        icon: svgPath("general/gen048"),
+        icon: svgPath("others", "terms-conditions"),
         title: `terms & conditions`,
         fontIcon: `bi-app-indicator`
     },

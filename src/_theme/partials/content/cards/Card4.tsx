@@ -12,7 +12,7 @@ const Card4 = () => {
                 <div className="app">
                     <div className="app-name">lorem ipsum</div>
 
-                    <div className="app-details total" style={{backgroundColor: "#219421"}}>
+                    <div className="app-details total" style={{backgroundColor: "#29C130"}}>
                         <KTSVG path='/media/icons/duotune/arrows/arr067.svg' className="details-icon"/>
                         <div className="details-label">1M installs</div>
                     </div>

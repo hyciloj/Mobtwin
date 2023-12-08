@@ -1,0 +1,21 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48px"
+     height="48px" viewBox="0,0,255.99609,255.99609">
+    <g fill="none" fill-rule="nonzero" stroke="#67758e" stroke-width="3" stroke-linecap="round" stroke-linejoin="none"
+       stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+       font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+        <g transform="scale(5.33333,5.33333)">
+            <path d="M18.5,7.5h19c2.2,0 4,1.8 4,4v11.1" stroke-linejoin="round"></path>
+            <path d="M23.3,40.5h-12.8c-2.2,0 -4,-1.8 -4,-4v-25c0,-2.2 1.8,-4 4,-4h1.9" stroke-linejoin="round"></path>
+            <path d="M11.3,15.5h30.2" stroke-linejoin="round"></path>
+            <path d="M21.5,21.5h13" stroke-linejoin="miter"></path>
+            <path d="M13.5,21.5h2" stroke-linejoin="miter"></path>
+            <path d="M21.5,27.5h4.6" stroke-linejoin="miter"></path>
+            <path d="M13.5,27.5h2" stroke-linejoin="miter"></path>
+            <path d="M21.5,33.5h1.6" stroke-linejoin="miter"></path>
+            <path d="M13.5,33.5h2" stroke-linejoin="miter"></path>
+            <path d="M39.5,39.5l7,7" stroke-linejoin="round"></path>
+            <path d="M27.5,34.5c0,-3.9 3.1,-7 7,-7c3.9,0 7,3.1 7,7c0,3.9 -3.1,7 -7,7c-2,0 -3.8,-0.9 -5.1,-2.2"
+                  stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

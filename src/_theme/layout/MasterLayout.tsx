@@ -15,26 +15,28 @@ const MasterLayout: FC<ChildrenProps> = ({children}) => {
     return (
         <PageDataProvider>
 
-            <div className='page d-flex flex-row flex-column-fluid'>
-                <AsideDefault />
+            <div className=''>
+                <AsideDefault/>
                 <div className='wrapper d-flex flex-column flex-row-fluid position-relative' id='kt_wrapper'>
-                    <HeaderWrapper />
+                    <HeaderWrapper/>
 
                     <div id='kt_content' className='content d-flex flex-column flex-column-fluid'>
 
                         {/*<Toolbar />*/}
 
-                        {/*<div className="row my-3">*/}
-                        {/*    <div className="col-12 d-flex justify-content-center align-items-center">*/}
-                        {/*        {*/}
-                        {/*            digits.map((item, index) => (*/}
-                        {/*                <button className="button" key={index}>*/}
-                        {/*                    hello world!*/}
-                        {/*                </button>*/}
-                        {/*            ))*/}
-                        {/*        }*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
+                        <div className="row mt-2 d-flex justify-content-center align-items-center">
+                            {
+                                digits.map((item, index) => (
+                                    <div className="col-4 col-sm-3 col-md-2 col-lg-1 mb-1" key={index}>
+                                        <button className="button">
+                                            hello world!
+                                        </button>
+                                    </div>
+                                ))
+                            }
+
+
+                        </div>
                         <div className='post d-flex flex-column-fluid' id='kt_post'>
                             <Content>{children}</Content>
                         </div>

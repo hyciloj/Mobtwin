@@ -78,10 +78,11 @@
 
       .tickers-img {
         background-size: cover;
-        margin: $_sizes-2;
         height: $_sizes-20;
         width: $_sizes-20;
-        border-radius: 12px;
+        border-radius: 1rem;
+        margin: clamp(10px, 1vw, 10px);
+        box-shadow: 0 0 20px 0 $_colors-blackAlpha-300;
 
         &:hover {
           transform: scale(1.05);
@@ -91,6 +92,7 @@
     }
 
   }
+
   @include media-breakpoint-down(lg) {
     .ticker-container {
       flex-direction: column;
