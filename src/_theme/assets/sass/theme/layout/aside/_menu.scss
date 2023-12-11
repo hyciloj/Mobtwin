@@ -57,8 +57,11 @@
         &.active {
           background-color: #f5f6fd;
 
-          .svg-icon svg [fill]:not(.permanent):not(g) {
-            fill: $white;
+          //.svg-icon svg [fill]:not(.permanent):not(g) {
+          //  fill: $white;
+          //}
+          .svg-icon svg path, .svg-icon svg circle {
+            stroke: $white;
           }
 
           .menu-icon {
@@ -71,9 +74,9 @@
           }
 
           &:hover {
-            .svg-icon svg [fill]:not(.permanent):not(g) {
-              fill: $white;
-            }
+            //.svg-icon svg [fill]:not(.permanent):not(g) {
+            //  fill: $white;
+            //}
           }
         }
 
@@ -104,7 +107,7 @@
         .svg-icon {
           line-height: 1;
           @include svg-icon-size(get($font-sizes, 5));
-          @include svg-icon-color($colors-gray-500);
+          //@include svg-icon-color($colors-gray-500);
         }
       }
 

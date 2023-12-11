@@ -18,7 +18,7 @@ const Container: FC<ChildrenProps> = ({children}) => {
                 <div className="row auth-wrapper">
                     <div className="auth-form">
                         <div className="row">
-                            <div className="header">
+                            <div className="auth-header">
                                 <div className="row">
                                     <div className="col-12 header-logo">
                                         <img src={toAbsoluteUrl('/media/logos/favicon.png')}
