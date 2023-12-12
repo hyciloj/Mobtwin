@@ -47,7 +47,7 @@
                       0);
 
       &:hover {
-        background-color: if(isDarkMode($mode), $_colors-whiteAlpha-300, $_colors-blackAlpha-300);
+        //background-color: if(isDarkMode($mode), $_colors-whiteAlpha-300, $_colors-blackAlpha-300);
       }
 
       img {
@@ -96,6 +96,8 @@
     position: relative;
     z-index: 0;
     height: 2.2rem;
+    box-shadow: inset 0 0px 1px 1px rgba(254, 254, 254, 0.9), 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+
 
     a, button {
       width: $_sizes-16;
@@ -180,13 +182,12 @@
   }
 
   .button {
-    background: $colors-gray-100;
+    background-color: $colors-gray-100;
     font-size: $_fontSizes-2xs;
     font-weight: 900;
     padding: $_space-2 $_space-3;
     margin: 0 $_space-1;
     border-radius: $_sizes-96;
-    color: $colors-gray-600;
     text-wrap: nowrap;
     white-space: nowrap;
     border: 0;
@@ -200,12 +201,22 @@
       transform: scale(1.01);
     }
 
+    &.button-wild-orchid {
+      background-color: $wildOrchid;
+      color: $white;
+    }
+
     &.button-sm {
       font-size: $_fontSizes-sm;
 
       &:hover {
         transform: scale(1.02);
       }
+    }
+
+    .svg-icon {
+      @include svg-icon-size($_sizes-4);
+      @include svg-icon-color($white);
     }
 
   }

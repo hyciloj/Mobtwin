@@ -38,20 +38,26 @@
     border-radius: $_space-12;
     overflow: hidden;
     min-width: $_sizes-52;
-    width: $_sizes-96;
+    width: 60%;
     display: flex;
+    box-shadow: inset 0 0px 1px 1px rgba(254, 254, 254, 0.9), 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+
 
     label {
-      width: 2.5rem;
+      width: $_sizes-12;
       background: $linearGradient;
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
 
+
       .svg-icon {
         @include svg-icon-size(24px);
-        @include svg-icon-color($white);
+        //@include svg-icon-color($white);
+        svg path, svg circle {
+          stroke: $white;
+        }
 
         transition: all .3s ease;
       }

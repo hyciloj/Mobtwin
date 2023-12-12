@@ -8,6 +8,10 @@ const object = {
     img: "https://cdn.leonardo.ai/users/fae37140-c0cc-49ba-a546-89d0e26a345f/generations/ec98b55b-224f-4910-8a75-ef1f9dd3e327/variations/alchemyrefiner_alchemymagic_1_ec98b55b-224f-4910-8a75-ef1f9dd3e327_0.jpg?w=512"
 
 }
+type Card3Props = {
+    image: string
+}
+
 const Card3 = () => {
 
     //
@@ -44,7 +48,10 @@ const Card3 = () => {
                     <div className="card-subtitle my-2">
                         Build on Existing Images
                     </div>
-                    <button className="button button-sm my-2">try now</button>
+                    <button className="button button-sm my-2 button-wild-orchid">
+                        Start experience
+                        <KTSVG path={"/media/icons/duotune/arrows/arr080.svg"} className={""} />
+                    </button>
                 </div>
             </div>
         </div>

@@ -20,6 +20,8 @@ const TopBar: FC = () => {
 
     const {name, avatar} = user
 
+    // console.log(tokenUser)
+
     return (
         <div className="d-flex align-items-center position-relative" id='kt_header_user_menu_toggle'
              ref={ref}>

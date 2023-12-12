@@ -4,11 +4,18 @@ import {PageDataProvider} from "./core";
 import {AsideDefault} from './components/aside/AsideDefault'
 import {HeaderWrapper} from "./components/header/HeaderWrapper";
 import {Content} from "./components/Content";
+import {Swiper, SwiperSlide} from 'swiper/react';
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+
 
 
 const MasterLayout: FC<ChildrenProps> = ({children}) => {
 
-    const number = 1234512345;
+    const number = 8133854254125102151351531;
     const digits = String(number)
         .split('')
 
@@ -24,17 +31,30 @@ const MasterLayout: FC<ChildrenProps> = ({children}) => {
 
                         {/*<Toolbar />*/}
 
-                        <div className="row mt-2 d-flex justify-content-center align-items-center">
-                            {
-                                digits.map((item, index) => (
-                                    <div className="col-4 col-sm-3 col-md-2 col-lg-1 mb-1" key={index}>
-                                        <button className="button">
-                                            hello world!
-                                        </button>
-                                    </div>
-                                ))
-                            }
+                        <div className="row">
+                            {/*<Swiper   cssMode={true}*/}
+                            {/*          pagination={true}*/}
+                            {/*          mousewheel={true}*/}
+                            {/*          keyboard={true}*/}
+                            {/*          modules={[Navigation, Pagination, Mousewheel, Keyboard]}*/}
+                            {/*         className="mySwiper"*/}
+                            {/*>*/}
+                            {/*    {digits.map((title, index) => (*/}
+                            {/*        <SwiperSlide key={index}>*/}
+                            {/*            <span className="button">Hello {index}</span>*/}
+                            {/*        </SwiperSlide>*/}
+                            {/*    ))}*/}
+                            {/*</Swiper>*/}
 
+                            {/*{*/}
+                            {/*    digits.map((item, index) => (*/}
+                            {/*        <div className="" key={index}>*/}
+                            {/*            <button className="button">*/}
+                            {/*                hello world!*/}
+                            {/*            </button>*/}
+                            {/*        </div>*/}
+                            {/*    ))*/}
+                            {/*}*/}
 
                         </div>
                         <div className='post d-flex flex-column-fluid' id='kt_post'>

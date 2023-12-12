@@ -1,6 +1,9 @@
-import {Card1, Card2, Card3, Card4, TablesWidget1} from "../../../_theme/partials";
+import {Card1, Card2, Card3, ChartsWidget1, TablesWidget1} from "../../../_theme/partials";
 import React, {ReactNode, useEffect, useState} from "react";
 import {Variants} from "../../modules/components/framer-motion";
+import {gql, useQuery} from "@apollo/client";
+import {_Shuffle} from "../../functions";
+import {PlayStore} from "./PlayStore";
 
 type RowProps = {
     title: string
@@ -8,41 +11,47 @@ type RowProps = {
     className: string
 }
 
+
+
 export default function Home() {
+
+
+
+
 
     const rows: RowProps[] = [
         {
             title: "play store",
-            components: [
-                <Card3 />,
-                <Card1 />,
-                <Card3 />,
-                <Card1 />,
-                <Card3 />,
-                <Card1 />,
-            ],
+            components: _Shuffle([
+                <Card1 images={["1", "2", "3", "4", "5"]} />,
+                <Card3/>,
+                <Card1 images={["1", "2", "3", "4", "5"]}/>,
+                <Card1 images={null}/>,
+                <TablesWidget1 />,
+                <Card1 images={null}/>,
+            ]),
             className: "grid-3"
         },
         {
             title: "app store",
-            components: [
-                <Card1 />,
-                <Card3 />,
-                <Card1 />,
-                <Card3 />,
-                <Card1 />,
-                <Card3 />,
-            ],
+            components: _Shuffle([
+                <Card3/>,
+                <Card1 images={["1", "2", "3", "4", "5"]} />,
+                <Card1 images={null}/>,
+                <Card1 images={["1", "2"]}/>,
+                <Card1 images={null}/>,
+                <TablesWidget1 />,
+            ]),
             className: "grid-3"
         },
         {
             title: "steam",
-            components: [
-                <Card3 />,
-                <Card1 />,
-                <Card1 />,
-                <Card3 />,
-            ],
+            components: _Shuffle([
+                <Card1 images={null}/>,
+                <Card1 images={["1", "2", "3", "4", "5"]} />,
+                <Card1 images={null}/>,
+                <Card3/>,
+            ]),
             className: "grid-1-3 grid-2-3"
         },
         {
@@ -54,13 +63,6 @@ export default function Home() {
         }
     ]
 
-    const shuffleRows = (array: RowProps[]) => {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    };
 
 
     const SectionComponent = ({type, components, className}: {type: string, className: string, components: React.ReactNode[]}) => {
@@ -83,7 +85,7 @@ export default function Home() {
         }
 
         return (
-            <section className="_pt-8">
+            <section className="_pb-8">
                 <h2 className={"text-h2 text-muted mt-3 mb-4 text-capitalize"}>{type}</h2>
                 <Variants childes={components} className={className} />
             </section>
@@ -91,21 +93,22 @@ export default function Home() {
     }
 
     useEffect(()=> {
-        shuffleRows(rows)
+        _Shuffle(rows)
     }, [])
 
     return (
         <>
-            {
-                shuffleRows(rows).map((row, index) => {
+            <PlayStore />
+            {/*{*/}
+            {/*    rows.map((row, index) => {*/}
 
-                    const {title, components, className} = row
+            {/*        const {title, components, className} = row*/}
 
-                    return (
-                        <SectionComponent type={title} className={className} components={components} key={index} />
-                    )
-                })
-            }
+            {/*        return (*/}
+            {/*            <SectionComponent type={title} className={className} components={components} key={index} />*/}
+            {/*        )*/}
+            {/*    })*/}
+            {/*}*/}
         </>
     )
 }

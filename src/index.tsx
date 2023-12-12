@@ -15,20 +15,28 @@ import store, {persistor} from './setup/redux/Store'
 import axios from 'axios'
 import {LoadingPrimary} from "./app/modules/components/loading/LoadingPrimary";
 
+import {ApolloProvider} from '@apollo/client';
+import client from "./setup/apollo/apollo";
+
 const {PUBLIC_URL} = process.env
 _redux.setupAxios(axios, store)
+
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
+
+
 root.render(
     <Provider store={store}>
-        <PersistGate persistor={persistor} loading={<LoadingPrimary />}>
-            <LayoutProvider>
-                <I18nProvider>
-                    <App basename={PUBLIC_URL}/>
-                </I18nProvider>
-            </LayoutProvider>
+        <PersistGate persistor={persistor} loading={<LoadingPrimary/>}>
+            <ApolloProvider client={client}>
+                <LayoutProvider>
+                    <I18nProvider>
+                        <App basename={PUBLIC_URL}/>
+                    </I18nProvider>
+                </LayoutProvider>
+            </ApolloProvider>
         </PersistGate>
     </Provider>
 );
