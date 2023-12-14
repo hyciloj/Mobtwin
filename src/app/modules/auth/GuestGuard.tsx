@@ -7,8 +7,7 @@ import {PATH_DASHBOARD, ROOTS_BETA, ROOTS_DASHBOARD} from "../../routing/paths";
 
 function GuestGuard({ children }: ChildrenProps) {
 
-    const isAuthorized = useSelector<RootState>(({auth}) => auth.user, shallowEqual)
-
+    const isAuthorized = useSelector<RootState>(({auth}) => auth.accessToken, shallowEqual)
 
     if (isAuthorized) {
         return <Navigate to={ROOTS_DASHBOARD} />;

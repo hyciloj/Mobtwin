@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {LoginModel, RegisterModel} from '../models/AuthModel'
+import {AuthModel, LoginModel, RegisterModel} from '../models/AuthModel'
 import {PropertiesReturnModel, UserModel} from '../models/UserModel'
 import {FormDataLogin, FormDataRegister, FormDataResetPassword} from "../models/Props";
 
@@ -20,7 +20,7 @@ export function login<T>({email, password}: FormDataLogin) {
   data.append('email', email);
   data.append('password', password);
 
-  return axios.post<LoginModel>(LOGIN_URL, data)
+  return axios.post<AuthModel>(LOGIN_URL, data)
 }
 
 // Server should return AuthModel
@@ -44,7 +44,9 @@ export function resetPassword<T>({email, password, token, password_confirmation}
 export function getUserByToken() {
   // Authorization head should be fulfilled in interceptor.
   // Check common redux folder => setupAxios
-  return axios.post<UserModel>(GET_USER_BY_ACCESS_TOKEN_URL)
+  const a = axios.post<AuthModel>(GET_USER_BY_ACCESS_TOKEN_URL)
+
+  return axios.post<AuthModel>(GET_USER_BY_ACCESS_TOKEN_URL)
 }
 
 export function logout() {

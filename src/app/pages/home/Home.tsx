@@ -1,9 +1,13 @@
-import {Card1, Card2, Card3, ChartsWidget1, TablesWidget1} from "../../../_theme/partials";
-import React, {ReactNode, useEffect, useState} from "react";
-import {Variants} from "../../modules/components/framer-motion";
-import {gql, useQuery} from "@apollo/client";
-import {_Shuffle} from "../../functions";
+import React, {ReactNode, useEffect} from "react";
 import {PlayStore} from "./PlayStore";
+import {Section} from "./Section";
+import {AppStore} from "./AppStore";
+import {Card1, Card2, Card3, ChartsWidget1, TablesWidget1} from "../../../_theme/partials";
+import {_Shuffle} from "../../functions";
+import {Variants} from "../../modules/components/framer-motion";
+import Logout from "../../modules/auth/components/Logout";
+import {shallowEqual, useSelector} from "react-redux";
+import {RootState} from "../../../setup";
 
 type RowProps = {
     title: string
@@ -12,45 +16,29 @@ type RowProps = {
 }
 
 
+interface RowsInterface {
+    name: "playStore" | "appStore"
+    component: ReactNode
+}
 
 export default function Home() {
 
+    const accessToken = useSelector<RootState>(({auth}) => auth.accessToken, shallowEqual)
 
 
-
+    const _rows: RowsInterface[] = [
+        {name: "appStore", component: <AppStore />},
+        {name: "playStore", component: <PlayStore />},
+    ]
 
     const rows: RowProps[] = [
-        {
-            title: "play store",
-            components: _Shuffle([
-                <Card1 images={["1", "2", "3", "4", "5"]} />,
-                <Card3/>,
-                <Card1 images={["1", "2", "3", "4", "5"]}/>,
-                <Card1 images={null}/>,
-                <TablesWidget1 />,
-                <Card1 images={null}/>,
-            ]),
-            className: "grid-3"
-        },
-        {
-            title: "app store",
-            components: _Shuffle([
-                <Card3/>,
-                <Card1 images={["1", "2", "3", "4", "5"]} />,
-                <Card1 images={null}/>,
-                <Card1 images={["1", "2"]}/>,
-                <Card1 images={null}/>,
-                <TablesWidget1 />,
-            ]),
-            className: "grid-3"
-        },
         {
             title: "steam",
             components: _Shuffle([
                 <Card1 images={null}/>,
                 <Card1 images={["1", "2", "3", "4", "5"]} />,
                 <Card1 images={null}/>,
-                <Card3/>,
+                // <Card3/>,
             ]),
             className: "grid-1-3 grid-2-3"
         },
@@ -62,8 +50,6 @@ export default function Home() {
             className: "grid-3"
         }
     ]
-
-
 
     const SectionComponent = ({type, components, className}: {type: string, className: string, components: React.ReactNode[]}) => {
 
@@ -78,37 +64,44 @@ export default function Home() {
             return (
                 <section className="_pt-8">
                     <h2 className={"text-h2 text-muted mt-3 mb-4 text-capitalize"}>{type}</h2>
-                    <Variants childes={firstPart} className={className1} />
-                    <Variants childes={secondPart} className={className2} />
+                    <Variants childes={firstPart} className={className1}/>
+                    <Variants childes={secondPart} className={className2}/>
                 </section>
             )
         }
-
-        return (
-            <section className="_pb-8">
-                <h2 className={"text-h2 text-muted mt-3 mb-4 text-capitalize"}>{type}</h2>
-                <Variants childes={components} className={className} />
-            </section>
-        )
     }
 
-    useEffect(()=> {
-        _Shuffle(rows)
-    }, [])
+    useEffect(() => {
+        if (accessToken) {
+            // console.log(jwtDecode(accessToken + ""))
+        }
 
-    return (
+    })
+
+        return (
         <>
-            <PlayStore />
-            {/*{*/}
-            {/*    rows.map((row, index) => {*/}
+            <Logout />
+            {
+                _rows.map((row, index) => {
 
-            {/*        const {title, components, className} = row*/}
+                    return (
+                        <Section row={row} key={index} />
+                    )
+                })
+            }
 
-            {/*        return (*/}
-            {/*            <SectionComponent type={title} className={className} components={components} key={index} />*/}
-            {/*        )*/}
-            {/*    })*/}
-            {/*}*/}
+            <section className="_pt-8">
+                <h2 className={"text-h2 text-muted mt-3 mb-4 text-capitalize"}>steam</h2>
+                <Variants childes={[
+                    <Card1 images={null}/>,
+                    <Card1 images={["1", "2", "3", "4", "5"]} />,
+                ]
+                } className={"grid-1-3"}/>
+                <Variants childes={[
+                    <Card1 images={null}/>,
+                    <Card1 images={["1", "2", "3", "4", "5"]} />,
+                ]} className={"grid-2-3"}/>
+            </section>
         </>
     )
 }

@@ -9,15 +9,13 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
     const {
-        auth: {user},
+        auth: {accessToken},
     } = store.getState()
-
-    const tokenUser = user?.tokenUser
 
     return {
         headers: {
             ...headers,
-            authorization: tokenUser ? `Bearer ${tokenUser}` : '',
+            authorization: accessToken ? `Bearer ${accessToken}` : '',
         },
     };
 });

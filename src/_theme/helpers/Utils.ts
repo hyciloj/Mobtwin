@@ -1,4 +1,11 @@
-function jwtDecode(token: string) {
+import {UserModel} from "../../app/modules/auth/models/UserModel";
+
+type TokenType = {
+    token: string
+}
+
+export function jwtDecode({token}: TokenType): UserModel {
+
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(
@@ -14,12 +21,12 @@ function jwtDecode(token: string) {
 
 // ----------------------------------------------------------------------
 
-export const isValidToken = (token: string) => {
+export const isValidToken = ({token}: TokenType) => {
     if (!token) {
         return false;
     }
 
-    const decoded = jwtDecode(token);
+    const decoded = jwtDecode({token});
 
     const currentTime = Date.now() / 1000;
 

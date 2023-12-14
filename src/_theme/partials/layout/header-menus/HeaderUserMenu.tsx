@@ -10,7 +10,7 @@ import Logout from "../../../../app/modules/auth/components/Logout";
 
 type HeaderUserMenuProps = {
     show: boolean
-    user: UserInterface
+    user: UserModel
 }
 
 const HeaderUserMenu: FC<HeaderUserMenuProps> = ({show, user}) => {

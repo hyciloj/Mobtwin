@@ -2,8 +2,7 @@ import React, { FC, memo, useCallback } from "react";
 import { motion } from "framer-motion";
 
 type itemData = {
-    id: number;
-    filename: string;
+    icon: string;
 };
 
 interface InterfaceTickersX {
@@ -16,7 +15,7 @@ const TickerX: FC<InterfaceTickersX> = memo(({ data, duration, from, to }) => {
 
     const renderTickerItems = useCallback(() => {
         return data.map((item, index) => (
-            <div key={index} style={{ backgroundImage: `url(${item.filename})` }} className="tickers-img" />
+            <div key={index} style={{ backgroundImage: `url(${item.icon})` }} className="tickers-img" />
         ));
     }, [data]);
 

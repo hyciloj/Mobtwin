@@ -1,7 +1,29 @@
 import {AuthModel} from "./AuthModel";
 
-export interface UserModel extends AuthModel{
-    tokenUser: string
+// export interface UserModel extends AuthModel{
+//     tokenUser: string
+// }
+
+export interface UserModel {
+    avatar: string
+    email: string
+    exp: number
+    iat: number
+    ip_address: string
+    iss: string
+    jti: string
+    name: string
+    nbf: number
+    prv: string
+    sub: string
+    workspace: {
+        active: true
+        count_app_building: number
+        count_img_generating: number
+        name: string
+        plan: string
+        type_user: string
+    }
 }
 
 export interface PropertiesReturnModel {

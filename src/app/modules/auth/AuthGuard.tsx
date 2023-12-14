@@ -8,10 +8,7 @@ import {UserModel} from "./models/UserModel";
 
 function AuthGuard({children}: ChildrenProps) {
 
-    const isAuthorized = useSelector<RootState>(({auth}) => auth.user, shallowEqual)
-    const user = useSelector<RootState, UserModel | undefined>(
-        (state) => state.auth.user
-    );
+    const isAuthorized = useSelector<RootState>(({auth}) => auth.accessToken, shallowEqual)
 
     const { pathname } = useLocation();
 

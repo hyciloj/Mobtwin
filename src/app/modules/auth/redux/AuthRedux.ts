@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage'
 import {put, takeLatest} from 'redux-saga/effects'
 import {UserModel} from '../models/UserModel'
 import {getUserByToken} from './AuthCRUD'
+import {jwtDecode} from "../../../../_theme/helpers";
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
@@ -28,54 +29,46 @@ export interface IAuthState {
   accessToken?: string
 }
 
-interface loginProps {
-  accessToken: string
-}
-
 export const reducer = persistReducer(
-  {
-    storage, key: 'v.1-mobtwin-auth',
-    whitelist: ['user', 'accessToken']
-  },
-  (state: IAuthState = initialAuthState, action: ActionWithPayload<IAuthState>) => {
-    switch (action.type) {
-      case actionTypes.Login: {
+    {storage, key: 'v.1-mobtwin-auth', whitelist: ['accessToken']},
+    (state: IAuthState = initialAuthState, action: ActionWithPayload<IAuthState>) => {
+      switch (action.type) {
+        case actionTypes.Login: {
+          const accessToken = action.payload?.accessToken
+          return {accessToken, user: undefined}
+        }
 
-        const accessToken = action.payload?.accessToken
-        return {accessToken, user: undefined}
+        case actionTypes.Register: {
+          const accessToken = action.payload?.accessToken
+          return {accessToken, user: undefined}
+        }
+
+        case actionTypes.Logout: {
+          return initialAuthState
+        }
+
+        case actionTypes.UserRequested: {
+          return {...state, user: undefined}
+        }
+
+        case actionTypes.UserLoaded: {
+          const user = action.payload?.user
+          return {...state, user}
+        }
+
+        case actionTypes.SetUser: {
+          const user = action.payload?.user
+          return {...state, user}
+        }
+
+        default:
+          return state
       }
-
-      case actionTypes.Register: {
-        const accessToken = action.payload?.accessToken
-        return {accessToken, user: undefined}
-      }
-
-      case actionTypes.Logout: {
-        return initialAuthState
-      }
-
-      case actionTypes.UserRequested: {
-        return {...state, user: undefined}
-      }
-
-      case actionTypes.UserLoaded: {
-        const user = action.payload?.user
-        return {...state, user}
-      }
-
-      case actionTypes.SetUser: {
-        const user = action.payload?.user
-        return {...state, user}
-      }
-
-      default:
-        return state
     }
-  }
 )
 
 export const actions = {
-  login: ({accessToken}: loginProps) => ({type: actionTypes.Login, payload: {accessToken}}),
+  login: (accessToken: string) => ({type: actionTypes.Login, payload: {accessToken}}),
   register: (accessToken: string) => ({
     type: actionTypes.Register,
     payload: {accessToken},
@@ -98,7 +91,10 @@ export function* saga() {
   })
 
   yield takeLatest(actionTypes.UserRequested, function* userRequested() {
-    const {data} = yield getUserByToken()
-    yield put(actions.fulfillUser(data))
+
+    const {data: {tokenUser}} = yield getUserByToken()
+
+    const user = jwtDecode({token: tokenUser})
+    yield put(actions.fulfillUser(user))
   })
 }

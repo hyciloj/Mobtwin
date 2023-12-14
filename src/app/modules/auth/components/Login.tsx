@@ -92,7 +92,7 @@ export default function Login() {
                 if (child === 'login') {
                     response = await login({email: emailValue, password: passwordValue});
                     const {token} = response.data;
-                    dispatch(auth.actions.login({accessToken: token}))
+                    dispatch(auth.actions.login(token))
                 } else if (child === 'register') {
 
                     response = await register({email: emailValue, password: passwordValue});

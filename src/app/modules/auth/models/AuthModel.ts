@@ -2,7 +2,9 @@ export interface AuthModel {
     status: number
     message_code: string
     message: string
-    user: UserInterface
+    token: string
+    tokenUser: string
+    trans: string[]
 }
 
 export interface LoginModel extends AuthModel {

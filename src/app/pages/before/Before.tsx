@@ -128,21 +128,21 @@ export default function Before() {
                             <div className="col-12">
                                 <div className="ticker-wrapper">
                                     <div className="tickers">
-                                        <TickerX data={ImagesGallery.firstLine}
-                                                 duration={10}
-                                                 from={0}
-                                                 to={-10}
-                                        />
-                                        <TickerX data={ImagesGallery.secondLine}
-                                                 duration={35}
-                                                 from={0}
-                                                 to={10}
-                                        />
-                                        <TickerX data={ImagesGallery.firstLine}
-                                                 duration={25}
-                                                 from={0}
-                                                 to={-10}
-                                        />
+                                    {/*    <TickerX data={ImagesGallery.firstLine}*/}
+                                    {/*             duration={10}*/}
+                                    {/*             from={0}*/}
+                                    {/*             to={-10}*/}
+                                    {/*    />*/}
+                                    {/*    <TickerX data={ImagesGallery.secondLine}*/}
+                                    {/*             duration={35}*/}
+                                    {/*             from={0}*/}
+                                    {/*             to={10}*/}
+                                    {/*    />*/}
+                                    {/*    <TickerX data={ImagesGallery.firstLine}*/}
+                                    {/*             duration={25}*/}
+                                    {/*             from={0}*/}
+                                    {/*             to={-10}*/}
+                                    {/*    />*/}
                                     </div>
                                 </div>
                             </div>
