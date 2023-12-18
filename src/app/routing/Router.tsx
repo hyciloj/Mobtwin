@@ -10,6 +10,7 @@ import {MasterLayout} from "../../_theme/layout/MasterLayout";
 export default function Router() {
 
     return useRoutes([
+
         {
             path: PATH_BEFORE_LOGIN,
             children: [

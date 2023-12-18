@@ -45,7 +45,7 @@ const AsideHeader = () => {
                             })
                         }}
                     >
-                        <KTSVG path={'/media/icons/duotune/arrows/arr079.svg'} className=''/>
+                        <KTSVG path={'/media/icons/duotune/arrows/arr074.svg'} className=''/>
                     </div>
                 </div>
             </div>

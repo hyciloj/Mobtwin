@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import {InputComponent, SubmitComponent} from "../../components";
 import {useNavigate, useLocation, Navigate} from 'react-router-dom';
 import {encryptEmail} from "../../../../_theme/helpers";
-import {login, resetPassword} from "../redux/AuthCRUD";
 import {PATH_AUTH} from "../../../routing/paths";
 
 const initialValues = {
@@ -89,24 +88,24 @@ export default function ResetPassword() {
             try {
                 let response;
                 if (paramsUrl.email && paramsUrl.token) {
-                    response = await resetPassword({
-                        email: paramsUrl.email,
-                        password: values.password,
-                        password_confirmation: values.passwordConfirmation,
-                        token: paramsUrl.token
-                    })
+                    // response = await resetPassword({
+                    //     email: paramsUrl.email,
+                    //     password: values.password,
+                    //     password_confirmation: values.passwordConfirmation,
+                    //     token: paramsUrl.token
+                    // })
 
-                    const {status} = response
-                    if (status === 200) {
-
-                        formik.resetForm();
-                        showInfoMessage("your password has been successfully modified", "#3cdd78")
-                        setTimeout(() => {
-                            navigate(PATH_AUTH.login);
-                            window.location.reload()
-                        }, 2500);
-
-                    }
+                    // const {status} = response
+                    // if (status === 200) {
+                    //
+                    //     formik.resetForm();
+                    //     showInfoMessage("your password has been successfully modified", "#3cdd78")
+                    //     setTimeout(() => {
+                    //         navigate(PATH_AUTH.login);
+                    //         window.location.reload()
+                    //     }, 2500);
+                    //
+                    // }
 
                 }
 

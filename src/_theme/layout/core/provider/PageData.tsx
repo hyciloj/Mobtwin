@@ -1,18 +1,12 @@
 import React, {FC, useContext, useEffect, useState} from "react";
 import {ChildrenProps} from "../../../../config-global";
 import {PageDataContext, PageDataContextModel, PageLink} from "../context";
-import {shallowEqual, useSelector} from "react-redux";
-import {RootState} from "../../../../setup";
-import {AuthModel} from "../../../../app/modules/auth/models/AuthModel";
-import {IAuthState} from "../../../../app/modules/auth";
 
 const PageDataProvider: FC<ChildrenProps> = ({children}) => {
 
     const [pageTitle, setPageTitle] = useState<string>('')
     const [pageDescription, setPageDescription] = useState<string>()
     const [pageBreadcrumbs, setPageBreadcrumbs] = useState<Array<PageLink>>()
-
-    const {accessToken} = useSelector<RootState>(({auth}) => auth.accessToken, shallowEqual) as IAuthState
 
 
     const value: PageDataContextModel = {

@@ -1,11 +1,7 @@
 import React, {FC} from "react";
 import {UserModel} from "../../../../app/modules/auth/models/UserModel";
-import {shallowEqual, useSelector} from "react-redux";
-import {RootState} from "../../../../setup";
-import {toAbsoluteUrl} from "../../../helpers";
 import {Link} from "react-router-dom";
-import {PATH_AUTH, PATH_DASHBOARD} from "../../../../app/routing/paths";
-import {UserInterface} from "../../../../app/modules/auth/models/AuthModel";
+import {PATH_DASHBOARD} from "../../../../app/routing/paths";
 import Logout from "../../../../app/modules/auth/components/Logout";
 
 type HeaderUserMenuProps = {

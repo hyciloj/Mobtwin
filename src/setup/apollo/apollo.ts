@@ -1,17 +1,17 @@
 // apolloClient.ts
 import {ApolloClient, InMemoryCache, createHttpLink, ApolloLink, from} from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import store from "../redux/Store";
 import {onError} from "@apollo/client/link/error";
+import {_GetStorage, _GetToken} from "../../app/functions";
+import {ACCESS_TOKEN} from "../../config-global";
 
 const httpLink = createHttpLink({
     uri: 'https://api.mobtwin.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
-    const {
-        auth: {accessToken},
-    } = store.getState()
+
+    const accessToken = _GetToken();
 
     return {
         headers: {

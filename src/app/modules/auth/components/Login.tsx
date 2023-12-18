@@ -1,14 +1,11 @@
-import React, {FC, ReactNode, useState} from "react";
-import {login, register, requestPassword} from "../redux/AuthCRUD";
-import {useDispatch} from "react-redux";
-import * as auth from "../redux/AuthRedux"
+import React, {useContext, useState} from "react";
 import {InputComponent, SubmitComponent} from "../../components";
 import {useFormik} from "formik";
 import * as Yup from 'yup'
 import {Container} from "./Container";
 import {EmailPasswordComponent} from "./EmailPasswordComponent";
-import {useTranslation} from "react-i18next";
-import {isValidToken, setSession} from "../../../../_theme/helpers";
+import {useTranslation} from "react-i18next"
+import {useAuthContext} from "../../../auth/useAuthContext";
 
 interface formData {
     email: string;
@@ -60,6 +57,8 @@ export default function Login() {
     const {t: translate} = useTranslation();
 
 
+    const { login, register } = useAuthContext();
+
     // const [info, setInfo] = useState<PropsInfo>({
     //     msg: childInfo[defaultChild],
     //     bg: "#3cdd78",
@@ -77,7 +76,7 @@ export default function Login() {
     // }, [updateInfo]);
 
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     const formik = useFormik({
         initialValues,
@@ -91,16 +90,18 @@ export default function Login() {
                 let response;
 
                 if (child === 'login') {
-                    response = await login({email: emailValue, password: passwordValue});
-                    const {token} = response.data;
-                    dispatch(auth.actions.login(token))
+                    await login(emailValue, passwordValue);
+                    // const {token} = response.data;
+                    // dispatch(auth.actions.login(token))
                 } else if (child === 'register') {
 
-                    response = await register({email: emailValue, password: passwordValue});
-                    const {status} = response.data;
-                    if (status === 200) {
-                        showInfoMessage("we sent a link to the mailbox", "#3cdd78")
-                    }
+                    const data = await register(emailValue, passwordValue);
+                    console.log(data)
+                    // response = await register({email: emailValue, password: passwordValue});
+                    // const {status} = response;
+                    // if (status === 200) {
+                    //     showInfoMessage("we sent a link to the mailbox", "#3cdd78")
+                    // }
                 }
             } catch (error: any) {
 
@@ -119,15 +120,15 @@ export default function Login() {
 
             try {
                 let response;
-                response = await requestPassword({email: values.email});
-                const {status} = response.data;
+                // response = await requestPassword({email: values.email});
+                // const {status} = response.data;
 
-                if (status === 200) {
-                    setInfo({show: true, msg: "we sent a link to the mailbox", bg: "#3cdd78"})
-                    setTimeout(() => {
-                        setInfo({show: false, msg: "", bg: ""})
-                    }, 2000)
-                }
+                // if (status === 200) {
+                //     setInfo({show: true, msg: "we sent a link to the mailbox", bg: "#3cdd78"})
+                //     setTimeout(() => {
+                //         setInfo({show: false, msg: "", bg: ""})
+                //     }, 2000)
+                // }
             } catch (error: any) {
 
                 handleApiError(error, child, );

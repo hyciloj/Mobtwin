@@ -1,6 +1,5 @@
 import {UserModel} from "../../app/modules/auth/models/UserModel";
-import store from "../../setup/redux/Store";
-
+import axios from "../../app/utils/axios";
 type TokenType = {
     token: string
 }
@@ -48,14 +47,16 @@ export const tokenExpired = (exp: number) => {
 
     // clearTimeout(expiredTimer);
 
-    expiredTimer = setTimeout(() => {
+    expiredTimer = setTimeout(async () => {
 
-        console.log("token expired")
+        console.log("token expired!")
 
-        document.body.setAttribute("data-kt-drawer-refresh", "on")
+        // const response = await axios.post('token-refresh');
 
-        // localStorage.removeItem('persist:v.1-mobtwin-auth');
-        //
+        // localStorage.setItem("accessToken", "hello world")
+
+        // document.body.setAttribute("data-kt-drawer-refresh", "on")
+
         // window.location.reload()
         // window.location.href = "PATH_AUTH.login";
     }, timeLeft);
@@ -63,17 +64,20 @@ export const tokenExpired = (exp: number) => {
 //
 // // ----------------------------------------------------------------------
 //
-export const setSession = ({accessToken}: { accessToken: string | undefined }) => {
+export const setSession = (accessToken: string | null) => {
     if (accessToken) {
 
-        // axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+        localStorage.setItem('accessToken', accessToken);
+
+        axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
         // This function below will handle when token is expired
-        const {exp} = jwtDecode({token: accessToken}); // ~3 days by minimals server
+        const { exp } = jwtDecode({token: accessToken}); // ~3 days by minimals server
+
         tokenExpired(exp);
     } else {
-        // localStorage.removeItem('accessToken');
+        localStorage.removeItem('accessToken');
 
-        // delete axios.defaults.headers.common.Authorization;
+        delete axios.defaults.headers.common.Authorization;
     }
 };

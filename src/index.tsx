@@ -7,19 +7,17 @@ import {LayoutProvider} from "./_theme/layout/core/provider";
 
 // Redux
 // https://github.com/rt2zz/redux-persist
-import {PersistGate} from 'redux-persist/integration/react'
-import {Provider} from 'react-redux'
-import * as _redux from './setup'
-import store, {persistor} from './setup/redux/Store'
 // Axios
 import axios from 'axios'
 import {LoadingPrimary} from "./app/modules/components/loading/LoadingPrimary";
 
 import {ApolloProvider} from '@apollo/client';
 import client from "./setup/apollo/apollo";
+import {AuthProvider} from "./app/auth/JwtContext";
+import {BrowserRouter} from "react-router-dom";
 
 const {PUBLIC_URL} = process.env
-_redux.setupAxios(axios, store)
+// _redux.setupAxios(axios, store)
 
 
 const root = ReactDOM.createRoot(
@@ -28,15 +26,13 @@ const root = ReactDOM.createRoot(
 
 
 root.render(
-    <Provider store={store}>
-        <PersistGate persistor={persistor} loading={<LoadingPrimary/>}>
-            <ApolloProvider client={client}>
-                <LayoutProvider>
-                    <I18nProvider>
-                        <App basename={PUBLIC_URL}/>
-                    </I18nProvider>
-                </LayoutProvider>
-            </ApolloProvider>
-        </PersistGate>
-    </Provider>
+    <AuthProvider>
+        <ApolloProvider client={client}>
+            <LayoutProvider>
+                <I18nProvider>
+                    <App basename={PUBLIC_URL}/>
+                </I18nProvider>
+            </LayoutProvider>
+        </ApolloProvider>
+    </AuthProvider>
 );

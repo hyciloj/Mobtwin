@@ -1,20 +1,29 @@
-import {ChildrenProps} from "../../../config-global";
+import React, { useState, ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import React, {useState} from "react";
-import {shallowEqual, useSelector} from "react-redux";
-import {RootState} from "../../../setup";
+import {useAuthContext} from "../../auth/useAuthContext";
+import {LoadingPrimary} from "../components/loading/LoadingPrimary";
+import Login from "./components/Login";
 import {PATH_AUTH} from "../../routing/paths";
-import {UserModel} from "./models/UserModel";
+// components
+//
+// ----------------------------------------------------------------------
 
-function AuthGuard({children}: ChildrenProps) {
+type AuthGuardProps = {
+    children: ReactNode;
+};
 
-    const isAuthorized = useSelector<RootState>(({auth}) => auth.accessToken, shallowEqual)
+function AuthGuard({ children }: AuthGuardProps) {
+    const { isAuthenticated, isInitialized } = useAuthContext();
 
     const { pathname } = useLocation();
 
     const [requestedLocation, setRequestedLocation] = useState<string | null>(null);
 
-    if (!isAuthorized) {
+    if (!isInitialized) {
+        return <LoadingPrimary />;
+    }
+
+    if (!isAuthenticated) {
         if (pathname !== requestedLocation) {
             setRequestedLocation(pathname);
         }
@@ -22,7 +31,6 @@ function AuthGuard({children}: ChildrenProps) {
     }
 
     if (requestedLocation && pathname !== requestedLocation) {
-
         setRequestedLocation(null);
         return <Navigate to={requestedLocation} />;
     }

@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import {PATH_AUTH} from "../../../routing/paths";
 import {useDispatch} from "react-redux";
 import {FormDataRegister} from "../models/Props";
-import {register} from "../redux/AuthCRUD";
 
 
 export default function Register() {
@@ -27,18 +26,18 @@ export default function Register() {
 
         console.log(formData)
 
-        setTimeout(() => {
-            register(formData)
-                .then((response) => {
-                    console.log({response})
-                })
-                .catch(error => {
-                    console.log({error})
-                })
-                .finally(() => {
-                    setLoading(true);
-                })
-        }, 300)
+        // setTimeout(() => {
+        //     register(formData)
+        //         .then((response) => {
+        //             console.log({response})
+        //         })
+        //         .catch(error => {
+        //             console.log({error})
+        //         })
+        //         .finally(() => {
+        //             setLoading(true);
+        //         })
+        // }, 300)
     }
 
     const handleChange = useCallback(

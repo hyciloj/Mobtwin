@@ -7,7 +7,6 @@ import {allLanguages} from "../_theme/i18n/config-lang";
 import {MasterLayout} from "../_theme/layout/MasterLayout";
 import Header from "./Header";
 import {BrowserRouter} from "react-router-dom";
-import AuthInit from "./modules/auth/redux/AuthInit";
 import Router from "./routing/Router";
 
 type Props = {
@@ -24,10 +23,9 @@ const App: React.FC<Props> = ({basename}) => {
 
     return (
         <BrowserRouter basename={basename}>
-            <AuthInit>
-                <Router/>
-            </AuthInit>
+            <Router/>
         </BrowserRouter>
+
     );
 }
 

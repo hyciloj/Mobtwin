@@ -1,11 +1,7 @@
 import React, {FC, useRef, useState} from 'react'
-import {toAbsoluteUrl} from '../../../helpers'
-import {HeaderUserMenu} from "../../../partials";
 import {useClickOutside} from "../../../../app/hooks";
-import {UserModel} from "../../../../app/modules/auth/models/UserModel";
-import {shallowEqual, useSelector} from "react-redux";
-import {RootState} from "../../../../setup";
-import {IAuthState} from "../../../../app/modules/auth";
+import {useAuthContext} from "../../../../app/auth/useAuthContext";
+import {HeaderUserMenu} from "../../../partials/layout/header-menus";
 
 const TopBar: FC = () => {
 
@@ -16,9 +12,10 @@ const TopBar: FC = () => {
         setShow(false)
     })
 
-    const user: UserModel = useSelector<RootState>(({auth}) => auth.user, shallowEqual) as UserModel
+    const {user} = useAuthContext()
 
     if (user) {
+        const {name, avatar} = user
         return (
             <div className="d-flex align-items-center position-relative" id='kt_header_user_menu_toggle'
                  ref={ref}>
@@ -26,17 +23,19 @@ const TopBar: FC = () => {
                     setShow(prevState => !prevState)
                 }}>
                     <div className="symbol symbol-30px">
-                        <img src={user.avatar} alt='mobtwin'/>
+                        <img src={avatar} alt='mobtwin'/>
                     </div>
-                    <span className="fs-xs">{user.name}</span>
+                    <span className="fs-xs">{name}</span>
                 </div>
 
                 <HeaderUserMenu show={show} user={user}/>
             </div>
-
         )
     }
+
     return <></>
+
+
 }
 
 export {TopBar}

@@ -11,8 +11,8 @@ const AsideMenuSection: FC<AsideMenuSectionInterface> = ({
     return (
         <>
             <div className='menu-item'>
-                <div className='menu-content pt-3 pb-2'>
-                    <span className='menu-section text-muted text-uppercase fs-8 ls-1'>{name}</span>
+                <div className='menu-content py-1'>
+                    <span className='menu-section text-muted text-uppercase fs-8 fw-bold'>{name}</span>
                 </div>
             </div>
 

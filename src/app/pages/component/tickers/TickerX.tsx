@@ -19,8 +19,6 @@ const TickerX: FC<InterfaceTickersX> = memo(({ data, duration, from, to }) => {
         ));
     }, [data]);
 
-
-
     return (
         <>
             <motion.div style={{

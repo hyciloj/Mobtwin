@@ -1,23 +1,24 @@
 import React from "react";
-import {useDispatch} from "react-redux";
-import {logout} from "../redux/AuthCRUD";
-import * as auth from "../redux/AuthRedux";
-import {Navigate} from "react-router-dom";
-import axios from "axios";
+import {useAuthContext} from "../../../auth/useAuthContext";
+import {PATH_AUTH} from "../../../routing/paths";
+import { useNavigate } from 'react-router-dom';
+import axios from "../../../utils/axios";
 
 export default function Logout() {
 
-    const dispatch = useDispatch();
+    const {logout} = useAuthContext()
+    const navigate = useNavigate();
 
-    const handleLogout = () => {
-        logout().then(r => {
-            const {status} = r.data
-            if (status === 200) {
-                delete axios.defaults.headers.common.Authorization;
-                dispatch(auth.actions.logout())
-            }
-        })
+    const handleLogout = async () => {
+        try {
+            logout();
+            delete axios.defaults.headers.common.Authorization;
+            navigate(PATH_AUTH.login, { replace: true });
+        } catch (error) {
+            console.error(error);
+        }
     };
+
 
     return (
         <div className="col-1 offset-8 d-flex justify-content-center align-items-center">
