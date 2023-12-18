@@ -10,11 +10,6 @@ const AsideHeader = () => {
 
     const {minimized} = layout.aside;
 
-    // const updateData = (fieldsToUpdate: Partial<ILayout>) => {
-    //     const updatedData = {...classes, ...fieldsToUpdate};
-    //     setConfig(updatedData);
-    //     LayoutSetup.setConfig(updatedData);
-    // };
     return (
         <>
 

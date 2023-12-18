@@ -5,7 +5,7 @@ import {getUserByToken} from './AuthCRUD'
 import {RootState} from '../../../../setup'
 import {LoadingPrimary} from "../../components/loading/LoadingPrimary";
 import {useLocation} from "react-router-dom";
-import {isValidToken, jwtDecode} from "../../../../_theme/helpers";
+import {isValidToken, jwtDecode, setSession} from "../../../../_theme/helpers";
 import {IAuthState} from "./AuthRedux";
 
 const mapState = (state: RootState) => ({auth: state.auth})
@@ -30,7 +30,9 @@ const AuthInit: FC<PropsFromRedux> = (props) => {
         const requestUser = async (tokenProps: string) => {
             try {
                 if (!didRequest.current) {
-                    // const {data: {tokenUser}} = await getUserByToken()
+                    // const {data} = await getUserByToken()
+
+                    // setSession({accessToken: tokenProps});
 
                     const user = jwtDecode({token: tokenProps})
                     dispatch(props.fulfillUser(user))
@@ -57,54 +59,6 @@ const AuthInit: FC<PropsFromRedux> = (props) => {
         }
         // eslint-disable-next-line
     }, [])
-
-
-    // We should request user by authToken before rendering the application
-    // useEffect(() => {
-    //
-    //     // console.log(isValidToken({token: accessToken}))
-    //
-    //     const requestUser = async (tokenParams: string) => {
-    //
-    //
-    //         try {
-    //
-    //             if (!didRequest.current) {
-    //
-    //
-    //                 if (tokenParams && isValidToken({token: tokenParams})) {
-    //
-    //                     // const {data: {tokenUser}} = await getUserByToken()
-    //                     const user = jwtDecode({token: tokenParams})
-    //                     dispatch(props.fulfillUser(user))
-    //                 }
-    //             }
-    //         } catch (error) {
-    //             if (!didRequest.current) {
-    //                 dispatch(props.logout())
-    //             }
-    //         } finally {
-    //             setShowSplashScreen(false)
-    //         }
-    //
-    //         return () => (didRequest.current = true)
-    //     }
-    //
-    //     if (accessToken) {
-    //
-    //         requestUser(accessToken)
-    //     }
-    //         // else if(token) {
-    //         //
-    //         //   requestUser(token)
-    //         //   dispatch(props.login({accessToken: token}))
-    //     // }
-    //     else {
-    //
-    //         dispatch(props.logout())
-    //         setShowSplashScreen(false)
-    //     }
-    // }, [])
 
 
     return showSplashScreen ? <LoadingPrimary/> : <>{props.children}</>

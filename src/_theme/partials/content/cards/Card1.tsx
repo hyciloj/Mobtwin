@@ -7,14 +7,15 @@ const object = {
 
 type Card1Props = {
     images: string[] | null
+    bg: string
 }
 
-const Card1: FC<Card1Props> = ({images}) => {
+const Card1: FC<Card1Props> = ({images, bg}) => {
 
     //
     return (
         <div className='card'>
-            <div className="card-wrapper"  style={{backgroundImage: `url(${object.img})`}}>
+            <div className="card-wrapper"  style={{backgroundImage: `url(${bg})`}}>
                 <div className="card-body">
                     <div className="card-title">premium collection</div>
                     <div className="card-subtitle">

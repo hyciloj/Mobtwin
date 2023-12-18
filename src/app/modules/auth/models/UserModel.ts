@@ -41,7 +41,7 @@ export interface PropertiesReturnModel {
 //     lastName: string
 //     fullName?: string
 //     phone?: string
-//     roles?: Array<number>
+//     roles?: _Array<number>
 //     pic?: string
 //     language?: 'en' | 'de' | 'es' | 'fr' | 'ja' | 'zh' | 'ru'
 //     address?: UserAddressModel

@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 import {logout} from "../redux/AuthCRUD";
 import * as auth from "../redux/AuthRedux";
 import {Navigate} from "react-router-dom";
+import axios from "axios";
 
 export default function Logout() {
 
@@ -12,6 +13,7 @@ export default function Logout() {
         logout().then(r => {
             const {status} = r.data
             if (status === 200) {
+                delete axios.defaults.headers.common.Authorization;
                 dispatch(auth.actions.logout())
             }
         })

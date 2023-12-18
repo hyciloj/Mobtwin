@@ -1,6 +1,6 @@
 import {DocumentNode, useQuery} from "@apollo/client";
 
-import {Filter, G_App_Data, IOS_App_Data} from "..";
+import {Filter,} from "..";
 
 interface AppDataQueryResult<T> {
     loading: boolean;
@@ -13,7 +13,7 @@ interface UseAppsQueryProps {
     variables: { filters: Filter };
 }
 
-export function useAppsQuery<T extends G_App_Data | IOS_App_Data>({
+export function useAppsQuery<T>({
                                                                       query,
                                                                       variables
                                                                   }: UseAppsQueryProps): AppDataQueryResult<T> {

@@ -1,1 +1,1 @@
-export * from "./_Array"
+export * from "./_ArrayFunctions"

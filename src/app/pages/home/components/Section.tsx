@@ -1,5 +1,5 @@
 import React, {FC, ReactNode} from "react";
-import {Variants} from "../../modules/components/framer-motion";
+import {Variants} from "../../../modules/components/framer-motion";
 
 interface AttributesInterface {
     name: string,

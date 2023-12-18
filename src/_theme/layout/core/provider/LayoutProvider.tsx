@@ -57,7 +57,7 @@ export const useLayout = () => {
 //
 //     const setLayout = (_themeConfig: Partial<ILayout>) => {
 //
-//         const bodyClasses = Array.from(document.body.classList)
+//         const bodyClasses = _Array.from(document.body.classList)
 //         bodyClasses.forEach((cl) => document.body.classList.remove(cl))
 //         LayoutSetup.updatePartialConfig(_themeConfig)
 //         setConfig(Object.assign({}, LayoutSetup.config))

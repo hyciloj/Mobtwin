@@ -44,7 +44,6 @@ export function resetPassword<T>({email, password, token, password_confirmation}
 export function getUserByToken() {
   // Authorization head should be fulfilled in interceptor.
   // Check common redux folder => setupAxios
-  const a = axios.post<AuthModel>(GET_USER_BY_ACCESS_TOKEN_URL)
 
   return axios.post<AuthModel>(GET_USER_BY_ACCESS_TOKEN_URL)
 }

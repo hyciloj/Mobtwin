@@ -8,6 +8,7 @@ import * as Yup from 'yup'
 import {Container} from "./Container";
 import {EmailPasswordComponent} from "./EmailPasswordComponent";
 import {useTranslation} from "react-i18next";
+import {isValidToken, setSession} from "../../../../_theme/helpers";
 
 interface formData {
     email: string;

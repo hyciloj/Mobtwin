@@ -22,6 +22,11 @@ export interface IMegaMenu {
     display: boolean
 }
 
+export interface IDrawer {
+    display: boolean
+    name: string
+}
+
 export interface IAside {
     display: boolean // Display aside
     theme: 'dark' | 'light' // Set aside theme(dark|light)
@@ -122,6 +127,7 @@ export interface ILayout {
     sidebar?: ISidebar
     main?: IMain
     pageTitle?: IPageTitle
+    drawer: IDrawer
 }
 
 export interface ILayoutCSSClasses {

@@ -94,4 +94,8 @@ export const DefaultLayoutConfig: ILayout = {
         responsiveBreakpoint: 'lg',
         responsiveTarget: '#kt_toolbar_container',
     },
+    drawer: {
+        display: false,
+        name: ''
+    }
 }

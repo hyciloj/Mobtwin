@@ -1,3 +1,5 @@
+import {number} from "yup";
+
 type DateRange = {
     startDate: string;
     endDate: string;
@@ -9,23 +11,18 @@ type FloatRange = {
 }
 
 export type Filter = {
-    name?: string;
-    summary?: string;
-    description?: string;
-    whatsNew?: string;
-    releaseDate?: DateRange;
-    lastUpdateDate?: DateRange;
-    removalDate?: DateRange;
-    published?: boolean;
-    hasAds?: boolean;
-    inApp?: boolean;
-    type?: string;
-    ages?: string;
-    category?: string[];
-    collection?: string[];
-    rating?: FloatRange;
-    price?: FloatRange;
-    totalInstalls?: FloatRange;
-    skip?: number;
-    limit?: number;
+    name:  string
+    description:  string
+    categories:  string[]
+    skip:  number
+    limit:  number
+}
+
+export interface GFilters extends Filter {
+    summary:  string
+}
+export interface IosFilters extends Filter {}
+
+export interface SteamFilters extends Filter {
+    published: boolean
 }

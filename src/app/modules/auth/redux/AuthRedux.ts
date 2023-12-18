@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage'
 import {put, takeLatest} from 'redux-saga/effects'
 import {UserModel} from '../models/UserModel'
 import {getUserByToken} from './AuthCRUD'
-import {jwtDecode} from "../../../../_theme/helpers";
+import {isValidToken, jwtDecode, setSession} from "../../../../_theme/helpers";
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T
@@ -35,6 +35,10 @@ export const reducer = persistReducer(
       switch (action.type) {
         case actionTypes.Login: {
           const accessToken = action.payload?.accessToken
+          if (accessToken) {
+
+            // setSession({accessToken});
+          }
           return {accessToken, user: undefined}
         }
 

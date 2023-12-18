@@ -111,3 +111,17 @@ $content-spacing: (
         // Padding for desktop mode
         tablet-and-mobile: 15px // Padding for tablet and mobile modes,,
 ) !default;
+
+// Drawer
+$drawer: (
+        z-index: 110,
+        // Drawer's z-index
+        box-shadow:0px 0px 30px rgba(0, 0, 0, 0.1),
+        // Drawer's box shadow
+        bg-color: $body-bg,
+        // Drawer's background color
+        transition-speed: 0.3s,
+        overlay-bg-color: rgba($black, 0.4),
+        // Offcanvas overlay background color
+        overlay-animation-speed: 0.3s,
+) !default;

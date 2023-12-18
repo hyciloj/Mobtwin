@@ -32,6 +32,9 @@ $themeMode: "light";
 @include plansContainer($themeMode);
 @include badge($themeMode);
 
+// drawer
+@include Drawer($themeMode);
+
 
 
 

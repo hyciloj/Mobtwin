@@ -10,6 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+import {DrawerRefresh} from "../partials/layout";
 
 
 
@@ -65,23 +66,9 @@ const MasterLayout: FC<ChildrenProps> = ({children}) => {
                 </div>
             </div>
 
-            {/*<div className='d-flex flex-row flex-column-fluid'>*/}
-            {/*    <AsideDefault/>*/}
-            {/*    <div className='wrapper d-flex flex-column flex-row-fluid' id='kt_wrapper'>*/}
-
-            {/*        <HeaderWrapper />*/}
 
 
-            {/*        <div className='container-fluid wrapper d-flex flex-column flex-row-fluid' id='kt_wrapper'>*/}
-            {/*            <div id='kt_content' className='content d-flex flex-column flex-column-fluid'>*/}
-            {/*                {children}*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-
-            {/*    </div>*/}
-
-
-            {/*</div>*/}
+            <DrawerRefresh />
 
         </PageDataProvider>
     )
