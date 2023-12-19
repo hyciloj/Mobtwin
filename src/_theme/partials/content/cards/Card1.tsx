@@ -8,11 +8,20 @@ const object = {
 type Card1Props = {
     images: string[] | null
     bg: string
+    name: string | null
+    summary: string | null
 }
 
-const Card1: FC<Card1Props> = ({images, bg}) => {
 
-    //
+
+const Card1: FC<Card1Props> = ({images, bg, name, summary}) => {
+
+    function fn(text: string, count: number){
+        return text.slice(0, count) + (text.length > count ? "..." : "");
+    }
+
+    const summarySlice = summary ? fn(summary, 70) : ''
+
     return (
         <div className='card'>
             <div className="card-wrapper"  style={{backgroundImage: `url(${bg})`}}>
@@ -28,7 +37,7 @@ const Card1: FC<Card1Props> = ({images, bg}) => {
                             <div className="properties d-flex justify-content-center align-items-center w-100">
                                 {
                                     images.map((item, index) => (
-                                        <img src="https://static.wikia.nocookie.net/angrybirds/images/c/c3/AB_Reloaded_App_Icon_Space_V1.png"
+                                        <img src={item}
                                              className="me-3"
                                              alt=""
                                              key={index}
@@ -41,8 +50,8 @@ const Card1: FC<Card1Props> = ({images, bg}) => {
                                 <div className="properties">
                                     <img src="https://static.wikia.nocookie.net/angrybirds/images/c/c3/AB_Reloaded_App_Icon_Space_V1.png" alt=""/>
                                     <div className="description">
-                                        <div className="title">title</div>
-                                        <div className="subtitle">lorem ipsum</div>
+                                        <div className="title">{name ? name : ''}</div>
+                                        <div className="subtitle">{summarySlice}</div>
                                     </div>
                                 </div>
 

@@ -11,14 +11,20 @@ export function _GetStorage(key: string) {
 
 export function _SetStorage(key: string, value: string) {
 
-    const storageKey = _GetStorage(key)
-    if (!storageKey) {
-        throw new Error('this key is not defined');
-    }
     localStorage.setItem(key, value)
+}
+
+export function _RemoveStorage(key: string) {
+
+    localStorage.removeItem(key)
 }
 
 export function _GetToken() {
 
     return _GetStorage(ACCESS_TOKEN)
+}
+
+export function _SetToken(value: string) {
+
+    _SetStorage(ACCESS_TOKEN, value)
 }

@@ -142,7 +142,7 @@
         justify-content: space-between;
         width: 100%;
         border: none;
-        background: linear-gradient(0deg, #ffffffba, transparent);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.73), transparent);
 
         .properties {
           display: flex;
@@ -151,6 +151,7 @@
             width: $_space-12;
             height: $_space-12;
             border-radius: $_space-2;
+            object-fit: cover;
           }
 
           .description {

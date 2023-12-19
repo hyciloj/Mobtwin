@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useCallback} from "react";
 import {TickerX} from "../../../../app/pages/component/tickers";
 import ImagesGallery from "../../../../app/pages/before/ImageGallery.json";
 import {CardXs} from "./CardXs";
@@ -19,7 +19,9 @@ interface Card3Interface {
 }
 
 const Card3: FC<Card3Interface> = ({images}) => {
-
+    //
+    // const duration = Math.floor(Math.random() * 27) + 20;
+    // console.log(Math.floor(Math.random() * 27))
     return (
         <div className='card'>
             <div className="card-wrapper">
@@ -31,11 +33,24 @@ const Card3: FC<Card3Interface> = ({images}) => {
                             {
                                 images.map((icon, index) => {
 
+                                    const duration = Math.floor(Math.floor(Math.random() * 16) / (index + 1)) + 20
+
                                     return (
+                                        // <div className="d-flex flex-row overflow-hidden" key={index}>
+                                        //     <div className="tickers-imgs" style={{animationDuration: `${duration}s`}}>
+                                        //         {
+                                        //             icon.map((item, itemIndex: number) => (
+                                        //                 <div key={itemIndex} style={{ backgroundImage: `url(${item.icon})` }}
+                                        //                      className="tickers-img"
+                                        //                 />
+                                        //             ))
+                                        //         }
+                                        //     </div>
+                                        // </div>
                                         <TickerX data={icon}
-                                                 duration={10}
+                                                 duration={duration}
                                                  from={0}
-                                                 to={-10}
+                                                 to={-100}
                                                  key={index}
                                         />
                                     )

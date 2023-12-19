@@ -1,5 +1,8 @@
 import {UserModel} from "../../app/modules/auth/models/UserModel";
 import axios from "../../app/utils/axios";
+import {AuthModel} from "../../app/modules/auth/models/AuthModel";
+import {_RemoveStorage, _SetToken} from "../../app/functions";
+import {ACCESS_TOKEN} from "../../config-global";
 type TokenType = {
     token: string
 }
@@ -45,20 +48,13 @@ export const tokenExpired = (exp: number) => {
     // const timeLeft = currentTime + 10000 - currentTime; // ~10s
     const timeLeft = exp * 1000 - currentTime;
 
-    // clearTimeout(expiredTimer);
-
+    clearTimeout(expiredTimer);
     expiredTimer = setTimeout(async () => {
 
-        console.log("token expired!")
+        const {data: {token}} = await axios.post<AuthModel>('token-refresh');
+        _SetToken(token)
+        window.location.reload()
 
-        // const response = await axios.post('token-refresh');
-
-        // localStorage.setItem("accessToken", "hello world")
-
-        // document.body.setAttribute("data-kt-drawer-refresh", "on")
-
-        // window.location.reload()
-        // window.location.href = "PATH_AUTH.login";
     }, timeLeft);
 };
 //
@@ -67,17 +63,17 @@ export const tokenExpired = (exp: number) => {
 export const setSession = (accessToken: string | null) => {
     if (accessToken) {
 
-        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem(ACCESS_TOKEN, accessToken)
 
         axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
         // This function below will handle when token is expired
-        const { exp } = jwtDecode({token: accessToken}); // ~3 days by minimals server
+        const { exp } = jwtDecode({token: accessToken});
 
         tokenExpired(exp);
     } else {
-        localStorage.removeItem('accessToken');
-
+        console.log("else setSession")
+        _RemoveStorage(ACCESS_TOKEN);
         delete axios.defaults.headers.common.Authorization;
     }
 };

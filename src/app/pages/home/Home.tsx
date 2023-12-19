@@ -11,7 +11,7 @@ export default function Home() {
 
 
     const _rows: RowsInterface[] = [
-        // {name: "steam", component: <SteamGames />},
+        {name: "steam", component: <SteamGames />},
         {name: "playStore", component: <PlayStore />},
         {name: "appStore", component: <AppStore />},
     ]

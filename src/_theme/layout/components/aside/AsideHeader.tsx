@@ -19,7 +19,7 @@ const AsideHeader = () => {
 
                 <div className='aside-logo flex-column-auto' id='kt_aside_logo'>
 
-                    <div className='d-flex justify-content-center align-items-center' onClick={() => {
+                    <div className='d-flex justify-content-center align-items-center m-2' onClick={() => {
                         _UpdateConfig({
                             config: {layout, setLayout},
                             fieldsToUpdate: {...layout, aside: {...layout.aside, minimized: false}}

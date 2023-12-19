@@ -75,6 +75,7 @@
     .tickers-imgs {
       width: 100%;
       display: flex;
+      animation: translateX linear infinite;
 
       .tickers-img {
         background-size: cover;
@@ -188,3 +189,23 @@
   }
 
 }
+
+@keyframes translateX {
+  //from {
+  //  transform: translateX(0%);
+  //}
+  //to {
+  //  transform: translateX(-10%);
+  //}
+
+  //0% {
+  //  transform: translateX(0);
+  //}
+  //100% {
+  //  transform: translateX(-100%);
+  //}
+
+  0%    {transform: translate(0%)}
+  100% {transform: translate(-30%)}
+}
+

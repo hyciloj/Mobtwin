@@ -12,7 +12,7 @@ export default function Logout() {
     const handleLogout = async () => {
         try {
             logout();
-            delete axios.defaults.headers.common.Authorization;
+            // delete axios.defaults.headers.common.Authorization;
             navigate(PATH_AUTH.login, { replace: true });
         } catch (error) {
             console.error(error);
